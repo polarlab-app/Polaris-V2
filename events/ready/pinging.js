@@ -1,4 +1,3 @@
-const { colors }=  require('../../data/consoleColors')
 const consoleLogHandler = require('../../handlers/consoleLogHandler')
 
 module.exports = async (polaris) => {
