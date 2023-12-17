@@ -7,8 +7,10 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 module.exports = {
     name: '',
     description: '',
+    
     permissionsRequired: [],
     botPermissions: [],
+
     callback: async (polaris, interaction) => {
         await interaction.deferReply();
         if (modules.module === 'disabled') {
