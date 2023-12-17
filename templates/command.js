@@ -1,6 +1,8 @@
 const { modules } = require('../../config.json');
 const { colors } = require('../../data/colors');
+
 const errorHandler = require('../../handlers/errorHandler');
+const consoleLogHandler = require('../../handlers/consoleLogHandler');
 
 module.exports = {
     name: '',
@@ -27,10 +29,11 @@ module.exports = {
         } else {
             try {
                 interaction.editReply('test');
-                console.log(
-                    colors.debug +
-                        `[DEBUG] ${interaction.user.id} ran ${module.exports.name}`
-                );
+                await consoleLogHandler({
+                    interaction: interaction,
+                    commandName: module.exports.name,
+                    errorType: 'commandRan',
+                });
             } catch (error) {
                 await errorHandler({
                     interaction: interaction,
