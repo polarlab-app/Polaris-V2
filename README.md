@@ -52,4 +52,4 @@ node index.js
 ```
 start.bat 
 ```
-#### Step 6: You're done!
+#### Step 6: You're done! Enjoy!

@@ -1,7 +1,7 @@
 const { colors } = require('../data/consoleColors')
 
 module.exports = async ({ interaction, errorType, commandName }) => {
-    let logs = {
+    const logs = {
         systemDisabled: colors.error + `[ERROR] [502] Module Disabled`,
         devOnly: colors.error + `[ERROR] [606] Developer Only`,
         debugInfo: interaction ? colors.error + `[INFO] (Guild: ${interaction.guild.id}) (Author: ${interaction.user.id}) (Command: ${commandName})` : 'No interaction provided',

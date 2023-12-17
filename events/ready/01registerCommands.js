@@ -3,13 +3,14 @@ const getApplicationCommands = require('../../utilities/getApplicationCommands')
 const getLocalCommands = require('../../utilities/getLocalCommands');
 
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
+const errorHandler = require('../../handlers/errorHandler');
 
 module.exports = async (polaris) => {
     try {
-        await consoleLogHandler({ errorType: 'space'})
-        await consoleLogHandler({ errorType: 'commandsRefreshing'})
-        await consoleLogHandler({ errorType: 'commandsRegistered'})
-        await consoleLogHandler({ errorType: 'space'})
+        await consoleLogHandler({ errorType: 'space' });
+        await consoleLogHandler({ errorType: 'commandsRefreshing' });
+        await consoleLogHandler({ errorType: 'commandsRegistered' });
+        await consoleLogHandler({ errorType: 'space' });
 
         const localCommands = await getLocalCommands();
         const applicationCommands = await getApplicationCommands(polaris);
@@ -43,6 +44,6 @@ module.exports = async (polaris) => {
             }
         }
     } catch (error) {
-        console.log(`[RC] There was an error: ${error}`);
+        await errorHandler({ error: error, errorType: 'generic', commandName: '[REGISTER COMMANDS]' });
     }
 };
