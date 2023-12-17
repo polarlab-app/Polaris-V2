@@ -1,6 +1,6 @@
 const { colors } = require('../data/consoleColors')
 
-module.exports = async ({ interaction, errorType, commandName }) => {
+module.exports = async ({ interaction, errorType, commandName, polaris }) => {
     const logs = {
         systemDisabled: colors.error + `[ERROR] [502] Module Disabled`,
         devOnly: colors.error + `[ERROR] [606] Developer Only`,
@@ -9,6 +9,7 @@ module.exports = async ({ interaction, errorType, commandName }) => {
         space: 'ᅠᅠ',
         commandsRefreshing: colors.regular + 'Started refreshing application (/) commands',
         commandsRegistered: colors.regular + 'Successfully reloaded application (/) commands',
+        pinging:  polaris ? colors.regular + `[SYSTEM] Current ping is ${polaris.ws.ping}ms` : 'Failed to fetch ping'
     };
 
     console.log(logs[errorType] || 'undefined');
