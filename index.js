@@ -5,6 +5,8 @@ const { Client, IntentsBitField } = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
 const { colors } = require("./data/consoleColors")
 
+const TOKEN = process.env.TOKEN
+
 console.log(colors.regular + "Starting...");
 
 const polaris = new Client({
@@ -23,4 +25,4 @@ const polaris = new Client({
 eventHandler(polaris);
 
 console.log(colors.success + "[POLARIS STABLE] Polaris Success: Bot Ready!");
-polaris.login(process.env.TOKEN);
+polaris.login(TOKEN);
