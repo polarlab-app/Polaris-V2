@@ -1,4 +1,4 @@
-const errorEmbedCreator = require('../creators/embeds/errors/error');
+const errorEmbedCreator = require('../creators/embeds/errorBuilder');
 const consoleLogHandler = require('./consoleLogHandler');
 const { colors } = require('../data/consoleColors');
 

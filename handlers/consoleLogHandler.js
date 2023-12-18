@@ -4,8 +4,9 @@ module.exports = async ({ interaction, errorType, commandName, polaris }) => {
     const logs = {
         systemDisabled: colors.error + `[ERROR] [502] Module Disabled`,
         devOnly: colors.error + `[ERROR] [606] Developer Only`,
-        debugInfo: interaction ? colors.error + `[INFO] (Guild: ${interaction.guild.id}) (Author: ${interaction.user.id}) (Command: ${commandName})` : 'No interaction provided',
-        commandRan: interaction ? colors.error + `[DEBUG] (Polaris) ${interaction.user.id} Ran ${commandName} Command` : 'No interaction provided',
+        generic: colors.error + `[ERROR] [000] Internal System Error`,
+        debugInfo: interaction ? colors.info + `[INFO] (Guild: ${interaction.guild.id}) (Author: ${interaction.user.id}) (Command: ${commandName})` : 'No interaction provided',
+        commandRan: interaction ? colors.debug + `[DEBUG] (Polaris) ${interaction.user.id} Ran ${commandName} Command` : 'No interaction provided',
         space: 'ᅠᅠ',
         commandsRefreshing: colors.regular + 'Started refreshing application (/) commands',
         commandsRegistered: colors.regular + 'Successfully reloaded application (/) commands',

@@ -1,0 +1,30 @@
+{
+    "titles": {
+        "ping":"Current Bot Ping"
+    },
+    "descriptions": {
+        "ping": "The current bot ping is {0}ms"
+    },
+    "footers": {
+        "core": {
+            "text": "Core Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        },
+        "fun": {
+            "text": "Fun Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        },
+        "utilities": {
+            "text": "Utilities Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        },
+        "moderation": {
+            "text": "Moderation Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        },
+        "music": {
+            "text": "Music Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        }
+    }
+}

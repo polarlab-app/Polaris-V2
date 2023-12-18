@@ -1,5 +1,6 @@
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
+const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 module.exports = {
     name: '',
@@ -9,7 +10,8 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            interaction.editReply('test');
+            const embed = await embedBuilder('ping', `${module.exports.module}`,[await polaris.ws.ping])
+            await interaction.editReply({embeds: [embed]})
             await consoleLogHandler({
                 interaction: interaction,
                 commandName: module.exports.name,
