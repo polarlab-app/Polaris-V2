@@ -1,0 +1,10 @@
+{
+  "embeds": {
+    "generic": "<:red_cross:1149765295548940371> **Failed to execute command: An internal error occurred, please report this to our Staff Team**",
+    "systemDisabled": "<:red_cross:1149765295548940371> **Failed to execute command: System Disabled**",
+    "devOnly": "<:red_cross:1149765295548940371> **Failed to execute command: Dev Only*",
+    "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
+    "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
+    "voicechannelRequired": ""
+  }
+}
