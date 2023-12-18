@@ -26,5 +26,13 @@
             "text": "Music Module!",
             "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
         }
+    },
+    "errors": {
+        "generic": "<:red_cross:1149765295548940371> **Failed to execute command: An internal error occurred, please report this to our Staff Team**",
+        "systemDisabled": "<:red_cross:1149765295548940371> **Failed to execute command: System Disabled**",
+        "devOnly": "<:red_cross:1149765295548940371> **Failed to execute command: Dev Only*",
+        "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
+        "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
+        "voicechannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
     }
 }
