@@ -29,7 +29,7 @@ chdir Polaris-V2
 #### Step 3: Install dependencies
 
 > [!NOTE]
-> For this command to work you need to have NodeJS installed from the official website, you can get the LTS version [here](https://nodejs.org/en "here").
+> For this command to work you need to have NodeJS installed from the official website, you can get the LTS version (recommended) [here](https://nodejs.org/en "here").
 
 ```
 npm i
