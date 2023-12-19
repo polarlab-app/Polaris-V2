@@ -1,8 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 const { titles, descriptions, footers } = require('../../data/embedData.json');
 
-async function embedBuilder(embedType, module, props, ) {
-    console.log(embedType + props)
+async function embedBuilder(embedType, module, props) {
     const description = descriptions[embedType];
 
     const embed = new EmbedBuilder()
