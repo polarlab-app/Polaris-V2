@@ -1,9 +1,11 @@
 {
     "titles": {
-        "ping":"Current Bot Ping"
+        "ping":"Current Bot Ping",
+        "uptime": "Bot Uptime"
     },
     "descriptions": {
-        "ping": "The current bot ping is {0}ms"
+        "ping": "The current bot ping is {0}ms",
+        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!"
     },
     "footers": {
         "core": {
