@@ -9,6 +9,7 @@ module.exports = {
     
     permissionsRequired: [],
     botPermissions: [],
+    devOnly: true,
 
     callback: async (polaris, interaction) => {
         try {
