@@ -6,8 +6,8 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 module.exports = {
-    name: 'skip',
-    description: 'Skips the currently playing track',
+    name: 'stop',
+    description: 'Stops the currently playing music',
     module: 'music',
     
     permissionsRequired: [PermissionFlagsBits.Speak],
@@ -21,9 +21,9 @@ module.exports = {
                 return;
             }
             const queue = useQueue(interaction.guild.id);
-            await queue.node.skip();
+            await queue.node.stop();
 
-            const embed = await successEmbedBuilder('skip')
+            const embed = await successEmbedBuilder('stop')
             await interaction.editReply({embeds: [embed]})
             await consoleLogHandler({
                 interaction: interaction,

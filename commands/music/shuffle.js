@@ -6,8 +6,8 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 module.exports = {
-    name: 'resume',
-    description: 'Resumes paused Audio',
+    name: 'shuffle',
+    description: 'Shuffles the current queue',
     module: 'music',
     
     permissionsRequired: [PermissionFlagsBits.Speak],
