@@ -1,11 +1,13 @@
 {
     "titles": {
         "ping":"Current Bot Ping",
-        "uptime": "Bot Uptime"
+        "uptime": "Bot Uptime",
+        "play": "Song Added"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
-        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!"
+        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!",
+        "play": "You have successfully added **{0}** By: **{2}** to the Queue!\n \n**Link:**\n    [{0}]({1})"
     },
     "footers": {
         "core": {
