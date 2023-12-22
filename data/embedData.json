@@ -42,6 +42,7 @@
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
         "pause": "<:green_check:1149766467450044426> **You have successfully paused the currently playing Audio**",
-        "resume": "<:green_check:1149766467450044426> **You have successfully resumed the currently playing Audio**"
+        "resume": "<:green_check:1149766467450044426> **You have successfully resumed the currently playing Audio**",
+        "skip": "<:green_check:1149766467450044426> **You have successfully skipped to the next song**"
     }
 }
