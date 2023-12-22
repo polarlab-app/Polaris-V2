@@ -46,6 +46,7 @@
         "skip": "<:green_check:1149766467450044426> **You have successfully skipped to the next song**",
         "shuffle": "<:green_check:1149766467450044426> **You have successfully shuffled the queue**",
         "stop": "<:green_check:1149766467450044426> **You have successfully stopped the currently playing Audio**",
-        "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**"
+        "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**",
+        "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** "
     }
 }
