@@ -28,8 +28,8 @@ module.exports = {
                 await errorHandler({interaction: interaction, errorType: 'voiceChannelRequired', commandName: module.exports.name});
                 return;
             }
-            const queue = useQueue(interaction.guild.id);
-            const volume = interaction.options.get("volume").value;
+            const queue = await useQueue(interaction.guild.id);
+            const volume = await interaction.options.get("volume").value;
       
             await queue.node.setVolume(volume);
 

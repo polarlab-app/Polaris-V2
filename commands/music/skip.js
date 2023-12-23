@@ -20,7 +20,7 @@ module.exports = {
                 await errorHandler({interaction: interaction, errorType: 'voiceChannelRequired', commandName: module.exports.name});
                 return;
             }
-            const queue = useQueue(interaction.guild.id);
+            const queue = await useQueue(interaction.guild.id);
             await queue.node.skip();
 
             const embed = await successEmbedBuilder('skip')

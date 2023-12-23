@@ -2,11 +2,11 @@ const { PermissionFlagsBits } = require("discord.js");
 const { useQueue } = require("discord-player");
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
-const successEmbedBuilder = require('../../creators/embeds/successBuilder');
+const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 module.exports = {
-    name: 'loop',
-    description: 'Loops the currently playing queue',
+    name: 'queue',
+    description: 'Displays the first 3 songs in the queue',
     module: 'music',
     
     permissionsRequired: [PermissionFlagsBits.Speak],
@@ -20,9 +20,11 @@ module.exports = {
                 return;
             }
             const queue = await useQueue(interaction.guild.id);
-            await queue.setRepeatMode(QueueRepeatMode.QUEUE);
+            const tracks = await queue.tracks.toArray().slice(0, 3)
+            const trackNames = await tracks.map(track => track.title);
 
-            const embed = await successEmbedBuilder('pause')
+
+            const embed = await embedBuilder('queue', module.exports.module, trackNames)
             await interaction.editReply({embeds: [embed]})
             await consoleLogHandler({
                 interaction: interaction,
