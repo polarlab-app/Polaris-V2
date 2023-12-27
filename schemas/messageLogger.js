@@ -5,4 +5,4 @@ let messageLogger = new Schema({
     content: String
 })
 
-module.exports = model('messageLoggerSchema', messageLogger)
+module.exports = model('messageLogs', messageLogger)
