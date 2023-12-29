@@ -4,7 +4,7 @@ const replaceArray = require('../../utilities/replaceArray');
 
 
 async function embedBuilder(embedType, module, props) {
-    const description = awaitdescriptions[embedType];
+    const description = await descriptions[embedType];
 
     const embed = new EmbedBuilder()
         .setColor('#2B2D31')
