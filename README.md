@@ -22,10 +22,7 @@ git clone https://github.com/polarlab-app/Polaris-V2.git
 ```
 cd Polaris-V2
 ```
-##### or if you are on windows,
-```
-chdir Polaris-V2
-```
+
 #### Step 3: Install dependencies
 
 > [!NOTE]
@@ -42,8 +39,14 @@ DEVELOPER_ID=YOUR DISCORD ID
 TOKEN=YOUR BOTS TOKEN (DO NOT EXPOSE)
 OWNER_ID=THE BOTS OWNER ID
 GUILD_ID=THE TESTING GUILD ID
+URL=YOUR DATABASE URL
 ```
-#### Step 5: Run the bot
+#### Step 5: Setting up a database 
+> You need a database for Polaris to function properly, it is fairly simple to get a database up and running.
+##### Step 5.1: Making a mongodb account
+
+
+#### Step 6: Run the bot
 **Run the following command in your terminal**
 ```
 node index.js
@@ -52,4 +55,4 @@ node index.js
 ```
 start.bat 
 ```
-#### Step 6: You're done! Enjoy!
+#### Step 7: You're done! Enjoy!

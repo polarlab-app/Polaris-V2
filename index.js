@@ -44,8 +44,9 @@ async function databaseConnection() {
 
 }
 
-databaseConnection()
-eventHandler(polaris)
+
+databaseConnection(); 
+eventHandler(polaris);
 
 console.log(colors.success + "[POLARIS STABLE] Polaris Success: Bot Ready!");
 polaris.login(TOKEN);

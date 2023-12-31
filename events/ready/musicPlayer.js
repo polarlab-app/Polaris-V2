@@ -1,3 +1,5 @@
+const { colors } = require('../../data/consoleColors'); 
+
 module.exports = async (polaris) => {
   const { Player } = require("discord-player");
 
@@ -8,4 +10,5 @@ module.exports = async (polaris) => {
     },
   });
   await player.extractors.loadDefault();
+  console.log(colors.success + '[POLARIS STABLE] Polaris Success: Music Loaded')
 };
