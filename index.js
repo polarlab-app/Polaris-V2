@@ -21,7 +21,7 @@ const polaris = new Client({
   ],
 });
 
-function databaseConnection() {
+/* function databaseConnection() {
   try {
     if (!URL) {
       return;
@@ -43,7 +43,7 @@ function databaseConnection() {
 
 }
 
-databaseConnection();
+databaseConnection(); */
 eventHandler(polaris);
 
 console.log(colors.success + "[POLARIS STABLE] Polaris Success: Bot Ready!");
