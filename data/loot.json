@@ -1,0 +1,23 @@
+{
+    "fishing": {
+        "nothing": 10,
+        "common seashell": 50,
+        "common fish": 150,
+        "sea dragon": 500,
+        "enchanted pearl": 1500,
+        "gold": 3000,
+        "jewelry": 5000
+    },
+    "hunting": {
+
+    },
+    "digging": {
+        "nothing": 10,
+        "stone": 20,
+        "junk": 50,
+        "dirt": 100,
+        "coins": 300,
+        "nail": 350,
+        "diamond": 5000
+    }
+}
