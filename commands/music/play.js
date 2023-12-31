@@ -1,7 +1,6 @@
 const { PermissionFlagsBits, ApplicationCommandOptionType } = require('discord.js');
 const { useMainPlayer, QueryType } = require('discord-player');
 
-
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
@@ -16,6 +15,7 @@ module.exports = {
         type: ApplicationCommandOptionType.String,
         required: true,
     }],
+
     module: 'music',
 
     permissionsRequired: [PermissionFlagsBits.Speak],
@@ -23,6 +23,8 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
+            const song = interaction.options.get('song').value;
+
             const vc = await interaction.member.voice.channel;
             if (!vc) {
                 await errorHandler({
@@ -32,8 +34,6 @@ module.exports = {
                 });
                 return;
             }
-            const song = await interaction.options.get('song').value
-
 
             const player = await useMainPlayer();
             const res = await player.play(vc, song, {
@@ -52,9 +52,10 @@ module.exports = {
                 },
             });
 
-            const track = await res.track;
 
+            const track = await res.track;
             const embed = await embedBuilder('play', module.exports.module, [track.title, track.url, track.author]);
+
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
