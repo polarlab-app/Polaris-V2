@@ -29,7 +29,8 @@ const polaris = new Client({
   
     mongoose.connect(URL || '', {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      authSource: "admin"
     })
   
     if (mongoose.connect) {

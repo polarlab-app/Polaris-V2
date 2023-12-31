@@ -8,7 +8,7 @@ module.exports = async (polaris, pool) => {
         const eventFiles = getAllFiles(eventFolder);
         eventFiles.sort((a, b) => a > b);
 
-        const eventName = eventFolder.replace(/\\/g, '/.').split('.').pop();
+        const eventName = path.basename(eventFolder);
 
         polaris.on(eventName, async (arg) => {
             for (const eventFile of eventFiles) {

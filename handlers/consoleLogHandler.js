@@ -13,7 +13,8 @@ module.exports = async ({ interaction, errorType, commandName, polaris }) => {
         pinging:  polaris ? colors.regular + `[SYSTEM] Current ping is ${polaris.ws.ping}ms` : 'Failed to fetch ping',
         invalidPermissions: colors.error + `[ERROR] [702] Invalid Permissions`,
         invalidBotPermissions: colors.error + `[ERROR] [701] Invalid Bot Permissions`,
-        restart: colors.error + "[SYSTEM] Restarting the application..."
+        restart: colors.error + "[SYSTEM] Restarting the application...",
+        voiceChannelRequired: colors.error + "[ERROR] [104] Voice Channel Required"
     };
 
     console.log(logs[errorType] || 'undefined');
