@@ -38,6 +38,7 @@
         "voicechannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
     },
     "success": {
-        "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**"
+        "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
+        "shutdown" :"<:green_check:1149766467450044426> **You have successfully shutdown the bot!**"
     }
 }
