@@ -39,7 +39,7 @@ async function databaseConnection() {
       console.log(colors.error + '[ERROR] [900] Failed to connect to database')
     }
   } catch (error) {
-    console.log(error) 
+    console.log(colors.error + error) 
   }
 
 }

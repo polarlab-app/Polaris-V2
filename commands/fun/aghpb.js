@@ -1,6 +1,6 @@
 const { EmbedBuilder, AttachmentBuilder, ApplicationCommandOptionType, CommandInteraction } = require('discord.js');
 
-const { Client } = require("aghpb");
+const { Client } = require('aghpb');
 
 const client = new Client();
 
@@ -15,9 +15,9 @@ module.exports = {
     options: [
         {
             type: ApplicationCommandOptionType.Subcommand,
-            name: "random",
-            description: "Returns a random book.",
-        }
+            name: 'random',
+            description: 'Returns a random book.',
+        },
     ],
 
     /**
@@ -26,29 +26,26 @@ module.exports = {
      * @param {CommandInteraction} interaction
      */
     callback: async (polaris, interaction) => {
-
-        if (interaction.options.getSubcommand() === "random") {
+        if (interaction.options.getSubcommand() === 'random') {
             const book = await client.random();
 
-            const bookImage = new AttachmentBuilder(
-                Buffer.from(book.image), {
-                    name: "image.png"
-                }
-            );
+            const bookImage = new AttachmentBuilder(Buffer.from(book.image), {
+                name: 'image.png',
+            });
 
             const bookDescription = `
 ### **Metadata:**
 - 📖 **Category: \`\`${book.category}\`\`**
 - 📅 **Date Added: <t:${book.dateAdded.getTime() / 1000}>**
-            `
+            `;
 
             const bookEmbed = new EmbedBuilder()
-                .setColor(0x2B2D31)
+                .setColor(0x2b2d31)
                 .setTitle(`🗒️ ${book.name}`)
                 .setDescription(bookDescription)
-                .setImage("attachment://image.png");
+                .setImage('attachment://image.png');
 
-            await interaction.editReply({embeds: [bookEmbed], files: [bookImage]});
+            await interaction.editReply({ embeds: [bookEmbed], files: [bookImage] });
         }
 
         /// TODO: More subcommands maybe... if I'm not lazy...

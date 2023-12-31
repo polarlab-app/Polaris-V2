@@ -1,8 +1,13 @@
-const { Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose');
 
-let messageLogger = new Schema({
-    id: Number,
-    content: String
-})
+let messageLogger = new Schema(
+    {
+        id: Number,
+        content: String,
+    },
+    {
+        collection: 'messageLogs',
+    }
+);
 
-module.exports = model('messageLogs', messageLogger)
+module.exports = model('messageLogs', messageLogger);

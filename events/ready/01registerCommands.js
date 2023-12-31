@@ -1,6 +1,6 @@
 const areCommandsDifferent = require('../../utilities/areCommandsDifferent');
 const getApplicationCommands = require('../../utilities/getApplicationCommands');
-const getLocalCommands = require('../../utilities/getLocalCommands');
+const getGlobalCommands = require('../../utilities/getGlobalCommands');
 
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const errorHandler = require('../../handlers/errorHandler');
@@ -12,7 +12,7 @@ module.exports = async (polaris) => {
         await consoleLogHandler({ errorType: 'commandsRegistered' });
         await consoleLogHandler({ errorType: 'space' });
 
-        const localCommands = await getLocalCommands();
+        const localCommands = await getGlobalCommands();
         const applicationCommands = await getApplicationCommands(polaris);
 
         for (const localCommand of localCommands) {
