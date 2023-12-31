@@ -21,13 +21,13 @@ const polaris = new Client({
   ],
 });
 
-/* function databaseConnection() {
+async function databaseConnection() {
   try {
     if (!URL) {
       return;
     }
   
-    mongoose.connect(URL || '', {
+    await mongoose.connect(URL || '', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       authSource: "admin"
@@ -44,7 +44,8 @@ const polaris = new Client({
 
 }
 
-databaseConnection(); */
+
+databaseConnection(); 
 eventHandler(polaris);
 
 console.log(colors.success + "[POLARIS STABLE] Polaris Success: Bot Ready!");
