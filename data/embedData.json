@@ -1,11 +1,15 @@
 {
     "titles": {
         "ping":"Current Bot Ping",
-        "uptime": "Bot Uptime"
+        "uptime": "Bot Uptime",
+        "play": "Song Added",
+        "queue": "Current Queue"
     },
     "descriptions": {
-        "ping": "The current bot ping is **{0}**ms",
-        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!"
+        "ping": "The current bot ping is {0}ms",
+        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!",
+        "play": "You have successfully added **{0}** By: **{2}** to the Queue!\n \n**Link:**\n    [{0}]({1})",
+        "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}"
     },
     "footers": {
         "core": {
@@ -35,10 +39,17 @@
         "devOnly": "<:red_cross:1149765295548940371> **Failed to execute command: Dev Only*",
         "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
         "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
-        "voicechannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
+        "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
     },
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
         "shutdown" :"<:green_check:1149766467450044426> **You have successfully shutdown the bot!**"
+        "pause": "<:green_check:1149766467450044426> **You have successfully paused the currently playing Audio**",
+        "resume": "<:green_check:1149766467450044426> **You have successfully resumed the currently playing Audio**",
+        "skip": "<:green_check:1149766467450044426> **You have successfully skipped to the next song**",
+        "shuffle": "<:green_check:1149766467450044426> **You have successfully shuffled the queue**",
+        "stop": "<:green_check:1149766467450044426> **You have successfully stopped the currently playing Audio**",
+        "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**",
+        "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** "
     }
 }
