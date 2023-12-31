@@ -7,7 +7,7 @@
         "fish": "Fishing Successful",
         "dig": "Digging Successful",
         "hunt" : "Hunting Successful",
-        "beg": "Begging Successful"
+        "beg": "Begging Successful",
         "queue": "Current Queue"
     },
     "descriptions": {
@@ -18,8 +18,7 @@
         "fish": "You have successfully caught **{0}**!",
         "dig": "You have successfully dug out a **{0}**!",
         "hunt" : "You have hunted a **{0}**!",
-        "beg": "You have begged out **{0}**!"
-        "play": "You have successfully added **{0}** By: **{2}** to the Queue!\n \n**Link:**\n    [{0}]({1})",
+        "beg": "You have begged out **{0}**!",
         "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}"
     },
     "footers": {
@@ -58,7 +57,7 @@
     },
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
-        "shutdown" :"<:green_check:1149766467450044426> **You have successfully shutdown the bot!**"
+        "shutdown" :"<:green_check:1149766467450044426> **You have successfully shutdown the bot!**",
         "pause": "<:green_check:1149766467450044426> **You have successfully paused the currently playing Audio**",
         "resume": "<:green_check:1149766467450044426> **You have successfully resumed the currently playing Audio**",
         "skip": "<:green_check:1149766467450044426> **You have successfully skipped to the next song**",
