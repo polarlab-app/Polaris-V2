@@ -2,7 +2,7 @@ const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
     name: 'module',
-    description: 'Module management for the bot',
+    description: 'Module management for Polaris',
     options: [
         {
             name: 'action',
@@ -31,6 +31,14 @@ module.exports = {
                     value: 'core',
                 },
                 {
+                    name: 'Moderation',
+                    value: 'moderation',
+                },
+                {
+                    name: 'Economy',
+                    value: 'economy',
+                },
+                {
                     name: 'Utilities',
                     value: 'utilities',
                 },
@@ -42,6 +50,10 @@ module.exports = {
                     name: 'Music',
                     value: 'music',
                 },
+                {
+                    name: 'test',
+                    value: 'ragey',
+                },
             ],
         },
     ],
@@ -51,6 +63,6 @@ module.exports = {
     permissionsRequired: [],
 
     callback: async (polaris, interaction) => {
-        console.log("test")
-    }
+        console.log('test');
+    },
 };

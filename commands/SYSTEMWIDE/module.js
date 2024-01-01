@@ -6,7 +6,7 @@ const getModuleCommands = require('../../utilities/getModuleCommands');
 
 module.exports = {
     name: 'module',
-    description: 'Module management for the bot',
+    description: 'Module management for Polaris',
     options: [
         {
             name: 'action',
@@ -33,6 +33,14 @@ module.exports = {
                 {
                     name: 'Core',
                     value: 'core',
+                },
+                {
+                    name: 'Moderation',
+                    value: 'moderation',
+                },
+                {
+                    name: 'Economy',
+                    value: 'economy',
                 },
                 {
                     name: 'Utilities',
@@ -83,7 +91,6 @@ module.exports = {
                         await guildCommands.delete(existingCommand.id);
                         continue;
                     } else if (action == 'reload') {
-
                     } else {
                         await errorHandler({
                             interaction: interaction,
