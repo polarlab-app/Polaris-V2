@@ -1,6 +1,6 @@
 const areCommandsDifferent = require('../../utilities/areCommandsDifferent');
 const getApplicationCommands = require('../../utilities/getApplicationCommands');
-const getLocalCommands = require('../../utilities/getLocalCommands');
+const getGlobalCommands = require('../../utilities/getGlobalCommands');
 
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const errorHandler = require('../../handlers/errorHandler');
@@ -12,27 +12,27 @@ module.exports = async (polaris) => {
         await consoleLogHandler({ errorType: 'commandsRegistered' });
         await consoleLogHandler({ errorType: 'space' });
 
-        const localCommands = await getLocalCommands();
+        const globalCommands = await getGlobalCommands();
         const applicationCommands = await getApplicationCommands(polaris);
 
-        for (const localCommand of localCommands) {
-            const { name, description, options } = localCommand;
+        for (const globalCommand of globalCommands) {
+            const { name, description, options } = globalCommand;
             const existingCommand = await applicationCommands.cache.find((cmd) => cmd.name === name);
 
             if (existingCommand) {
-                if (localCommand.deleted) {
+                if (globalCommand.deleted) {
                     await applicationCommands.delete(existingCommand.id);
                     continue;
                 }
 
-                if (areCommandsDifferent(existingCommand, localCommand)) {
+                if (areCommandsDifferent(existingCommand, globalCommand)) {
                     await applicationCommands.edit(existingCommand.id, {
                         description,
                         options,
                     });
                 }
             } else {
-                if (localCommand.deleted) {
+                if (globalCommand.deleted) {
                     continue;
                 }
 

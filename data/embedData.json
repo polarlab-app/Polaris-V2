@@ -1,15 +1,33 @@
 {
     "titles": {
-        "ping":"Current Bot Ping",
-        "uptime": "Bot Uptime"
+        "ping": "Current Bot Ping",
+        "uptime": "Bot Uptime",
+        "play": "Song Added",
+        "shop": "Server Shop",
+        "fish": "Fishing Successful",
+        "dig": "Digging Successful",
+        "hunt" : "Hunting Successful",
+        "beg": "Begging Successful",
+        "queue": "Current Queue"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
-        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!"
+        "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!",
+        "play": "You have successfully added **{0}** By: **{2}** to the Queue!\n\n**Link:**\n[{0}]({1})",
+        "shop": "*The shop offers a display of all items available to purchase using ``/buy``! Choose any item below and buy it for our virtual currency!*\n\n**🍭・Premium Colors - $1200**\n> A set of 8 premium colors only for exclusive buyers\n\u200B\n**🎣・Fishing Rod - $700**\n> A fishing rod used for fishing using the ``/fish`` command\n\u200B\n",
+        "fish": "You have successfully caught **{0}**!",
+        "dig": "You have successfully dug out a **{0}**!",
+        "hunt" : "You have hunted a **{0}**!",
+        "beg": "You have successfully begged out **💴 {0}**! You now have **🪙 {1}** coins in your purse!",
+        "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}"
     },
     "footers": {
         "core": {
             "text": "Core Module!",
+            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+        },
+        "economy": {
+            "text": "Economy Module!",
             "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
         },
         "fun": {
@@ -35,9 +53,20 @@
         "devOnly": "<:red_cross:1149765295548940371> **Failed to execute command: Dev Only*",
         "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
         "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
-        "voicechannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
+        "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**",
+        "invalidAction": "<:red_cross:1149765295548940371> **Failed to execute command: This action is not available here**"
     },
     "success": {
-        "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**"
+        "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
+        "shutdown" :"<:green_check:1149766467450044426> **You have successfully shutdown the bot!**",
+        "pause": "<:green_check:1149766467450044426> **You have successfully paused the currently playing Audio**",
+        "resume": "<:green_check:1149766467450044426> **You have successfully resumed the currently playing Audio**",
+        "skip": "<:green_check:1149766467450044426> **You have successfully skipped to the next song**",
+        "shuffle": "<:green_check:1149766467450044426> **You have successfully shuffled the queue**",
+        "stop": "<:green_check:1149766467450044426> **You have successfully stopped the currently playing Audio**",
+        "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**",
+        "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** ",
+        "disable": "<:green_check:1149766467450044426> **You have successfully disabled the *{0}* Module!**",
+        "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**"
     }
 }
