@@ -53,7 +53,8 @@
         "devOnly": "<:red_cross:1149765295548940371> **Failed to execute command: Dev Only*",
         "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
         "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
-        "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**"
+        "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**",
+        "invalidAction": "<:red_cross:1149765295548940371> **Failed to execute command: This action is not available here**"
     },
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",

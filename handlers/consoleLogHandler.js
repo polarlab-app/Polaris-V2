@@ -14,7 +14,8 @@ module.exports = async ({ interaction, errorType, commandName, polaris }) => {
         invalidPermissions: colors.error + `[ERROR] [702] Invalid Permissions`,
         invalidBotPermissions: colors.error + `[ERROR] [701] Invalid Bot Permissions`,
         restart: colors.error + "[SYSTEM] Restarting the application...",
-        voiceChannelRequired: colors.error + "[ERROR] [104] Voice Channel Required"
+        voiceChannelRequired: colors.error + "[ERROR] [104] Voice Channel Required",
+        invalidAction: colors.error + "[ERROR] [606] Invalid Action"
     };
 
     console.log(logs[errorType] || 'undefined');

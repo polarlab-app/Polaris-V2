@@ -12,27 +12,27 @@ module.exports = async (polaris) => {
         await consoleLogHandler({ errorType: 'commandsRegistered' });
         await consoleLogHandler({ errorType: 'space' });
 
-        const localCommands = await getGlobalCommands();
+        const globalCommands = await getGlobalCommands();
         const applicationCommands = await getApplicationCommands(polaris);
 
-        for (const localCommand of localCommands) {
-            const { name, description, options } = localCommand;
+        for (const globalCommand of globalCommands) {
+            const { name, description, options } = globalCommand;
             const existingCommand = await applicationCommands.cache.find((cmd) => cmd.name === name);
 
             if (existingCommand) {
-                if (localCommand.deleted) {
+                if (globalCommand.deleted) {
                     await applicationCommands.delete(existingCommand.id);
                     continue;
                 }
 
-                if (areCommandsDifferent(existingCommand, localCommand)) {
+                if (areCommandsDifferent(existingCommand, globalCommand)) {
                     await applicationCommands.edit(existingCommand.id, {
                         description,
                         options,
                     });
                 }
             } else {
-                if (localCommand.deleted) {
+                if (globalCommand.deleted) {
                     continue;
                 }
 

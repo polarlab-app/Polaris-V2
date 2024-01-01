@@ -27,24 +27,28 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             choices: [
                 {
-                    name: 'core',
+                    name: 'Core',
                     value: 'core',
                 },
                 {
-                    name: 'utilities',
+                    name: 'Utilities',
                     value: 'utilities',
                 },
                 {
-                    name: 'information',
+                    name: 'Information',
                     value: 'information',
                 },
                 {
-                    name: 'music',
+                    name: 'Music',
                     value: 'music',
-                }
+                },
             ],
         },
     ],
+    module: 'enableddemo',
+
+    botPermissions: [],
+    permissionsRequired: [],
 
     callback: async (polaris, interaction) => {
         console.log("test")
