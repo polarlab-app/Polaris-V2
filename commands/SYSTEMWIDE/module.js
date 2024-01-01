@@ -36,7 +36,7 @@ module.exports = {
                     name: 'Core',
                     value: 'core',
                 },
-                {
+                /* {
                     name: 'Moderation',
                     value: 'moderation',
                 },
@@ -59,7 +59,7 @@ module.exports = {
                 {
                     name: 'test',
                     value: 'ragey',
-                },
+                }, */
             ],
         },
     ],
