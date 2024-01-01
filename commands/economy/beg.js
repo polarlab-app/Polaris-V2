@@ -18,7 +18,7 @@ module.exports = {
             const loot = await generateRandomNumber(300, 9000);
 
             const user = await userData.findOneAndUpdate(
-                { id: interaction.user.id },
+                { id: interaction.guild.id + interaction.user.id },
                 { $inc: { purse_balance: loot} },
                 { new: true,
                   upsert: true,
