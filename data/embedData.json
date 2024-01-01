@@ -18,7 +18,7 @@
         "fish": "You have successfully caught **{0}**!",
         "dig": "You have successfully dug out a **{0}**!",
         "hunt" : "You have hunted a **{0}**!",
-        "beg": "You have begged out **{0}**!",
+        "beg": "You have successfully begged out **💴 {0}**! You now have **🪙 {1}** coins in your purse!",
         "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}"
     },
     "footers": {
@@ -65,6 +65,8 @@
         "shuffle": "<:green_check:1149766467450044426> **You have successfully shuffled the queue**",
         "stop": "<:green_check:1149766467450044426> **You have successfully stopped the currently playing Audio**",
         "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**",
-        "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** "
+        "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** ",
+        "disable": "<:green_check:1149766467450044426> **You have successfully disabled the *{0}* Module!**",
+        "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**"
     }
 }
