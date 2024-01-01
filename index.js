@@ -28,8 +28,6 @@ async function databaseConnection() {
     }
   
     await mongoose.connect(URL || '', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       authSource: "admin"
     })
   
