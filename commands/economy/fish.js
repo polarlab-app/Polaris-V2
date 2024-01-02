@@ -44,7 +44,7 @@ module.exports = {
 
             await user.save();
 
-            const embed = await embedBuilder('fish', `${module.exports.module}`, [lootItem.toUpperCase()]);
+            const embed = await embedBuilder('fish', `${module.exports.module}`, [lootItem]);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
