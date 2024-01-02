@@ -17,7 +17,8 @@
         "report": "User Reported",
         "poll": "Voting Poll",
         "suggest": "Suggestion Submitted",
-        "review": "Review Submitted"
+        "review": "Review Submitted",
+        "buy": "Item Bought"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -37,7 +38,9 @@
         "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
         "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>",
         "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>",
-        "review": "*{1}*"
+        "review": "*{1}*",
+        "buy": "You have successfully bought 1 {0} for 💴 **{2}**! You now have **{1}** in your inventory!",
+        "sell": "You have successfully sold 1 {0} for 💴 **{2}**! You now have **{1}** in your inventory!"
     },
     "fields": {
         "review": {

@@ -12,7 +12,7 @@ async function embedBuilder(embedType, module, props) {
     if (descriptions[embedType]) {
         embed.setDescription(await replaceArray(description, props));
     }
-    if (fields[embedType].field.title) {
+    if (fields[embedType]) {
         const embedFields = fields[embedType]
         for (const key in embedFields) {
             const field = embedFields[key];
