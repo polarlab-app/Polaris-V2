@@ -1,8 +1,8 @@
 {
     "fishing": {
-        "nothing": 10,
+        "nothing": 0,
         "common seashell": 50,
-        "common fish": 150,
+        "common fish": 250,
         "sea dragon": 500,
         "enchanted pearl": 1500,
         "gold": 3000,

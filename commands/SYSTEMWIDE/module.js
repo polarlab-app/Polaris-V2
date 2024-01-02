@@ -56,10 +56,6 @@ module.exports = {
                     name: 'Music',
                     value: 'music',
                 },
-                {
-                    name: 'test',
-                    value: 'ragey',
-                },
             ],
         },
     ],
