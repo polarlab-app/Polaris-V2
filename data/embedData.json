@@ -84,6 +84,7 @@
         "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** ",
         "disable": "<:green_check:1149766467450044426> **You have successfully disabled the *{0}* Module!**",
         "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**",
-        "report": "<:green_check:1149766467450044426> **You have successfully reported *{0} to the staff team!***"
-    }
+        "report": "<:green_check:1149766467450044426> **You have successfully reported *{0}* to the staff team!**",
+        "nick": "<:green_check:1149766467450044426> **You have successfully updated your nickname to {0}**"
+        }
 }
