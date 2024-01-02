@@ -12,7 +12,7 @@ async function embedBuilder(embedType, module, props) {
     if (descriptions[embedType]) {
         embed.setDescription(await replaceArray(description, props));
     }
-    if (footers[module.text]) {
+    if (footers[module].text) {
         embed.setFooter({
             text: footers[module].text,
             iconURL: footers[module].iconURL,

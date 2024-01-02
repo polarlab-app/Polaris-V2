@@ -8,7 +8,9 @@
         "dig": "Digging Successful",
         "hunt" : "Hunting Successful",
         "beg": "Begging Successful",
-        "queue": "Current Queue"
+        "queue": "Current Queue",
+        "deposit": "Deposit Complete",
+        "withdraw": "Withdraw Complete"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -19,16 +21,18 @@
         "dig": "You have successfully dug out a **{0}**!",
         "hunt" : "You have hunted a **{0}**!",
         "beg": "You have successfully begged out **💴 {0}**! You now have **🪙 {1}** coins in your purse!",
-        "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}"
+        "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}",
+        "deposit": "Deposit Complete! You have successfully deposited **🪙 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
+        "withdraw": "Withdraw Complete! You have successfully withdrawn **💴 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!"
     },
     "footers": {
         "core": {
             "text": "Core Module!",
-            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
         },
         "economy": {
             "text": "Economy Module!",
-            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/economy.png"
         },
         "fun": {
             "text": "Fun Module!",
@@ -36,7 +40,7 @@
         },
         "utilities": {
             "text": "Utilities Module!",
-            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/utilities.png"
         },
         "moderation": {
             "text": "Moderation Module!",
@@ -44,7 +48,7 @@
         },
         "music": {
             "text": "Music Module!",
-            "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/music.png"
         }
     },
     "errors": {
@@ -54,7 +58,8 @@
         "invalidPermissions": "<:red_cross:1149765295548940371> **Failed to execute the command: Invalid Permissions**",
         "invalidBotPermissions": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Bot Permissions**",
         "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**",
-        "invalidAction": "<:red_cross:1149765295548940371> **Failed to execute command: This action is not available here**"
+        "invalidAction": "<:red_cross:1149765295548940371> **Failed to execute command: This action is not available here**",
+        "notEnoughMoney": "<:red_cross:1149765295548940371> **Failed to execute command: You do not have enough money in your account**"
     },
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
