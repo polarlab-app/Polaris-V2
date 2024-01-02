@@ -50,6 +50,10 @@ module.exports = {
                     name: 'Music',
                     value: 'music',
                 },
+                {
+                    name: 'Leveling',
+                    value: 'leveling'
+                }
             ],
         },
     ],

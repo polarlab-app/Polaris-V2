@@ -7,7 +7,7 @@ async function embedBuilder(embedType, module, props) {
 
     const embed = new EmbedBuilder().setColor('#2B2D31');
     if (titles[embedType]) {
-        embed.setTitle(titles[embedType]);
+        embed.setTitle(await replaceArray(titles[embedType], props));
     }
     if (descriptions[embedType]) {
         embed.setDescription(await replaceArray(description, props));
