@@ -15,7 +15,8 @@
         "rank": "{3}'s Rank",
         "balance": "{3}'s Balance",
         "report": "User Reported",
-        "poll": "Voting Poll"
+        "poll": "Voting Poll",
+        "suggest": "Suggestion Submitted"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -33,7 +34,8 @@
         "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}",
         "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>",
         "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
-        "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>"
+        "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>",
+        "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>"
     },
     "footers": {
         "core": {
@@ -49,7 +51,7 @@
             "iconURL": "https://cdn.discordapp.com/attachments/1018171583111647313/1127663106919768095/gear_gay.png"
         },
         "utilities": {
-            "text": "Utilities Module!",
+            "text": "Utility Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/utilities.png"
         },
         "moderation": {
@@ -91,6 +93,7 @@
         "reload": "<:green_check:1149766467450044426> **You have successfully reloaded the *{0}* Module!**",
         "report": "<:green_check:1149766467450044426> **You have successfully reported *{0}* to the staff team!**",
         "nick": "<:green_check:1149766467450044426> **You have successfully updated your nickname to {0}**",
-        "poll": "<:green_check:1149766467450044426> **You have successfully created a poll in <#{0}>!**"
+        "poll": "<:green_check:1149766467450044426> **You have successfully created a poll in <#{0}>!**",
+        "suggest": "<:green_check:1149766467450044426> **You have successfully made a suggestion**"
         }
 }
