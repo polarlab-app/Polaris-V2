@@ -1,6 +1,6 @@
 const { colors } = require('../data/consoleColors')
 
-module.exports = async ({ interaction, errorType, commandName, polaris }) => {
+module.exports = async ({ interaction, errorType, commandName, polaris, message }) => {
     const logs = {
         systemDisabled: colors.error + `[ERROR] [502] Module Disabled`,
         devOnly: colors.error + `[ERROR] [703] Developer Only`,
@@ -16,7 +16,8 @@ module.exports = async ({ interaction, errorType, commandName, polaris }) => {
         restart: colors.error + "[SYSTEM] Restarting the application...",
         voiceChannelRequired: colors.error + "[ERROR] [104] Voice Channel Required",
         invalidAction: colors.error + "[ERROR] [606] Invalid Action",
-        nonExistentUser: colors.error + "[ERROR] [904] User not found"
+        nonExistentUser: colors.error + "[ERROR] [904] User not found",
+        rankAdded: message ? colors.debug + `[DEBUG] (Polaris) Added 1 rank to ${message.author.id}` : 'no author available'
     };
 
     console.log(logs[errorType] || 'undefined');

@@ -10,7 +10,8 @@
         "beg": "Begging Successful",
         "queue": "Current Queue",
         "deposit": "Deposit Complete",
-        "withdraw": "Withdraw Complete"
+        "withdraw": "Withdraw Complete",
+        "leveling": "**Congrats! You've leveled up!**"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -23,7 +24,8 @@
         "beg": "You have successfully begged out **💴 {0}**! You now have **🪙 {1}** coins in your purse!",
         "queue": "The next 3 songs are:\n \n**1:** {0}\n**2:** {1}\n**3:** {2}",
         "deposit": "Deposit Complete! You have successfully deposited **🪙 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
-        "withdraw": "Withdraw Complete! You have successfully withdrawn **💴 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!"
+        "withdraw": "Withdraw Complete! You have successfully withdrawn **💴 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
+        "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``"
     },
     "footers": {
         "core": {
@@ -49,6 +51,10 @@
         "music": {
             "text": "Music Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/music.png"
+        },
+        "leveling": {
+            "text": "Leveling Module!",
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/leveling.png"
         }
     },
     "errors": {

@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 let memberData = new Schema(
     {
-        id: Number,
+        id: String,
         exp: Number,
         rank: Number,
     },
