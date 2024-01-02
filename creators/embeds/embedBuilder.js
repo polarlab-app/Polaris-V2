@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { titles, descriptions, footers } = require('../../data/embedData.json');
+const { titles, descriptions, footers, fields } = require('../../data/embedData.json');
 const replaceArray = require('../../utilities/replaceArray');
 
 async function embedBuilder(embedType, module, props) {
@@ -11,6 +11,13 @@ async function embedBuilder(embedType, module, props) {
     }
     if (descriptions[embedType]) {
         embed.setDescription(await replaceArray(description, props));
+    }
+    if (fields[embedType].field.title) {
+        const embedFields = fields[embedType]
+        for (const key in embedFields) {
+            const field = embedFields[key];
+            embed.addFields({name: field.title, value: await replaceArray(field.value, props), inline: true});
+        }
     }
     if (footers[module].text) {
         embed.setFooter({

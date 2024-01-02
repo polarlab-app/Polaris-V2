@@ -16,7 +16,8 @@
         "balance": "{3}'s Balance",
         "report": "User Reported",
         "poll": "Voting Poll",
-        "suggest": "Suggestion Submitted"
+        "suggest": "Suggestion Submitted",
+        "review": "Review Submitted"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -35,7 +36,20 @@
         "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>",
         "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
         "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>",
-        "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>"
+        "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>",
+        "review": "*{1}*"
+    },
+    "fields": {
+        "review": {
+            "field": {
+                "title": "Author",
+                "value": "<@{0}>"
+            },
+            "field2": {
+                "title": "Rating",
+                "value": "{2}"
+            }
+        }
     },
     "footers": {
         "core": {
@@ -94,6 +108,7 @@
         "report": "<:green_check:1149766467450044426> **You have successfully reported *{0}* to the staff team!**",
         "nick": "<:green_check:1149766467450044426> **You have successfully updated your nickname to {0}**",
         "poll": "<:green_check:1149766467450044426> **You have successfully created a poll in <#{0}>!**",
-        "suggest": "<:green_check:1149766467450044426> **You have successfully made a suggestion**"
+        "suggest": "<:green_check:1149766467450044426> **You have successfully made a suggestion**",
+        "review": "<:green_check:1149766467450044426> **You have successfully submitted a review**"
         }
 }
