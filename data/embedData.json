@@ -27,7 +27,7 @@
         "deposit": "Deposit Complete! You have successfully deposited **🪙 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
         "withdraw": "Withdraw Complete! You have successfully withdrawn **💴 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
         "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``",
-        "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️{1}\n**Exp:** ✨{0}"
+        "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}"
     },
     "footers": {
         "core": {
