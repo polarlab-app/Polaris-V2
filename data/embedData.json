@@ -14,7 +14,8 @@
         "leveling": "**Congrats! You've leveled up!**",
         "rank": "{3}'s Rank",
         "balance": "{3}'s Balance",
-        "report": "User Reported"
+        "report": "User Reported",
+        "poll": "Voting Poll"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -31,7 +32,8 @@
         "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``",
         "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}",
         "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>",
-        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}"
+        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
+        "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>"
     },
     "footers": {
         "core": {
@@ -86,7 +88,9 @@
         "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** ",
         "disable": "<:green_check:1149766467450044426> **You have successfully disabled the *{0}* Module!**",
         "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**",
+        "reload": "<:green_check:1149766467450044426> **You have successfully reloaded the *{0}* Module!**",
         "report": "<:green_check:1149766467450044426> **You have successfully reported *{0}* to the staff team!**",
-        "nick": "<:green_check:1149766467450044426> **You have successfully updated your nickname to {0}**"
+        "nick": "<:green_check:1149766467450044426> **You have successfully updated your nickname to {0}**",
+        "poll": "<:green_check:1149766467450044426> **You have successfully created a poll in <#{0}>!**"
         }
 }

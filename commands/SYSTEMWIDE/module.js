@@ -5,6 +5,7 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 
 const getGuildCommands = require('../../utilities/getGuildCommands');
 const getModuleCommands = require('../../utilities/getModuleCommands');
+const areCommandsDifferent = require('../../utilities/areCommandsDifferent');
 
 module.exports = {
     name: 'module',
@@ -23,6 +24,10 @@ module.exports = {
                 {
                     name: 'disable',
                     value: 'disable',
+                },
+                {
+                    name: 'Reload',
+                    value: 'reload',
                 },
             ],
         },
@@ -58,8 +63,8 @@ module.exports = {
                 },
                 {
                     name: 'Leveling',
-                    value: 'leveling'
-                }
+                    value: 'leveling',
+                },
             ],
         },
     ],
@@ -93,6 +98,12 @@ module.exports = {
                         await guildCommands.delete(existingCommand.id);
                         continue;
                     } else if (action == 'reload') {
+                        if (areCommandsDifferent(existingCommand, moduleCommand)) {
+                            await guildCommands.edit(existingCommand.id, {
+                                description,
+                                options,
+                            });
+                        }
                     } else {
                         await errorHandler({
                             interaction: interaction,
@@ -102,6 +113,12 @@ module.exports = {
                     }
                 } else {
                     if (action == 'enable') {
+                        await guildCommands.create({
+                            name,
+                            description,
+                            options,
+                        });
+                    } else if (action == 'reload') {
                         await guildCommands.create({
                             name,
                             description,
@@ -117,7 +134,7 @@ module.exports = {
                 }
             }
 
-            const embed = await successEmbedBuilder(action, await commandModule.toUpperCase());
+            const embed = await successEmbedBuilder(action, commandModule);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,

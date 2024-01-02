@@ -11,13 +11,17 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             choices: [
                 {
-                    name: 'enable',
+                    name: 'Enable',
                     value: 'enable',
                 },
                 {
-                    name: 'disable',
+                    name: 'Disable',
                     value: 'disable',
                 },
+                {
+                    name: 'Reload',
+                    value: 'reload',
+                }
             ],
         },
         {
