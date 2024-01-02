@@ -12,7 +12,8 @@
         "deposit": "Deposit Complete",
         "withdraw": "Withdraw Complete",
         "leveling": "**Congrats! You've leveled up!**",
-        "rank": "{3}'s Rank"
+        "rank": "{3}'s Rank",
+        "report": "User Reported"
     },
     "descriptions": {
         "ping": "The current bot ping is {0}ms",
@@ -27,7 +28,8 @@
         "deposit": "Deposit Complete! You have successfully deposited **🪙 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
         "withdraw": "Withdraw Complete! You have successfully withdrawn **💴 {0}**! Your new bank balance is **💴 {1}** and your new purse balance is **🪙 {2}**!",
         "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``",
-        "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}"
+        "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}",
+        "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>"
     },
     "footers": {
         "core": {
@@ -81,6 +83,7 @@
         "volume": "<:green_check:1149766467450044426> **You have successfully set the volume {0}%**",
         "clear-queue":"<:green_check:1149766467450044426> **You have successfully cleared the queue** ",
         "disable": "<:green_check:1149766467450044426> **You have successfully disabled the *{0}* Module!**",
-        "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**"
+        "enable": "<:green_check:1149766467450044426> **You have successfully enabled the *{0}* Module!**",
+        "report": "<:green_check:1149766467450044426> **You have successfully reported *{0} to the staff team!***"
     }
 }
