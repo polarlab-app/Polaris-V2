@@ -65,6 +65,10 @@ module.exports = {
                     name: 'Leveling',
                     value: 'leveling',
                 },
+                {
+                    name: 'Support',
+                    value: 'support'
+                }
             ],
         },
     ],

@@ -47,6 +47,7 @@ module.exports = {
                 },
                 {
                  new: true,
+                 upsert: true
                 }
                );
                

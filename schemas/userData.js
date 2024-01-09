@@ -8,7 +8,8 @@ let userData = new Schema(
        inventory: [{
            item: String,
            amount: Number
-       }]
+       }],
+       job: String,
    },
    {
        collection: 'userData',
