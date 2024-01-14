@@ -1,20 +1,20 @@
 const { PermissionFlagsBits, ApplicationCommandOptionType } = require('discord.js');
-const { useMainPlayer, QueryType } = require('discord-player');
 
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
-
 module.exports = {
     name: 'play',
     description: 'Plays audio in your voice channel',
-    options: [{
-        name: 'song',
-        description: 'The song you want to play',
-        type: ApplicationCommandOptionType.String,
-        required: true,
-    }],
+    options: [
+        {
+            name: 'song',
+            description: 'The song you want to play',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+        },
+    ],
 
     module: 'music',
 
@@ -23,7 +23,7 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            const song = interaction.options.get('song').value;
+            const song = await interaction.options.get('song').value;
 
             const vc = await interaction.member.voice.channel;
             if (!vc) {
@@ -35,27 +35,59 @@ module.exports = {
                 return;
             }
 
-            const player = await useMainPlayer();
-            const res = await player.play(vc, song, {
-                searchEngine: QueryType.AUTO,
-                nodeOptions: {
-                    metadata: {
-                        channel: vc,
-                    },
-                    autoSelfDeaf: true,
-                    volume: 30,
-                    leaveOnEmpty: true,
-                    leaveOnEmptyCooldown: 10,
-                    leaveOnEnd: true,
-                    leaveOnEndCooldown: 240,
-                    connectionTimeout: 999999999,
-                },
+            let player = await polaris.moon.players.create({
+                guildId: interaction.guild.id,
+                voiceChannel: interaction.member.voice.channel.id,
+                textChannel: interaction.channel.id,
+                autoPlay: true,
+            });
+            if (!player.connected) {
+                await player.connect({
+                    setDeaf: true,
+                    setMute: false,
+                });
+            }
+
+            const sarray = [song]
+            let res = await polaris.moon.search({
+                query: song,
+                source: 'youtube',
+                requester: [],
             });
 
+            if (res.loadType === 'loadfailed') {
+                return interaction.editReply({
+                    content: `:x: Load failed - the system is not cooperating.`,
+                });
+            } else if (res.loadType === 'empty') {
+                return interaction.editReply({
+                    content: `:x: No matches found!`,
+                });
+            }
 
-            const track = await res.track;
-            const embed = await embedBuilder('play', module.exports.module, [track.title, track.url, track.author]);
+            if (res.loadType === 'playlist') {
+                interaction.editReply({
+                    content: `${res.playlistInfo.name} This playlist has been added to the waiting list, spreading joy`,
+                });
+                for (const track of res.tracks) {
+                    player.queue.add(track);
+                }
+            } else {
+                player.queue.add(res.tracks[0]);
+                interaction.editReply({
+                    content: `${res.tracks[0].title} was added to the waiting list`,
+                });
+            }
 
+            if (!player.playing) {
+                player.play();
+            }
+
+            const embed = await embedBuilder('play', module.exports.module, [
+                res.tracks[0].title,
+                res.tracks[0].uri,
+                res.tracks[0].author,
+            ]);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
