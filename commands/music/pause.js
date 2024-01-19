@@ -1,5 +1,5 @@
 const { PermissionFlagsBits } = require("discord.js");
-const { useQueue } = require("discord-player");
+
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
@@ -19,8 +19,8 @@ module.exports = {
                 await errorHandler({interaction: interaction, errorType: 'voiceChannelRequired', commandName: module.exports.name});
                 return;
             }
-            const queue = await useQueue(interaction.guild.id);
-            await queue.node.pause();
+            const player = await polaris.moon.players.get(interaction.guild.id)
+            await player.pause();
 
             const embed = await successEmbedBuilder('pause')
             await interaction.editReply({embeds: [embed]})

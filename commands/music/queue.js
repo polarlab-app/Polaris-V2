@@ -1,5 +1,4 @@
 const { PermissionFlagsBits } = require("discord.js");
-const { useQueue } = require("discord-player");
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');

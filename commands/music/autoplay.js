@@ -5,26 +5,22 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 module.exports = {
-    name: 'loop',
-    description: 'Loops the currently playing queue',
+    name: 'autoplay',
+    description: 'Controls autoplay for music',
     options: [
         {
-            name: 'type',
-            description: 'The loop type to use',
+            name: 'mode',
+            description: 'The mode of autoplay to use',
             required: true,
             type: ApplicationCommandOptionType.String,
             choices: [
                 {
-                    name: 'none',
-                    value: '0',
+                    name: 'Enable',
+                    value: 'true',
                 },
                 {
-                    name: 'song',
-                    value: '1',
-                },
-                {
-                    name: 'queue',
-                    value: '2',
+                    name: 'Disable',
+                    value: 'false',
                 },
             ],
         },
@@ -46,9 +42,9 @@ module.exports = {
                 return;
             }
             const player = await polaris.moon.players.get(interaction.guild.id);
-            const loopMode = await interaction.options.get('type').value;
+            const status = await interaction.options.get('mode').value;
 
-            await player.setLoop(loopMode)
+            await player.setAutoplay(status)
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });

@@ -35,20 +35,13 @@ module.exports = {
                 return;
             }
 
-            let player = await polaris.moon.players.create({
+            player = await polaris.moon.players.create({
                 guildId: interaction.guild.id,
                 voiceChannel: interaction.member.voice.channel.id,
                 textChannel: interaction.channel.id,
-                autoPlay: true,
+                autoPlay: false,
+                volume: 30,
             });
-            if (!player.connected) {
-                await player.connect({
-                    setDeaf: true,
-                    setMute: false,
-                });
-            }
-
-            const sarray = [song]
             let res = await polaris.moon.search({
                 query: song,
                 source: 'youtube',
@@ -66,17 +59,11 @@ module.exports = {
             }
 
             if (res.loadType === 'playlist') {
-                interaction.editReply({
-                    content: `${res.playlistInfo.name} This playlist has been added to the waiting list, spreading joy`,
-                });
                 for (const track of res.tracks) {
                     player.queue.add(track);
                 }
             } else {
                 player.queue.add(res.tracks[0]);
-                interaction.editReply({
-                    content: `${res.tracks[0].title} was added to the waiting list`,
-                });
             }
 
             if (!player.playing) {
@@ -85,7 +72,7 @@ module.exports = {
 
             const embed = await embedBuilder('play', module.exports.module, [
                 res.tracks[0].title,
-                res.tracks[0].uri,
+                res.tracks[0].url,
                 res.tracks[0].author,
             ]);
             await interaction.editReply({ embeds: [embed] });

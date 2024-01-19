@@ -56,10 +56,6 @@ polaris.moon = new MoonlinkManager(
     }
 );
 
-polaris.moon.on('nodeCreate', (node) => {
-    console.log(`${node.host} was connected, and the magic is in the air`);
-});
-
 polaris.on('ready', () => {
     polaris.moon.init(polaris.user.id);
 });
