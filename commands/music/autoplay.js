@@ -12,7 +12,7 @@ module.exports = {
             name: 'mode',
             description: 'The mode of autoplay to use',
             required: true,
-            type: ApplicationCommandOptionType.String,
+            type: ApplicationCommandOptionType.Boolean,
             choices: [
                 {
                     name: 'Enable',
@@ -44,7 +44,25 @@ module.exports = {
             const player = await polaris.moon.players.get(interaction.guild.id);
             const status = await interaction.options.get('mode').value;
 
-            await player.setAutoplay(status)
+            if(!player) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'missingPlayer',
+                    commandName: module.exports.name,
+                })
+                return;
+            }
+
+            let boolean;
+
+            if (status == 'true') {
+                boolean = new Boolean(true)
+            } else {
+                boolean = new Boolean(false)
+            }
+
+            console.log(boolean)
+            await player.setAutoPlay(boolean)
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });

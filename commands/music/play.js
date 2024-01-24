@@ -42,6 +42,11 @@ module.exports = {
                 autoPlay: false,
                 volume: 30,
             });
+
+            if (!player.connected) {
+                await player.connect();
+            }
+
             let res = await polaris.moon.search({
                 query: song,
                 source: 'youtube',
