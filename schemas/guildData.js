@@ -1,0 +1,23 @@
+const { Schema, model } = require('mongoose')
+
+let guildData = new Schema(
+    {
+        id: String,
+        name: String,
+        icon: String,
+        description: String,
+        data: [
+            {
+                name: String,
+                value: String
+            }
+        ]
+
+    },
+    {
+        collection: 'guildData'
+
+    }
+)
+
+module.exports = model('guildData', guildData)

@@ -1,23 +1,29 @@
 {
     "fishing": {
-        "nothing": 10,
-        "common seashell": 50,
-        "common fish": 150,
-        "sea dragon": 500,
-        "enchanted pearl": 1500,
-        "gold": 3000,
-        "jewelry": 5000
+        "nothing": 0,
+        "Common Seashell": 50,
+        "common Fish": 250,
+        "Sea Dragon": 500,
+        "Enchanted Pearl": 1500,
+        "Gold": 3000,
+        "Jewelry": 5000
     },
     "hunting": {
-
+        "nothing": 0,
+        "Berries": 50,
+        "Ferns": 100,
+        "Antlers": 500,
+        "Fox Fur": 1000,
+        "Deer Pelt": 2500,
+        "Alligator Pelt": 5000
     },
     "digging": {
         "nothing": 10,
-        "stone": 20,
-        "junk": 50,
-        "dirt": 100,
-        "coins": 300,
-        "nail": 350,
-        "diamond": 5000
+        "Stone": 20,
+        "Junk": 50,
+        "Dirt": 100,
+        "Coins": 300,
+        "Nail": 350,
+        "Diamond": 5000
     }
 }

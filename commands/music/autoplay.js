@@ -5,26 +5,22 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 module.exports = {
-    name: 'loop',
-    description: 'Loops the currently playing queue',
+    name: 'autoplay',
+    description: 'Controls autoplay for music',
     options: [
         {
-            name: 'type',
-            description: 'The loop type to use',
+            name: 'mode',
+            description: 'The mode of autoplay to use',
             required: true,
-            type: ApplicationCommandOptionType.String,
+            type: ApplicationCommandOptionType.Boolean,
             choices: [
                 {
-                    name: 'none',
-                    value: '0',
+                    name: 'Enable',
+                    value: 'true',
                 },
                 {
-                    name: 'song',
-                    value: '1',
-                },
-                {
-                    name: 'queue',
-                    value: '2',
+                    name: 'Disable',
+                    value: 'false',
                 },
             ],
         },
@@ -46,9 +42,27 @@ module.exports = {
                 return;
             }
             const player = await polaris.moon.players.get(interaction.guild.id);
-            const loopMode = await interaction.options.get('type').value;
+            const status = await interaction.options.get('mode').value;
 
-            await player.setLoop(loopMode)
+            if(!player) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'missingPlayer',
+                    commandName: module.exports.name,
+                })
+                return;
+            }
+
+            let boolean;
+
+            if (status == 'true') {
+                boolean = new Boolean(true)
+            } else {
+                boolean = new Boolean(false)
+            }
+
+            console.log(boolean)
+            await player.setAutoPlay(boolean)
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });

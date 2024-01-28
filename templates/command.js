@@ -12,7 +12,7 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            const embed = await embedBuilder('ping', `${module.exports.module}`,[await polaris.ws.ping])
+            const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({embeds: [embed]})
             await consoleLogHandler({
                 interaction: interaction,

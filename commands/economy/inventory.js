@@ -1,13 +1,13 @@
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
+const { EmbedBuilder } = require('discord.js')
 
-const generateRandomNumber = require('../../utilities/generateRandomNumber');
 const userData = require('../../schemas/userData');
 
 module.exports = {
-    name: 'beg',
-    description: 'Beg for items from strangers',
+    name: 'inventory',
+    description: 'View the contents of your inventory',
     module: 'economy',
 
     permissionsRequired: [],
@@ -15,19 +15,16 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            const loot = await generateRandomNumber(1, 1200);
+            const user = await userData.findOne({ id: interaction.user.id });
+            const embed = new EmbedBuilder()
+                .setTitle(` Inventory`)
+                .setDescription(`Here are your items:`);
 
-            const user = await userData.findOneAndUpdate(
-                { id:interaction.user.id },
-                { $inc: { purse_balance: loot} },
-                { new: true,
-                  upsert: true,
-                }
-            );
-
-            await user.save();
-
-            const embed = await embedBuilder('beg', `${module.exports.module}`, [loot, user.purse_balance]);
+            for (let i = 0; i < user.inventory.length; i++) {
+                const item = user.inventory[i];
+                await embed.addFields({name: `Item ${i + 1}: ${item.item}`, value: `Quantity: ${item.amount}`});
+            }
+            // const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,

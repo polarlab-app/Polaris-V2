@@ -11,13 +11,17 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             choices: [
                 {
-                    name: 'enable',
+                    name: 'Enable',
                     value: 'enable',
                 },
                 {
-                    name: 'disable',
+                    name: 'Disable',
                     value: 'disable',
                 },
+                {
+                    name: 'Reload',
+                    value: 'reload',
+                }
             ],
         },
         {
@@ -30,7 +34,7 @@ module.exports = {
                     name: 'Core',
                     value: 'core',
                 },
-                /*{
+                {
                     name: 'Moderation',
                     value: 'moderation',
                 },
@@ -51,9 +55,13 @@ module.exports = {
                     value: 'music',
                 },
                 {
-                    name: 'test',
-                    value: 'ragey',
-                }, */
+                    name: 'Leveling',
+                    value: 'leveling'
+                },
+                {
+                    name: 'Support',
+                    value: 'support'
+                }
             ],
         },
     ],

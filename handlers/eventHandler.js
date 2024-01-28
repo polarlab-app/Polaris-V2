@@ -1,7 +1,7 @@
 const path = require('path');
 const getAllFiles = require('../utilities/getAllFiles');
 
-module.exports = async (polaris, pool) => {
+module.exports = async (polaris,) => {
     const eventFolders = getAllFiles(path.join(__dirname, "..", 'events'), true);
     
     for (const eventFolder of eventFolders) {
