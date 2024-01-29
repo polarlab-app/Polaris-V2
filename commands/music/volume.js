@@ -29,6 +29,12 @@ module.exports = {
                 await errorHandler({interaction: interaction, errorType: 'voiceChannelRequired', commandName: module.exports.name});
                 return;
             }
+            if(volume < 0 || volume > 150) {
+                return interaction.editReply({
+                    content: ':x: The maximum volume increase is 150 and the minimum is 0'
+                })
+            }
+            
             const player = await polaris.moon.players.get(interaction.guild.id)
             await player.setVolume(volume);
 
