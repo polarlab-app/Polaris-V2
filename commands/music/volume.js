@@ -30,7 +30,7 @@ module.exports = {
                 return;
             }
             if(volume < 0 || volume > 150) {
-                return interaction.reply({
+                return interaction.editReply({
                     content: ':x: The maximum volume increase is 150 and the minimum is 0'
                 })
             }
