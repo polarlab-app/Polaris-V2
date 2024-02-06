@@ -1,11 +1,11 @@
 {
-    "token": "you-thought-didnt-you?", 
+    "token": "you-thought-didnt-you?",
     "prefix": "!",
-    "version": "2.0.0stable1",
+    "version": "2.2stable1",
     "modules": {
-        "core":"enabled",
-        "moderation":"enabled",
-        "utilities":"enabled",
+        "core": "enabled",
+        "moderation": "enabled",
+        "utilities": "enabled",
         "information": "enabled",
         "music": "enabled",
         "fun": "enabled",
@@ -16,5 +16,5 @@
     "emojis": {
         "check": "<:green_check:1149766467450044426>",
         "cross": "<:red_cross:1149765295548940371>"
-    }   
+    }
 }
