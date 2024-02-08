@@ -24,7 +24,7 @@
         "channelDelete": "Channel Deleted"
     },
     "descriptions": {
-        "ping": "The current bot ping is {0}ms",
+        "ping": "The current bot ping is {1} **{0}ms**",
         "uptime": "The bot has been running for **{0}** days, **{1}** hours, **{2}** minutes & **{3}** seconds!",
         "play": "You have successfully added **{0}** By: **{2}** to the Queue!\n\n**Link:**\n[{0}]({1})",
         "shop": "*The shop offers a display of all items available to purchase using ``/buy``! Choose any item below and buy it for our virtual currency!*\n\n**🍭・Premium Colors - $1200**\n> A set of 8 premium colors only for exclusive buyers\n\u200B\n**🎣・Fishing Rod - $700**\n> A fishing rod used for fishing using the ``/fish`` command\n\u200B\n",
