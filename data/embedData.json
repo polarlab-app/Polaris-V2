@@ -21,7 +21,8 @@
         "buy": "Item Bought",
         "help": "Help Command",
         "channelCreate": "Channel Created",
-        "channelDelete": "Channel Deleted"
+        "channelDelete": "Channel Deleted",
+        "roleDelete": "Role Deleted"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -46,7 +47,8 @@
         "sell": "You have successfully sold 1 {0} for 💴 **{2}**! You now have **{1}** in your inventory!",
         "help": "The help command",
         "channelCreate": "*A channel was just created by <@{0}>*\n\n> **Channel Name: <#{1}>**\n> **Channel ID:** *{1}*",
-        "channelDelete": "*A channel was just deleted by <@{0}>*\n\n> **Channel Name:** *{1}*\n> **Channel ID:** *{2}*"
+        "channelDelete": "*A channel was just deleted by <@{0}>*\n\n> **Channel Name:** *{1}*\n> **Channel ID:** *{2}*",
+        "roleDelete": "*A role was just deleted by <@{0}>*\n\n> **Role Name:** *{1}*\n> **Role ID:** *{2}*"
     },
     "fields": {
         "review": {

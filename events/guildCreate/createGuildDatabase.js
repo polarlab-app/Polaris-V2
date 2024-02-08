@@ -1,10 +1,10 @@
 const guildData = require('../../schemas/guildData');
 
 module.exports = async (polaris, guild) => {
-    /*let guildCheck = await guildData.findOne({ id: `${guild.id}` });
+    let guildCheck = await guildData.findOne({ id: `${guild.id}` });
     if (guildCheck) {
         return;
-    }*/
+    }
 
     await guildData.create({
         id: `${guild.id}`,
@@ -40,6 +40,12 @@ module.exports = async (polaris, guild) => {
                     },
                 ],
                 serverLogs: [
+                    {
+                        name: 'status',
+                        value: 'enabled',
+                    },
+                ],
+                roleLogs: [
                     {
                         name: 'status',
                         value: 'enabled',
