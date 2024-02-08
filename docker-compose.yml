@@ -1,0 +1,18 @@
+version: '3'
+services:
+    web:
+        container_name: polaris
+        build: .
+        volumes:
+            - /opt/polaris:/opt/polaris
+        command: bash -c "git pull && npm install && node ."
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 4G
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+                max_attempts: 3
+                window: 120s
