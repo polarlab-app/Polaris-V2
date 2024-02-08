@@ -67,8 +67,8 @@ module.exports = {
                 },
                 {
                     name: 'Support',
-                    value: 'support'
-                }
+                    value: 'support',
+                },
             ],
         },
     ],
@@ -85,6 +85,7 @@ module.exports = {
                     errorType: 'invalidPermissions',
                     commandName: module.exports.name,
                 });
+                return;
             }
 
             const action = await interaction.options.get('action').value;
