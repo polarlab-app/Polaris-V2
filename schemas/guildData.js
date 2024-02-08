@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 let guildData = new Schema(
     {
@@ -9,15 +9,47 @@ let guildData = new Schema(
         data: [
             {
                 name: String,
-                value: String
-            }
-        ]
-
+                value: String,
+            },
+        ],
+        config: {
+            general: [
+                {
+                    name: String,
+                    value: String,
+                },
+            ],
+            logs: {
+                channelLogs: [
+                    {
+                        name: String,
+                        value: String,
+                    },
+                ],
+                serverLogs: [
+                    {
+                        name: String,
+                        value: String,
+                    },
+                ],
+            },
+            leveling: [
+                {
+                    name: String,
+                    value: String,
+                },
+            ],
+            music: [
+                {
+                    name: String,
+                    value: String,
+                },
+            ],
+        },
     },
     {
-        collection: 'guildData'
-
+        collection: 'guildData',
     }
-)
+);
 
-module.exports = model('guildData', guildData)
+module.exports = model('guildData', guildData);
