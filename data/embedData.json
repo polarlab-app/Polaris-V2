@@ -28,7 +28,8 @@
         "emojiCreate": "Emoji Created",
         "emojiDelete": "Emoji Deleted",
         "emojiUpdate": "Emoji Updated",
-        "messageDelete": "Message Deleted"
+        "messageDelete": "Message Deleted",
+        "emoji-info": "Emoji Info"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -98,6 +99,24 @@
                 "title": "/test",
                 "value": "A testing command"
             }
+        },
+        "emoji-info": {
+            "field": {
+                "title": "Emoji Name",
+                "value": "{0}"
+            },
+            "field2": {
+                "title": "Emoji ID",
+                "value": "{1}"
+            },
+            "field3": {
+                "title": "Emoji Author",
+                "value": "{2}"
+            },
+            "field4": {
+                "title": "Animated?",
+                "value": "{3}"
+            }
         }
     },
     "timestamps": {
@@ -126,6 +145,10 @@
         "utilities": {
             "text": "Utility Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/utilities.png"
+        },
+        "information": {
+            "text": "Utility Module!",
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/information.png"
         },
         "moderation": {
             "text": "Moderation Module!",

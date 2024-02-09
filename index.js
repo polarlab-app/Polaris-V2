@@ -18,6 +18,7 @@ const polaris = new Client({
         IntentsBitField.Flags.GuildEmojisAndStickers,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.GuildVoiceStates,
+        IntentsBitField.Flags.GuildEmojisAndStickers,
     ],
 });
 
