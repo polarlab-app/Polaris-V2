@@ -41,6 +41,7 @@ async function databaseConnection() {
         console.log(colors.error + error);
     }
 }
+
 polaris.moon = new MoonlinkManager(
     [
         {
@@ -55,14 +56,6 @@ polaris.moon = new MoonlinkManager(
         polaris.guilds.cache.get(guild).shard.send(JSON.parse(sPayload));
     }
 );
-
-polaris.on('ready', () => {
-    polaris.moon.init(polaris.user.id);
-});
-
-polaris.on('raw', (data) => {
-    polaris.moon.packetUpdate(data);
-});
 
 databaseConnection();
 eventHandler(polaris);
