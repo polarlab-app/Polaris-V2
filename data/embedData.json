@@ -27,7 +27,8 @@
         "guildBanAdd": "Member Banned",
         "emojiCreate": "Emoji Created",
         "emojiDelete": "Emoji Deleted",
-        "emojiUpdate": "Emoji Updated"
+        "emojiUpdate": "Emoji Updated",
+        "messageDelete": "Message Deleted"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -58,7 +59,8 @@
         "guildBanAdd": "Test {0}",
         "emojiCreate": "*An emoji was just created by <@{0}>*\n\n> **Emoji Name:** *<:{1}:{2}>*\n> **Emoji ID:** *{2}*",
         "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
-        "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*"
+        "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*",
+        "messageDelete": "*A message was just deleted by <@{0}> or the original author*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*"
     },
     "fields": {
         "review": {
@@ -105,7 +107,8 @@
         "roleDelete": "true",
         "emojiCreate": "true",
         "emojiDelete": "true",
-        "emojiUpdate": "true"
+        "emojiUpdate": "true",
+        "messageDelete": "true"
     },
     "footers": {
         "core": {
