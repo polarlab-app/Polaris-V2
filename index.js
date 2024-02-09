@@ -1,13 +1,12 @@
 require('dotenv').config();
-const { Client, IntentsBitField } = require('discord.js');
-const mongoose = require('mongoose');
 const { MoonlinkManager } = require('moonlink.js');
+const { Client, IntentsBitField } = require('discord.js');
 
+const databaseConnection = require('./polaris/databaseConnection');
 const eventHandler = require('./handlers/eventHandler');
-const { colors } = require('./data/consoleColors');
 
+const { colors } = require('./data/consoleColors');
 const TOKEN = process.env.TOKEN;
-const URL = process.env.DB_URL;
 
 console.log(colors.regular + 'Starting...');
 
@@ -21,26 +20,6 @@ const polaris = new Client({
         IntentsBitField.Flags.GuildVoiceStates,
     ],
 });
-
-async function databaseConnection() {
-    try {
-        if (!URL) {
-            return;
-        }
-
-        await mongoose.connect(URL || '', {
-            authSource: 'admin',
-        });
-
-        if (mongoose.connect) {
-            console.log(colors.success + '[POLARIS STABLE] Polaris Success: Database connection established!');
-        } else {
-            console.log(colors.error + '[ERROR] [900] Failed to connect to database');
-        }
-    } catch (error) {
-        console.log(colors.error + error);
-    }
-}
 
 polaris.moon = new MoonlinkManager(
     [
