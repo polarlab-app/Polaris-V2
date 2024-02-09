@@ -1,24 +1,24 @@
 {
-  "name": "Polaris",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "aghpb": "^1.0.5",
-    "child_process": "^1.0.2",
-    "discord.js": "^14.12.1",
-    "dotenv": "^16.3.1",
-    "ffmpeg-static": "^5.2.0",
-    "fs": "^0.0.1-security",
-    "mongoose": "^8.0.3",
-    "moonlink.js": "^3.0.32",
-    "path": "^0.12.7"
-  }
+    "name": "polaris",
+    "version": "2.3",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "aghpb": "^1.0.5",
+        "child_process": "^1.0.2",
+        "discord.js": "^14.12.1",
+        "dotenv": "^16.3.1",
+        "ffmpeg-static": "^5.2.0",
+        "fs": "^0.0.1-security",
+        "mongoose": "^8.0.3",
+        "moonlink.js": "^3.0.32",
+        "path": "^0.12.7"
+    }
 }
