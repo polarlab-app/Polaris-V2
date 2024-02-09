@@ -51,6 +51,12 @@ module.exports = async (polaris, guild) => {
                         value: 'enabled',
                     },
                 ],
+                memberLogs: [
+                    {
+                        name: 'status',
+                        value: 'enabled',
+                    },
+                ],
             },
             leveling: [
                 {

@@ -38,6 +38,12 @@ let guildData = new Schema(
                         value: String,
                     },
                 ],
+                memberLogs: [
+                    {
+                        name: String,
+                        value: String,
+                    },
+                ],
             },
             leveling: [
                 {

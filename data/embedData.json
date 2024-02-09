@@ -23,7 +23,11 @@
         "channelCreate": "Channel Created",
         "channelDelete": "Channel Deleted",
         "roleCreate": "Role Created",
-        "roleDelete": "Role Deleted"
+        "roleDelete": "Role Deleted",
+        "guildBanAdd": "Member Banned",
+        "emojiCreate": "Emoji Created",
+        "emojiDelete": "Emoji Deleted",
+        "emojiUpdate": "Emoji Updated"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -50,7 +54,11 @@
         "channelCreate": "*A channel was just created by <@{0}>*\n\n> **Channel Name: <#{1}>**\n> **Channel ID:** *{1}*",
         "channelDelete": "*A channel was just deleted by <@{0}>*\n\n> **Channel Name:** *{1}*\n> **Channel ID:** *{2}*",
         "roleCreate": "*A role was just created by <@{0}>*\n\n> **Role Name:** *<@&{2}>*\n> **Role ID:** *{2}*",
-        "roleDelete": "*A role was just deleted by <@{0}>*\n\n> **Role Name:** *{1}*\n> **Role ID:** *{2}*"
+        "roleDelete": "*A role was just deleted by <@{0}>*\n\n> **Role Name:** *{1}*\n> **Role ID:** *{2}*",
+        "guildBanAdd": "Test {0}",
+        "emojiCreate": "*An emoji was just created by <@{0}>*\n\n> **Emoji Name:** *<:{1}:{2}>*\n> **Emoji ID:** *{2}*",
+        "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
+        "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*"
     },
     "fields": {
         "review": {
@@ -94,7 +102,10 @@
         "channelCreate": "true",
         "channelDelete": "true",
         "roleCreate": "true",
-        "roleDelete": "true"
+        "roleDelete": "true",
+        "emojiCreate": "true",
+        "emojiDelete": "true",
+        "emojiUpdate": "true"
     },
     "footers": {
         "core": {
