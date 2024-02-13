@@ -25,14 +25,27 @@ module.exports = {
         try {
             const role = await interaction.options.get('role');
 
-            const embed = await embedBuilder(module.exports.name, module.exports.module, [
-                role.value,
-                await convertIntToHex(role.role.color),
-                role.role.position,
-                role.role.hoist,
-                role.role.managed,
-                role.role.mentionable,
-            ]);
+            let roleIcon;
+            if (role.role.icon) {
+                roleIcon = role.role.icon;
+            } else {
+                roleIcon = undefined;
+            }
+
+            const embed = await embedBuilder(
+                module.exports.name,
+                module.exports.module,
+                [
+                    role.value,
+                    await convertIntToHex(role.role.color),
+                    role.role.position,
+                    role.role.hoist,
+                    role.role.managed,
+                    role.role.mentionable,
+                ],
+                undefined,
+                roleIcon
+            );
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
