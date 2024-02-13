@@ -1,4 +1,4 @@
-const { PermissionFlagsBits } = require("discord.js");
+const { PermissionFlagsBits } = require('discord.js');
 
 const errorHandler = require('../../handlers/errorHandler');
 const consoleLogHandler = require('../../handlers/consoleLogHandler');
@@ -8,7 +8,7 @@ module.exports = {
     name: 'skip',
     description: 'Skips the currently playing track',
     module: 'music',
-    
+
     permissionsRequired: [PermissionFlagsBits.Speak],
     botPermissions: [PermissionFlagsBits.Speak],
 
@@ -16,14 +16,28 @@ module.exports = {
         try {
             const vc = await interaction.member.voice.channel;
             if (!vc) {
-                await errorHandler({interaction: interaction, errorType: 'voiceChannelRequired', commandName: module.exports.name});
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'voiceChannelRequired',
+                    commandName: module.exports.name,
+                });
                 return;
             }
-            const player = await polaris.moon.players.get(interaction.guild.id)
+            const player = await polaris.moon.players.get(interaction.guild.id);
+
+            if (!player) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'missingPlayer',
+                    commandName: module.exports.name,
+                });
+                return;
+            }
+
             await player.skip();
 
-            const embed = await successEmbedBuilder('skip')
-            await interaction.editReply({embeds: [embed]})
+            const embed = await successEmbedBuilder('skip');
+            await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
                 commandName: module.exports.name,

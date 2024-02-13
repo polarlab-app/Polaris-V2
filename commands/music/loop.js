@@ -46,9 +46,19 @@ module.exports = {
                 return;
             }
             const player = await polaris.moon.players.get(interaction.guild.id);
+
+            if (!player) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'missingPlayer',
+                    commandName: module.exports.name,
+                });
+                return;
+            }
+
             const loopMode = await interaction.options.get('type').value;
 
-            await player.setLoop(loopMode)
+            await player.setLoop(loopMode);
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });

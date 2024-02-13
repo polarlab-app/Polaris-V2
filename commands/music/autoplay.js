@@ -16,11 +16,11 @@ module.exports = {
             choices: [
                 {
                     name: 'Enable',
-                    value: 'true',
+                    value: true,
                 },
                 {
                     name: 'Disable',
-                    value: 'false',
+                    value: false,
                 },
             ],
         },
@@ -44,25 +44,15 @@ module.exports = {
             const player = await polaris.moon.players.get(interaction.guild.id);
             const status = await interaction.options.get('mode').value;
 
-            if(!player) {
+            if (!player) {
                 await errorHandler({
                     interaction: interaction,
                     errorType: 'missingPlayer',
                     commandName: module.exports.name,
-                })
+                });
                 return;
             }
-
-            let boolean;
-
-            if (status == 'true') {
-                boolean = new Boolean(true)
-            } else {
-                boolean = new Boolean(false)
-            }
-
-            console.log(boolean)
-            await player.setAutoPlay(boolean)
+            await player.setAutoPlay(status);
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });

@@ -35,57 +35,67 @@ module.exports = {
                 return;
             }
 
-            player = await polaris.moon.players.create({
-                guildId: interaction.guild.id,
-                voiceChannel: interaction.member.voice.channel.id,
-                textChannel: interaction.channel.id,
-                autoPlay: false,
-                volume: 30,
-            });
+            let player;
 
-            if (!player.connected) {
-                await player.connect();
-            }
+            try {
+                player = await polaris.moon.players.get(interaction.guild.id);
 
-            let res = await polaris.moon.search({
-                query: song,
-                source: 'youtube',
-                requester: [],
-            });
-
-            if (res.loadType === 'loadfailed') {
-                return interaction.editReply({
-                    content: `:x: Load failed - the system is not cooperating.`,
-                });
-            } else if (res.loadType === 'empty') {
-                return interaction.editReply({
-                    content: `:x: No matches found!`,
-                });
-            }
-
-            if (res.loadType === 'playlist') {
-                for (const track of res.tracks) {
-                    player.queue.add(track);
+                if (!player) {
+                    player = await polaris.moon.players.create({
+                        guildId: interaction.guild.id,
+                        voiceChannel: interaction.member.voice.channel.id,
+                        textChannel: interaction.channel.id,
+                        autoPlay: false,
+                        volume: 30,
+                    });
                 }
-            } else {
-                player.queue.add(res.tracks[0]);
-            }
+            } catch (error) {
+                console.log(error);
+            } finally {
+                if (!player.connected) {
+                    await player.connect();
+                }
 
-            if (!player.playing) {
-                player.play();
-            }
+                let res = await polaris.moon.search({
+                    query: song,
+                    source: 'youtube',
+                    requester: [],
+                });
 
-            const embed = await embedBuilder('play', module.exports.module, [
-                res.tracks[0].title,
-                res.tracks[0].url,
-                res.tracks[0].author,
-            ]);
-            await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
+                if (res.loadType === 'loadfailed') {
+                    return interaction.editReply({
+                        content: `:x: Load failed - the system is not cooperating.`,
+                    });
+                } else if (res.loadType === 'empty') {
+                    return interaction.editReply({
+                        content: `:x: No matches found!`,
+                    });
+                }
+
+                if (res.loadType === 'playlist') {
+                    for (const track of res.tracks) {
+                        await player.queue.add(track);
+                    }
+                } else {
+                    await player.queue.add(res.tracks[0]);
+                }
+
+                if (!player.playing) {
+                    await player.play();
+                }
+
+                const embed = await embedBuilder('play', module.exports.module, [
+                    res.tracks[0].title,
+                    res.tracks[0].url,
+                    res.tracks[0].author,
+                ]);
+                await interaction.editReply({ embeds: [embed] });
+                await consoleLogHandler({
+                    interaction: interaction,
+                    commandName: module.exports.name,
+                    errorType: 'commandRan',
+                });
+            }
         } catch (error) {
             await errorHandler({
                 interaction: interaction,
