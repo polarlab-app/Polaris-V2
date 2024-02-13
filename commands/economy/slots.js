@@ -25,8 +25,8 @@ module.exports = {
     callback: async (polaris, interaction) => {
         try {
             const amount = interaction.options.get('amount').value;
-
             const user = await userData.findOne({ id: interaction.user.id });
+
             let result;
             if (user.bank_balance >= amount) {
                 const number = await generateRandomNumber(1, 2);
@@ -54,7 +54,7 @@ module.exports = {
                 });
             }
 
-            const embed = await embedBuilder(`${module.exports.name}`, `${module.exports.module}`, [amount]);
+            const embed = await embedBuilder(`${module.exports.name}`, `${module.exports.module}`, [amount, result]);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
