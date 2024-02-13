@@ -3,16 +3,14 @@ const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { ApplicationCommandOptionType } = require('discord.js');
 
-const convertIntToHex = require('../../utilities/convertIntToHex');
-
 module.exports = {
-    name: 'role-info',
-    description: 'Gets certain information about a role',
+    name: 'member-info',
+    description: 'Get a members information in an instant',
     options: [
         {
-            name: 'role',
-            description: 'The role you want to find information about',
-            type: ApplicationCommandOptionType.Role,
+            name: 'member',
+            description: 'The member whose information to get',
+            type: ApplicationCommandOptionType.User,
             required: true,
         },
     ],
@@ -23,32 +21,17 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            const role = await interaction.options.get('role');
+            const member = await interaction.options.get('member');
 
-            let roleIcon;
-            if (role.role.icon) {
-                roleIcon = role.role.icon;
-            } else {
-                roleIcon = undefined;
-            }
-
-            const permissionsArray = role.role.permissions.toArray();
-            const permissions = permissionsArray.map((permission) => `${permission}`).join('\n');
+            const rolesArray = interaction.member.roles.cache;
+            const roles = rolesArray.map((role) => `<@&${role.id}>`).join('\n');
 
             const embed = await embedBuilder(
                 module.exports.name,
                 module.exports.module,
-                [
-                    role.value,
-                    await convertIntToHex(role.role.color),
-                    role.role.position,
-                    role.role.hoist,
-                    role.role.managed,
-                    role.role.mentionable,
-                    permissions,
-                ],
+                [member.value, member.user.username, member.user.bot, member.member.joinedTimestamp, roles],
                 undefined,
-                roleIcon
+                `https://cdn.discordapp.com/avatars/${member.value}/${member.user.avatar}.png`
             );
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({

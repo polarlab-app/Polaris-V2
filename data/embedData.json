@@ -31,6 +31,7 @@
         "messageDelete": "Message Deleted",
         "emoji-info": "Emoji Info",
         "role-info": "Role Info",
+        "member-info": "Member Info",
         "slots": "Slots Ran"
     },
     "descriptions": {
@@ -139,16 +140,79 @@
                 "value": "{2}"
             },
             "field5": {
-                "title": "Hoisted",
+                "title": "Hoisted?",
                 "value": "{3}"
             },
             "field6": {
-                "title": "Managed",
+                "title": "Managed?",
                 "value": "{4}"
             },
             "field7": {
-                "title": "Mentionable",
+                "title": "Mentionable?",
                 "value": "{5}"
+            },
+            "field8": {
+                "title": "Permissions:",
+                "value": "{6}",
+                "inline": false
+            }
+        },
+        "member-info": {
+            "field": {
+                "title": "Name",
+                "value": "<@{0}>",
+                "inline": false
+            },
+            "field2": {
+                "title": "User ID",
+                "value": "{0}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Username",
+                "value": "{1}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Bot?",
+                "value": "{2}",
+                "inline": false
+            },
+            "field5": {
+                "title": "Joined At",
+                "value": "<t:{3}:f>",
+                "inline": false
+            },
+            "field6": {
+                "title": "Roles:",
+                "value": "{4}",
+                "inline": false
+            }
+        },
+        "server-info": {
+            "field": {
+                "title": "Name",
+                "value": "{0}"
+            },
+            "field2": {
+                "title": "Guild ID",
+                "value": "{1}"
+            },
+            "field3": {
+                "title": "Guild Owner",
+                "value": "<@{2}>"
+            },
+            "field4": {
+                "title": "Member Count",
+                "value": "{3}"
+            },
+            "field5": {
+                "title": "Role Count",
+                "value": "{5}"
+            },
+            "field6": {
+                "title": "Language",
+                "value": "{4}"
             }
         }
     },
