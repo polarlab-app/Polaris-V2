@@ -29,11 +29,11 @@ module.exports = {
             if (role.role.icon) {
                 roleIcon = role.role.icon;
             } else {
-                roleIcon = undefined;
+                roleIcon = `https://cdn.discordapp.com/icons/${role.role.guild.id}/${role.role.guild.icon}`;
             }
 
             const permissionsArray = role.role.permissions.toArray();
-            const permissions = permissionsArray.map((permission) => `${permission}`).join('\n');
+            const permissions = permissionsArray.map((permission) => `> **${permission}**`).join('\n');
 
             const embed = await embedBuilder(
                 module.exports.name,

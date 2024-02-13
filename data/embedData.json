@@ -107,49 +107,60 @@
         "emoji-info": {
             "field": {
                 "title": "Emoji Name",
-                "value": "{0}"
+                "value": "{0}",
+                "inline": false
             },
             "field2": {
                 "title": "Emoji ID",
-                "value": "{1}"
+                "value": "{1}",
+                "inline": false
             },
             "field3": {
                 "title": "Emoji Author",
-                "value": "{2}"
+                "value": "{2}",
+                "inline": false
             },
             "field4": {
                 "title": "Animated?",
-                "value": "{3}"
+                "value": "{3}",
+                "inline": false
             }
         },
         "role-info": {
             "field": {
                 "title": "Role Name",
-                "value": "<@&{0}>"
+                "value": "> <@&{0}>",
+                "inline": false
             },
             "field2": {
                 "title": "Role ID",
-                "value": "{0}"
+                "value": "> {0}",
+                "inline": false
             },
             "field3": {
                 "title": "Role Color",
-                "value": "{1}"
+                "value": "> {1}",
+                "inline": false
             },
             "field4": {
                 "title": "Role Position",
-                "value": "{2}"
+                "value": "> {2}",
+                "inline": false
             },
             "field5": {
                 "title": "Hoisted?",
-                "value": "{3}"
+                "value": "> {3}",
+                "inline": false
             },
             "field6": {
                 "title": "Managed?",
-                "value": "{4}"
+                "value": "> {4}",
+                "inline": false
             },
             "field7": {
                 "title": "Mentionable?",
-                "value": "{5}"
+                "value": "> {5}",
+                "inline": false
             },
             "field8": {
                 "title": "Permissions:",
@@ -160,27 +171,27 @@
         "member-info": {
             "field": {
                 "title": "Name",
-                "value": "<@{0}>",
+                "value": "> <@{0}>",
                 "inline": false
             },
             "field2": {
                 "title": "User ID",
-                "value": "{0}",
+                "value": "> {0}",
                 "inline": false
             },
             "field3": {
                 "title": "Username",
-                "value": "{1}",
+                "value": "> {1}",
                 "inline": false
             },
             "field4": {
                 "title": "Bot?",
-                "value": "{2}",
+                "value": "> {2}",
                 "inline": false
             },
             "field5": {
                 "title": "Joined At",
-                "value": "<t:{3}:f>",
+                "value": "> <t:{3}:f>",
                 "inline": false
             },
             "field6": {
@@ -192,27 +203,60 @@
         "server-info": {
             "field": {
                 "title": "Name",
-                "value": "{0}"
+                "value": "{0}",
+                "inline": false
             },
             "field2": {
                 "title": "Guild ID",
-                "value": "{1}"
+                "value": "{1}",
+                "inline": false
             },
             "field3": {
                 "title": "Guild Owner",
-                "value": "<@{2}>"
+                "value": "<@{2}>",
+                "inline": false
             },
             "field4": {
                 "title": "Member Count",
-                "value": "{3}"
+                "value": "{3}",
+                "inline": false
             },
             "field5": {
                 "title": "Role Count",
-                "value": "{5}"
+                "value": "{5}",
+                "inline": false
             },
             "field6": {
                 "title": "Language",
-                "value": "{4}"
+                "value": "{4}",
+                "inline": false
+            }
+        },
+        "channel-info": {
+            "field": {
+                "title": "Channel Name",
+                "value": "<#{0}>",
+                "inline": false
+            },
+            "field2": {
+                "title": "Channel ID",
+                "value": "{0}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Channel Position",
+                "value": "{2}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Channel Type",
+                "value": "{3}",
+                "inline": false
+            },
+            "field5": {
+                "title": "NSFW?",
+                "value": "{4}",
+                "inline": false
             }
         }
     },

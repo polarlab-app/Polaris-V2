@@ -24,7 +24,7 @@ module.exports = {
             const member = await interaction.options.get('member');
 
             const rolesArray = interaction.member.roles.cache;
-            const roles = rolesArray.map((role) => `<@&${role.id}>`).join('\n');
+            const roles = rolesArray.map((role) => `> <@&${role.id}>`).join('\n');
 
             const embed = await embedBuilder(
                 module.exports.name,
