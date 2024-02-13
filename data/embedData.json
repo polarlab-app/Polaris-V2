@@ -30,6 +30,7 @@
         "emojiUpdate": "Emoji Updated",
         "messageDelete": "Message Deleted",
         "emoji-info": "Emoji Info",
+        "role-info": "Role Info",
         "slots": "Slots Ran"
     },
     "descriptions": {
@@ -118,6 +119,36 @@
             "field4": {
                 "title": "Animated?",
                 "value": "{3}"
+            }
+        },
+        "role-info": {
+            "field": {
+                "title": "Role Name",
+                "value": "<@&{0}>"
+            },
+            "field2": {
+                "title": "Role ID",
+                "value": "{0}"
+            },
+            "field3": {
+                "title": "Role Color",
+                "value": "{1}"
+            },
+            "field4": {
+                "title": "Role Position",
+                "value": "{2}"
+            },
+            "field5": {
+                "title": "Hoisted",
+                "value": "{3}"
+            },
+            "field6": {
+                "title": "Managed",
+                "value": "{4}"
+            },
+            "field7": {
+                "title": "Mentionable",
+                "value": "{5}"
             }
         }
     },
