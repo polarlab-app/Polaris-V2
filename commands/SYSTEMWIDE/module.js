@@ -79,14 +79,14 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            if (interaction.user.id != interaction.guild.ownerId) {
+            /*if (interaction.user.id != interaction.guild.ownerId) {
                 await errorHandler({
                     interaction: interaction,
                     errorType: 'invalidPermissions',
                     commandName: module.exports.name,
                 });
                 return;
-            }
+            }*/
 
             const action = await interaction.options.get('action').value;
             const commandModule = await interaction.options.get('module').value;

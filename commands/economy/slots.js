@@ -27,7 +27,7 @@ module.exports = {
             const amount = interaction.options.get('amount').value;
 
             const user = await userData.findOne({ id: interaction.user.id });
-
+            let result;
             if (user.bank_balance >= amount) {
                 const number = await generateRandomNumber(1, 2);
 
@@ -38,6 +38,14 @@ module.exports = {
                     user.bank_balance += amount;
                     await user.save();
                 }
+
+                switch (number) {
+                    case 1:
+                        result = 'lost';
+                        break;
+                    default:
+                        result = 'earned';
+                }
             } else {
                 await errorHandler({
                     interaction: interaction,
@@ -46,7 +54,7 @@ module.exports = {
                 });
             }
 
-            const embed = await embedBuilder('slots', `${module.exports.module}`, [amount]);
+            const embed = await embedBuilder(`${module.exports.name}`, `${module.exports.module}`, [amount]);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,

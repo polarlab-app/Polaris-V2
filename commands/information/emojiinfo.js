@@ -24,12 +24,22 @@ module.exports = {
             const name = await interaction.options.get('name').value;
             const emoji = interaction.guild.emojis.cache.find((e) => e.name == name);
 
-            const embed = await embedBuilder({
-                embedType: module.exports.name,
-                module: module.exports.module,
-                props: [emoji.name, emoji.id, emoji.author, emoji.animated],
-                thumbnail: emoji.imageURL(),
-            });
+            if (!emoji) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'generic',
+                    commandName: module.exports.name,
+                    error: error,
+                });
+            }
+
+            const embed = await embedBuilder(
+                module.exports.name,
+                module.exports.module,
+                [emoji.name, emoji.id, emoji.author, emoji.animated],
+                undefined,
+                emoji.imageURL()
+            );
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
