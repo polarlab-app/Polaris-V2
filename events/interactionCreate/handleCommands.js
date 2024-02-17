@@ -11,11 +11,13 @@ const dev = process.env.DEVELOPER_ID;
 
 module.exports = async (polaris, interaction) => {
     await interaction.deferReply();
+
     await consoleLogHandler({
         interaction: interaction,
         errorType: 'commandRan',
         commandName: await interaction.commandName,
     });
+
     if (interaction.isChatInputCommand()) {
         const localCommands = getLocalCommands();
         try {
