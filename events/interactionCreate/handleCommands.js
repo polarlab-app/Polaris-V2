@@ -4,12 +4,18 @@ const getLocalCommands = require('../../utilities/getLocalCommands');
 const getLocalButtons = require('../../utilities/getLocalButtons');
 
 const errorHandler = require('../../handlers/errorHandler');
+const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const { modules } = require('../../config.json');
 
 const dev = process.env.DEVELOPER_ID;
 
 module.exports = async (polaris, interaction) => {
     await interaction.deferReply();
+    await consoleLogHandler({
+        interaction: interaction,
+        errorType: 'commandRan',
+        commandName: await interaction.commandName,
+    });
     if (interaction.isChatInputCommand()) {
         const localCommands = getLocalCommands();
         try {
@@ -21,7 +27,7 @@ module.exports = async (polaris, interaction) => {
                     await errorHandler({
                         errorType: 'devOnly',
                         interaction: interaction,
-                        commandName: interaction.customId,
+                        commandName: interaction.commandName,
                     });
                     return;
                 }
@@ -33,7 +39,7 @@ module.exports = async (polaris, interaction) => {
                         await errorHandler({
                             errorType: 'invalidPermissions',
                             interaction: interaction,
-                            commandName: interaction.customId,
+                            commandName: interaction.commandName,
                         });
                         return;
                     }
@@ -48,7 +54,7 @@ module.exports = async (polaris, interaction) => {
                         await errorHandler({
                             errorType: 'invalidBotPermissions',
                             interaction: interaction,
-                            commandName: interaction.customId,
+                            commandName: interaction.commandName,
                         });
                         return;
                     }
@@ -60,14 +66,14 @@ module.exports = async (polaris, interaction) => {
                     await errorHandler({
                         errorType: 'systemDisabled',
                         interaction: interaction,
-                        commandName: interaction.customId,
+                        commandName: interaction.commandName,
                     });
                     return;
                 } catch (error) {
                     await errorHandler({
                         errorType: 'generic',
                         interaction: interaction,
-                        commandName: interaction.customId,
+                        commandName: interaction.commandName,
                         error: error,
                     });
                     return;
@@ -79,7 +85,7 @@ module.exports = async (polaris, interaction) => {
             await errorHandler({
                 errorType: 'generic',
                 interaction: interaction,
-                commandName: interaction.customId,
+                commandName: interaction.commandName,
                 error: error,
             });
         }

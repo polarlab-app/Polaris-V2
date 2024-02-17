@@ -139,7 +139,7 @@ module.exports = {
                 }
             }
 
-            const embed = await successEmbedBuilder(action, commandModule);
+            const embed = await successEmbedBuilder(action, [commandModule]);
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,
