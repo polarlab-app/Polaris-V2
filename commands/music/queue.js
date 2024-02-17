@@ -22,9 +22,9 @@ module.exports = {
                 });
                 return;
             }
-            const queue = await polaris.moon.getQueue(interaction.guild.id);
-
-            if (!queue) {
+            const tracks = await polaris.moon.queue.all();
+            console.log(tracks);
+            if (!tracks) {
                 await errorHandler({
                     interaction: interaction,
                     errorType: 'missingPlayer',
@@ -33,8 +33,8 @@ module.exports = {
                 return;
             }
 
-            const tracks = await queue.tracks.toArray().slice(0, 3);
-            const trackNames = await tracks.map((track) => track.title);
+            //const tracks = await queue.tracks.toArray().slice(0, 3);
+            //const trackNames = await tracks.map((track) => track.title);
 
             const embed = await embedBuilder('queue', module.exports.module, trackNames);
             await interaction.editReply({ embeds: [embed] });

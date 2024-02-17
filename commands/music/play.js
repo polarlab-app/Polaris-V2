@@ -14,6 +14,22 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             required: true,
         },
+        {
+            name: 'source',
+            description: 'The source where to find the song',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+            choices: [
+                {
+                    name: 'Youtube',
+                    value: 'ytsearch:',
+                },
+                {
+                    name: 'Spotify',
+                    value: 'spsearch:',
+                },
+            ],
+        },
     ],
 
     module: 'music',
@@ -24,6 +40,7 @@ module.exports = {
     callback: async (polaris, interaction) => {
         try {
             const song = await interaction.options.get('song').value;
+            const source = await interaction.options.get('source').value;
 
             const vc = await interaction.member.voice.channel;
             if (!vc) {
@@ -57,7 +74,7 @@ module.exports = {
                 }
 
                 let res = await polaris.moon.search({
-                    query: song,
+                    query: `${source}${song}`,
                     source: 'youtube',
                     requester: [],
                 });
