@@ -32,8 +32,14 @@ module.exports = {
                 roleIcon = `https://cdn.discordapp.com/icons/${role.role.guild.id}/${role.role.guild.icon}`;
             }
 
+            let permissions;
+
             const permissionsArray = role.role.permissions.toArray();
-            const permissions = permissionsArray.map((permission) => `> **${permission}**`).join('\n');
+            if (permissionsArray.length !== 0) {
+                permissions = permissionsArray.map((permission) => `> **${permission}**`).join('\n');
+            } else {
+                permissions = 'none';
+            }
 
             const embed = await embedBuilder(
                 module.exports.name,
@@ -50,6 +56,7 @@ module.exports = {
                 undefined,
                 roleIcon
             );
+
             await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 interaction: interaction,

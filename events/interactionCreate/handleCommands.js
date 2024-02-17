@@ -92,9 +92,10 @@ module.exports = async (polaris, interaction) => {
 
             if (buttonObject.devOnly) {
                 if (!dev == interaction.member.id) {
-                    interaction.reply({
-                        embeds: [dev_only],
-                        ephemeral: true,
+                    await errorHandler({
+                        errorType: 'devOnly',
+                        interaction: interaction,
+                        commandName: interaction.customId,
                     });
                     return;
                 }
@@ -103,9 +104,10 @@ module.exports = async (polaris, interaction) => {
             if (buttonObject.permissionsRequired?.length) {
                 for (const permission of buttonObject.permissionsRequired) {
                     if (!interaction.member.permissions.has(permission)) {
-                        interaction.reply({
-                            embeds: [invalid_permissions],
-                            ephemeral: true,
+                        await errorHandler({
+                            errorType: 'invalidPermissions',
+                            interaction: interaction,
+                            commandName: interaction.customId,
                         });
                         return;
                     }
@@ -117,9 +119,10 @@ module.exports = async (polaris, interaction) => {
                     const bot = interaction.guild.members.me;
 
                     if (!bot.permissions.has(permission)) {
-                        interaction.reply({
-                            embeds: [invalid_bot_permissions],
-                            ephemeral: true,
+                        await errorHandler({
+                            errorType: 'invalidBotPermissions',
+                            interaction: interaction,
+                            commandName: interaction.customId,
                         });
                         return;
                     }
