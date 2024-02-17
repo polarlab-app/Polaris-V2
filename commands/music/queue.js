@@ -1,6 +1,5 @@
 const { PermissionFlagsBits } = require('discord.js');
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 module.exports = {
@@ -38,11 +37,6 @@ module.exports = {
 
             const embed = await embedBuilder('queue', module.exports.module, trackNames);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

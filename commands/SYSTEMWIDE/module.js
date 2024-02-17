@@ -1,7 +1,6 @@
 const { ApplicationCommandOptionType, CommandInteractionOptionResolver } = require('discord.js');
 const errorHandler = require('../../handlers/errorHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 
 const getGuildCommands = require('../../utilities/getGuildCommands');
 const getModuleCommands = require('../../utilities/getModuleCommands');
@@ -141,11 +140,6 @@ module.exports = {
 
             const embed = await successEmbedBuilder(action, [commandModule]);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

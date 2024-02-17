@@ -1,7 +1,6 @@
 const { PermissionFlagsBits, ApplicationCommandOptionType } = require('discord.js');
 
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 module.exports = {
@@ -107,11 +106,6 @@ module.exports = {
                     res.tracks[0].author,
                 ]);
                 await interaction.editReply({ embeds: [embed] });
-                await consoleLogHandler({
-                    interaction: interaction,
-                    commandName: module.exports.name,
-                    errorType: 'commandRan',
-                });
             }
         } catch (error) {
             await errorHandler({

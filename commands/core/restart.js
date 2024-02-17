@@ -6,24 +6,19 @@ module.exports = {
     name: 'restart',
     description: 'Restarts the bot',
     module: 'core',
-    
+
     permissionsRequired: [],
     botPermissions: [],
     devOnly: true,
 
     callback: async (polaris, interaction) => {
         try {
-            const embed = await successEmbedBuilder('reboot')
-            await interaction.editReply({embeds: [embed]})
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
+            const embed = await successEmbedBuilder('reboot');
+            await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 errorType: 'restart',
             });
-            process.exit()
+            process.exit();
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

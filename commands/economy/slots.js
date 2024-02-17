@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 const generateRandomNumber = require('../../utilities/generateRandomNumber');
@@ -56,11 +55,6 @@ module.exports = {
 
             const embed = await embedBuilder(`${module.exports.name}`, `${module.exports.module}`, [amount, result]);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,
