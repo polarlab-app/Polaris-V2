@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
@@ -14,7 +13,6 @@ module.exports = {
             required: true,
             type: ApplicationCommandOptionType.String,
         },
-
     ],
     module: 'utilities',
 
@@ -30,17 +28,12 @@ module.exports = {
                         interaction.options.get('poll').value,
                     ]);
                     const message = await channel.send({ embeds: [embed] });
-                    await message.react('<:ThumbsUp:1191755148242997309>')
-                    await message.react('<:ThumbsDown:1191754994400112690>')
+                    await message.react('<:ThumbsUp:1191755148242997309>');
+                    await message.react('<:ThumbsDown:1191754994400112690>');
 
                     const successEmbed = await successEmbedBuilder(module.exports.name, channel.id);
                     await interaction.editReply({ embeds: [successEmbed] });
                 }
-            });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
             });
         } catch (error) {
             await errorHandler({

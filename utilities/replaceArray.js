@@ -3,4 +3,4 @@ module.exports = (description, props) => {
         return typeof props[number] != 'undefined' ? props[number] : 'none';
     });
     return newDesc;
-}
+};

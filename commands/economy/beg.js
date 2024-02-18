@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 const generateRandomNumber = require('../../utilities/generateRandomNumber');
@@ -18,22 +17,15 @@ module.exports = {
             const loot = await generateRandomNumber(1, 1200);
 
             const user = await userData.findOneAndUpdate(
-                { id:interaction.user.id },
-                { $inc: { purse_balance: loot} },
-                { new: true,
-                  upsert: true,
-                }
+                { id: interaction.user.id },
+                { $inc: { purse_balance: loot } },
+                { new: true, upsert: true }
             );
 
             await user.save();
 
             const embed = await embedBuilder('beg', `${module.exports.module}`, [loot, user.purse_balance]);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

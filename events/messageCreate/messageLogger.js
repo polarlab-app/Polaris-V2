@@ -1,11 +1,12 @@
-const messageLogs = require('../../schemas/messageLogger')
+const messageLogs = require('../../schemas/messageLogger');
 
 module.exports = async (polaris, message) => {
-    if(message.author.bot) {
+    if (message.author.bot) {
         return;
     }
     await messageLogs.create({
         id: message.id,
-        content: message.content
-    })
-}
+        userId: message.author.id,
+        content: message.content,
+    });
+};

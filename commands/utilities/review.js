@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { ApplicationCommandOptionType } = require('discord.js');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
@@ -75,15 +74,8 @@ module.exports = {
                     await message.react('<:ThumbsDown:1191754994400112690>');
                 }
             });
-            const successEmbed = await successEmbedBuilder(
-                module.exports.name
-            );
+            const successEmbed = await successEmbedBuilder(module.exports.name);
             await interaction.editReply({ embeds: [successEmbed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

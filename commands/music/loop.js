@@ -1,7 +1,6 @@
 const { PermissionFlagsBits, ApplicationCommandOptionType } = require('discord.js');
 
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 module.exports = {
@@ -46,17 +45,22 @@ module.exports = {
                 return;
             }
             const player = await polaris.moon.players.get(interaction.guild.id);
+
+            if (!player) {
+                await errorHandler({
+                    interaction: interaction,
+                    errorType: 'missingPlayer',
+                    commandName: module.exports.name,
+                });
+                return;
+            }
+
             const loopMode = await interaction.options.get('type').value;
 
-            await player.setLoop(loopMode)
+            await player.setLoop(loopMode);
 
             const embed = await successEmbedBuilder('pause');
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

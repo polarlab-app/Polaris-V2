@@ -21,7 +21,18 @@
         "buy": "Item Bought",
         "help": "Help Command",
         "channelCreate": "Channel Created",
-        "channelDelete": "Channel Deleted"
+        "channelDelete": "Channel Deleted",
+        "roleCreate": "Role Created",
+        "roleDelete": "Role Deleted",
+        "guildBanAdd": "Member Banned",
+        "emojiCreate": "Emoji Created",
+        "emojiDelete": "Emoji Deleted",
+        "emojiUpdate": "Emoji Updated",
+        "messageDelete": "Message Deleted",
+        "emoji-info": "Emoji Info",
+        "role-info": "Role Info",
+        "member-info": "Member Info",
+        "slots": "Slots Ran"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -46,7 +57,15 @@
         "sell": "You have successfully sold 1 {0} for 💴 **{2}**! You now have **{1}** in your inventory!",
         "help": "The help command",
         "channelCreate": "*A channel was just created by <@{0}>*\n\n> **Channel Name: <#{1}>**\n> **Channel ID:** *{1}*",
-        "channelDelete": "*A channel was just deleted by <@{0}>*\n\n> **Channel Name:** *{1}*\n> **Channel ID:** *{2}*"
+        "channelDelete": "*A channel was just deleted by <@{0}>*\n\n> **Channel Name:** *{1}*\n> **Channel ID:** *{2}*",
+        "roleCreate": "*A role was just created by <@{0}>*\n\n> **Role Name:** *<@&{2}>*\n> **Role ID:** *{2}*",
+        "roleDelete": "*A role was just deleted by <@{0}>*\n\n> **Role Name:** *{1}*\n> **Role ID:** *{2}*",
+        "guildBanAdd": "Test {0}",
+        "emojiCreate": "*An emoji was just created by <@{0}>*\n\n> **Emoji Name:** *<:{1}:{2}>*\n> **Emoji ID:** *{2}*",
+        "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
+        "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*",
+        "messageDelete": "*A message was just deleted by <@{0}> or the original author*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*",
+        "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!"
     },
     "fields": {
         "review": {
@@ -84,11 +103,172 @@
                 "title": "/test",
                 "value": "A testing command"
             }
+        },
+        "emoji-info": {
+            "field": {
+                "title": "Emoji Name",
+                "value": "{0}",
+                "inline": false
+            },
+            "field2": {
+                "title": "Emoji ID",
+                "value": "{1}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Emoji Author",
+                "value": "{2}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Animated?",
+                "value": "{3}",
+                "inline": false
+            }
+        },
+        "role-info": {
+            "field": {
+                "title": "Role Name",
+                "value": "> <@&{0}>",
+                "inline": false
+            },
+            "field2": {
+                "title": "Role ID",
+                "value": "> {0}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Role Color",
+                "value": "> {1}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Role Position",
+                "value": "> {2}",
+                "inline": false
+            },
+            "field5": {
+                "title": "Hoisted?",
+                "value": "> {3}",
+                "inline": false
+            },
+            "field6": {
+                "title": "Managed?",
+                "value": "> {4}",
+                "inline": false
+            },
+            "field7": {
+                "title": "Mentionable?",
+                "value": "> {5}",
+                "inline": false
+            },
+            "field8": {
+                "title": "Permissions:",
+                "value": "{6}",
+                "inline": false
+            }
+        },
+        "member-info": {
+            "field": {
+                "title": "Name",
+                "value": "> <@{0}>",
+                "inline": false
+            },
+            "field2": {
+                "title": "User ID",
+                "value": "> {0}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Username",
+                "value": "> {1}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Bot?",
+                "value": "> {2}",
+                "inline": false
+            },
+            "field5": {
+                "title": "Joined At",
+                "value": "> <t:{3}:f>",
+                "inline": false
+            },
+            "field6": {
+                "title": "Roles:",
+                "value": "{4}",
+                "inline": false
+            }
+        },
+        "server-info": {
+            "field": {
+                "title": "Name",
+                "value": "{0}",
+                "inline": false
+            },
+            "field2": {
+                "title": "Guild ID",
+                "value": "{1}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Guild Owner",
+                "value": "<@{2}>",
+                "inline": false
+            },
+            "field4": {
+                "title": "Member Count",
+                "value": "{3}",
+                "inline": false
+            },
+            "field5": {
+                "title": "Role Count",
+                "value": "{5}",
+                "inline": false
+            },
+            "field6": {
+                "title": "Language",
+                "value": "{4}",
+                "inline": false
+            }
+        },
+        "channel-info": {
+            "field": {
+                "title": "Channel Name",
+                "value": "<#{0}>",
+                "inline": false
+            },
+            "field2": {
+                "title": "Channel ID",
+                "value": "{0}",
+                "inline": false
+            },
+            "field3": {
+                "title": "Channel Position",
+                "value": "{2}",
+                "inline": false
+            },
+            "field4": {
+                "title": "Channel Type",
+                "value": "{3}",
+                "inline": false
+            },
+            "field5": {
+                "title": "NSFW?",
+                "value": "{4}",
+                "inline": false
+            }
         }
     },
     "timestamps": {
         "channelCreate": "true",
-        "channelDelete": "true"
+        "channelDelete": "true",
+        "roleCreate": "true",
+        "roleDelete": "true",
+        "emojiCreate": "true",
+        "emojiDelete": "true",
+        "emojiUpdate": "true",
+        "messageDelete": "true"
     },
     "footers": {
         "core": {
@@ -106,6 +286,10 @@
         "utilities": {
             "text": "Utility Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/utilities.png"
+        },
+        "information": {
+            "text": "Information Module!",
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/information.png"
         },
         "moderation": {
             "text": "Moderation Module!",

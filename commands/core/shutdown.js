@@ -6,24 +6,19 @@ module.exports = {
     name: 'shutdown',
     description: 'Shutdowns the bot',
     module: 'core',
-    
+
     permissionsRequired: [],
     botPermissions: [],
     devOnly: true,
 
     callback: async (polaris, interaction) => {
         try {
-            const embed = await successEmbedBuilder('shutdown')
-            await interaction.editReply({embeds: [embed]})
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
+            const embed = await successEmbedBuilder('shutdown');
+            await interaction.editReply({ embeds: [embed] });
             await consoleLogHandler({
                 errorType: 'shutdown',
             });
-            process.exit()
+            process.exit();
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

@@ -1,8 +1,7 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
-const userData = require('../../schemas/userData')
+const userData = require('../../schemas/userData');
 const economy = require('../../schemas/economy');
 const { ApplicationCommandOptionType } = require('discord.js');
 
@@ -18,40 +17,33 @@ module.exports = {
             choices: [
                 {
                     name: 'test',
-                    value: 'test'
-                }
-            ]
-        }
+                    value: 'test',
+                },
+            ],
+        },
     ],
     module: 'economy',
-    
+
     permissionsRequired: [],
     botPermissions: [],
 
     callback: async (polaris, interaction) => {
         try {
-            const user = await userData.findOne({id: interaction.user.id})
+            const user = await userData.findOne({ id: interaction.user.id });
 
-            if(!user.job) {
-                await errorHandler({})
+            if (!user.job) {
+                await errorHandler({});
                 return;
             }
 
-            const jobs = await economy.findOne({name: 'jobs'})
-            const job = await jobs.array.find(job => job.name === user.job)
+            const jobs = await economy.findOne({ name: 'jobs' });
+            const job = await jobs.array.find((job) => job.name === user.job);
 
-            const pay = await job.properties.find(property => property.name === "pay").value
-            const req = await job.properties.find(property => property.name === "requirement").value
-
-
+            const pay = await job.properties.find((property) => property.name === 'pay').value;
+            const req = await job.properties.find((property) => property.name === 'requirement').value;
 
             /* const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({embeds: [embed]}) */
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

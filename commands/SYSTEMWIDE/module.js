@@ -1,7 +1,6 @@
 const { ApplicationCommandOptionType, CommandInteractionOptionResolver } = require('discord.js');
 const errorHandler = require('../../handlers/errorHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 
 const getGuildCommands = require('../../utilities/getGuildCommands');
 const getModuleCommands = require('../../utilities/getModuleCommands');
@@ -67,8 +66,8 @@ module.exports = {
                 },
                 {
                     name: 'Support',
-                    value: 'support'
-                }
+                    value: 'support',
+                },
             ],
         },
     ],
@@ -79,13 +78,14 @@ module.exports = {
 
     callback: async (polaris, interaction) => {
         try {
-            if (interaction.user.id != interaction.guild.ownerId) {
+            /*if (interaction.user.id != interaction.guild.ownerId) {
                 await errorHandler({
                     interaction: interaction,
                     errorType: 'invalidPermissions',
                     commandName: module.exports.name,
                 });
-            }
+                return;
+            }*/
 
             const action = await interaction.options.get('action').value;
             const commandModule = await interaction.options.get('module').value;
@@ -138,13 +138,8 @@ module.exports = {
                 }
             }
 
-            const embed = await successEmbedBuilder(action, commandModule);
+            const embed = await successEmbedBuilder(action, [commandModule]);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

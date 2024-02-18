@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 const getRandomLoot = require('../../utilities/getRandomLoot');
@@ -46,11 +45,6 @@ module.exports = {
 
             const embed = await embedBuilder('fish', `${module.exports.module}`, [lootItem]);
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,

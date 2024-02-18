@@ -1,5 +1,4 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 const { ApplicationCommandOptionType } = require('discord.js');
@@ -11,7 +10,7 @@ module.exports = {
     options: [
         {
             name: 'user',
-            description: 'The user whos balance to get',
+            description: 'The user whose balance to get',
             required: false,
             type: ApplicationCommandOptionType.Mentionable,
         },
@@ -31,20 +30,20 @@ module.exports = {
                 if (option) {
                     member = await userData.findOne({ id: option.value });
                     user = option.value;
-                    username = option.value.username
+                    username = option.value.username;
                 } else {
                     member = await userData.findOne({ id: interaction.user.id });
                     user = interaction.user.id;
-                    username = interaction.user.username
+                    username = interaction.user.username;
                 }
             } finally {
-                const embed = await embedBuilder(module.exports.name, module.exports.module, [member.purse_balance, member.bank_balance, user, username]);
+                const embed = await embedBuilder(module.exports.name, module.exports.module, [
+                    member.purse_balance,
+                    member.bank_balance,
+                    user,
+                    username,
+                ]);
                 await interaction.editReply({ embeds: [embed] });
-                await consoleLogHandler({
-                    interaction: interaction,
-                    commandName: module.exports.name,
-                    errorType: 'commandRan',
-                });
             }
         } catch (error) {
             await errorHandler({

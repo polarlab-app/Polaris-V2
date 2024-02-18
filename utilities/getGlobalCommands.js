@@ -1,27 +1,24 @@
-const path = require("path");
-const getAllFiles = require("./getAllFiles");
+const path = require('path');
+const getAllFiles = require('./getAllFiles');
 
 module.exports = (exceptions = []) => {
-  let globalCommands = [];
+    let globalCommands = [];
 
-  const commandCategories = getAllFiles(
-    path.join(__dirname, "..", "globalCommands"),
-    true
-  );
+    const commandCategories = getAllFiles(path.join(__dirname, '..', 'globalCommands'), true);
 
-  for (const commandCategory of commandCategories) {
-    const commandFiles = getAllFiles(commandCategory);
+    for (const commandCategory of commandCategories) {
+        const commandFiles = getAllFiles(commandCategory);
 
-    for (const commandFile of commandFiles) {
-      const commandObject = require(commandFile);
+        for (const commandFile of commandFiles) {
+            const commandObject = require(commandFile);
 
-      if (exceptions.includes(commandObject.name)) {
-        continue;
-      }
+            if (exceptions.includes(commandObject.name)) {
+                continue;
+            }
 
-      globalCommands.push(commandObject);
+            globalCommands.push(commandObject);
+        }
     }
-  }
 
-  return globalCommands;
+    return globalCommands;
 };

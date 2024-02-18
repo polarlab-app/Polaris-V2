@@ -1,7 +1,6 @@
 const errorHandler = require('../../handlers/errorHandler');
-const consoleLogHandler = require('../../handlers/consoleLogHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder } = require('discord.js');
 
 const userData = require('../../schemas/userData');
 
@@ -16,21 +15,14 @@ module.exports = {
     callback: async (polaris, interaction) => {
         try {
             const user = await userData.findOne({ id: interaction.user.id });
-            const embed = new EmbedBuilder()
-                .setTitle(` Inventory`)
-                .setDescription(`Here are your items:`);
+            const embed = new EmbedBuilder().setTitle(` Inventory`).setDescription(`Here are your items:`);
 
             for (let i = 0; i < user.inventory.length; i++) {
                 const item = user.inventory[i];
-                await embed.addFields({name: `Item ${i + 1}: ${item.item}`, value: `Quantity: ${item.amount}`});
+                await embed.addFields({ name: `Item ${i + 1}: ${item.item}`, value: `Quantity: ${item.amount}` });
             }
             // const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({ embeds: [embed] });
-            await consoleLogHandler({
-                interaction: interaction,
-                commandName: module.exports.name,
-                errorType: 'commandRan',
-            });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,
