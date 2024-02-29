@@ -3,7 +3,10 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, role) => {
-    await console.log(role.guild.id);
+    if (role.managed) {
+        return;
+    }
+
     const guild = await guildData.findOne({ id: role.guild.id });
     if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
         return;

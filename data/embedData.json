@@ -1,4 +1,5 @@
 {
+    "colors": {},
     "titles": {
         "ping": "Current Bot Ping",
         "uptime": "Bot Uptime",
@@ -32,7 +33,8 @@
         "emoji-info": "Emoji Info",
         "role-info": "Role Info",
         "member-info": "Member Info",
-        "slots": "Slots Ran"
+        "slots": "Slots Ran",
+        "warn": "{5} has been warned"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -258,6 +260,29 @@
                 "value": "{4}",
                 "inline": false
             }
+        },
+        "warn": {
+            "field1": {
+                "title": "Warn ID:",
+                "value": "**{4}**"
+            },
+            "field2": {
+                "title": "Member:",
+                "value": "<@{0}>"
+            },
+            "field3": {
+                "title": "Moderator",
+                "value": "<@{1}>"
+            },
+            "field4": {
+                "title": "Date:",
+                "value": "<t:{3}:f>"
+            },
+            "field5": {
+                "title": "Reason:",
+                "value": "{2}",
+                "inline": false
+            }
         }
     },
     "timestamps": {
@@ -342,6 +367,7 @@
         "suggest": "<:green_check:1149766467450044426> **You have successfully made a suggestion!**",
         "review": "<:green_check:1149766467450044426> **You have successfully submitted a review!**",
         "modmail": "<:green_check:1149766467450044426> **You have successfully sent mail to the moderation team!**",
-        "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**"
+        "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**",
+        "clear-warns": "<:green_check:1149766467450044426> **{0}'s warns have been successfully cleared!**"
     }
 }
