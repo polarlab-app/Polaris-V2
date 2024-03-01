@@ -1,54 +1,43 @@
 const errorHandler = require('../../handlers/errorHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
-const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
 
 const memberData = require('../../schemas/memberData');
+const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
-    name: 'warn',
-    description: 'Warns a member',
+    name: 'warns',
+    description: 'Displays a users warns',
     options: [
         {
             name: 'user',
-            description: 'The user to warn',
-            type: ApplicationCommandOptionType.User,
-            required: true,
-        },
-        {
-            name: 'reason',
-            description: 'The reason for warning the member',
-            type: ApplicationCommandOptionType.String,
+            description: 'The user whose warns to display',
+            type: ApplicationCommandOptionType.Mentionable,
             required: true,
         },
     ],
     module: 'moderation',
 
-    permissionsRequired: [PermissionFlagsBits.ChangeNickname],
+    permissionsRequired: [],
     botPermissions: [],
 
     callback: async (polaris, interaction) => {
         try {
             const user = await interaction.options.get('user');
-            const reason = await interaction.options.get('reason').value;
-
-            let key;
 
             const memberDb = await memberData.findOne({ id: `${interaction.guild.id}${user.value}` });
-            key = await Math.random().toString(16).substr(2, 12);
+            const warns = memberDb.warns;
 
-            if (await memberData.findOne({ warns: [{ id: key }] })) {
-                key = await Math.random().toString(16).substr(14);
-            }
+            const formattedWarns = await warns
+                .map(
+                    (warn) =>
+                        `> **ID:** ${warn.id}\n> **Reason:** *${warn.reason}*\n> **Moderator:** <@${warn.moderatorId}>\n`
+                )
+                .join('\n');
 
-            const newWarn = { id: key, reason: reason, moderatorId: interaction.user.id };
-            memberDb.warns.push(newWarn);
-            await memberDb.save();
-
-            const tcode = Math.floor(Date.now() / 1000);
             const embed = await embedBuilder(
                 module.exports.name,
                 module.exports.module,
-                [user.value, interaction.user.id, reason, tcode, key, user.user.username],
+                [user.user.username, formattedWarns],
                 undefined,
                 `https://cdn.discordapp.com/avatars/${user.value}/${user.user.avatar}.png`
             );
