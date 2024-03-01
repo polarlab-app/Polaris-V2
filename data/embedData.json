@@ -31,6 +31,7 @@
         "emojiUpdate": "Emoji Updated",
         "messageDelete": "Message Deleted",
         "guildMemberAdd": "Member Joined",
+        "guildMemberRemove": "Member Left",
         "emoji-info": "Emoji Info",
         "role-info": "Role Info",
         "member-info": "Member Info",
@@ -69,7 +70,8 @@
         "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
         "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*",
         "messageDelete": "*A message was just deleted by <@{0}> or the original author*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*",
-        "guildMemberAdd": "*A member has just joined the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Date Created:** <t:{1}:D>",
+        "guildMemberAdd": "*A new member has just joined the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Date Created:** <t:{1}:D>",
+        "guildMemberRemove": "*A member has just left the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Roles:**\n {1}",
         "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!",
         "warns": "{1}"
     },
@@ -298,7 +300,8 @@
         "emojiDelete": "true",
         "emojiUpdate": "true",
         "messageDelete": "true",
-        "guildMemberAdd": "true"
+        "guildMemberAdd": "true",
+        "guildMemberRemove": "true"
     },
     "footers": {
         "core": {

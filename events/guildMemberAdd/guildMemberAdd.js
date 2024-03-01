@@ -16,10 +16,13 @@ module.exports = async (polaris, member) => {
                 channelSend = await member.guild.channels.cache.find((c) => c.topic == 'pmemberlogs');
             }
 
-            const embed = await embedBuilder('guildMemberAdd', 'logs', [
-                member.user.id,
-                member.joinedTimestamp.toString().slice(0, 10),
-            ]);
+            const embed = await embedBuilder(
+                'guildMemberAdd',
+                'logs',
+                [member.user.id, member.joinedTimestamp.toString().slice(0, 10)],
+                undefined,
+                `https://cdn.discordapp.com/avatars/${member.user.id}/${member.user.avatar}.png`
+            );
             await channelSend.send({ embeds: [embed] });
         }
     } catch (error) {
