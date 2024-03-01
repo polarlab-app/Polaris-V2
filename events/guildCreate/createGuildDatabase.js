@@ -36,7 +36,7 @@ module.exports = async (polaris, guild) => {
                     },
                     {
                         name: 'channelId',
-                        value: '1103718172877660230',
+                        value: '0',
                     },
                 ],
                 serverLogs: [
@@ -44,17 +44,29 @@ module.exports = async (polaris, guild) => {
                         name: 'status',
                         value: 'enabled',
                     },
+                    {
+                        name: 'channelId',
+                        value: '0',
+                    },
                 ],
                 roleLogs: [
                     {
                         name: 'status',
                         value: 'enabled',
                     },
+                    {
+                        name: 'channelId',
+                        value: '0',
+                    },
                 ],
                 memberLogs: [
                     {
                         name: 'status',
                         value: 'enabled',
+                    },
+                    {
+                        name: 'channelId',
+                        value: '0',
                     },
                 ],
             },

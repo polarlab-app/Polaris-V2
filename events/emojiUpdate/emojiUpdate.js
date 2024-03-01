@@ -3,8 +3,6 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, oldEmoji, newEmoji) => {
-    console.log(oldEmoji);
-    console.log(newEmoji);
     const guild = await guildData.findOne({ id: oldEmoji.guild.id });
     if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
         return;

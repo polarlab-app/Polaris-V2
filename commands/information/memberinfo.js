@@ -28,7 +28,13 @@ module.exports = {
             const embed = await embedBuilder(
                 module.exports.name,
                 module.exports.module,
-                [member.value, member.user.username, member.user.bot, member.member.joinedTimestamp, roles],
+                [
+                    member.value,
+                    member.user.username,
+                    member.user.bot,
+                    member.member.joinedTimestamp.toString().slice(0, 10),
+                    roles,
+                ],
                 undefined,
                 `https://cdn.discordapp.com/avatars/${member.value}/${member.user.avatar}.png`
             );
