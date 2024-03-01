@@ -3,6 +3,7 @@ const errorHandler = require('../../handlers/errorHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
 const getApplicationCommands = require('../../utilities/getApplicationCommands');
+const getLocalCommands = require('../../utilities/getLocalCommands');
 const getModuleCommands = require('../../utilities/getModuleCommands');
 const areCommandsDifferent = require('../../utilities/areCommandsDifferent');
 
@@ -135,6 +136,14 @@ module.exports = {
                             commandName: module.exports.name,
                         });
                     }
+                }
+            }
+
+            const localCommands = await getLocalCommands();
+            for (const actualCommand of guildCommands.cache.values()) {
+                let containsCommand = localCommands.some((command) => command.name == actualCommand.name);
+                if (!containsCommand) {
+                    await guildCommands.delete(actualCommand.id);
                 }
             }
 
