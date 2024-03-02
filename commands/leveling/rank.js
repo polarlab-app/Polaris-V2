@@ -29,8 +29,8 @@ module.exports = {
                 const option = await interaction.options.get('user');
                 if (option) {
                     member = await memberData.findOne({ id: `${interaction.guild.id}${option.value}` });
-                    user = await option.value;
-                    username = await option.user.username;
+                    user = option.value;
+                    username = option.user.username;
                 } else {
                     member = await memberData.findOne({ id: `${interaction.guild.id}${interaction.user.id}` });
                     user = interaction.user.id;
