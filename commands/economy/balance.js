@@ -30,7 +30,7 @@ module.exports = {
                 if (option) {
                     member = await userData.findOne({ id: option.value });
                     user = option.value;
-                    username = option.value.username;
+                    username = option.user.username;
                 } else {
                     member = await userData.findOne({ id: interaction.user.id });
                     user = interaction.user.id;
