@@ -37,7 +37,8 @@
         "member-info": "Member Info",
         "slots": "Slots Ran",
         "warn": "{5} has been warned",
-        "warns": "{0}'s Warns"
+        "warns": "{0}'s Warns",
+        "verification": "Verify Yourself"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -73,7 +74,8 @@
         "guildMemberAdd": "*A new member has just joined the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Date Created:** <t:{1}:D>",
         "guildMemberRemove": "*A member has just left the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Roles:**\n {1}",
         "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!",
-        "warns": "{1}"
+        "warns": "{1}",
+        "verification": "Welcome to **{0}**, this server requires verification to check if you're human. Please click the button below!"
     },
     "fields": {
         "review": {
@@ -343,6 +345,10 @@
         "logs": {
             "text": "Logs Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
+        },
+        "setup": {
+            "text": "l",
+            "iconURL": "test"
         }
     },
     "errors": {
@@ -378,6 +384,7 @@
         "modmail": "<:green_check:1149766467450044426> **You have successfully sent mail to the moderation team!**",
         "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**",
         "clear-warns": "<:green_check:1149766467450044426> **{0}'s warns have been successfully cleared!**",
-        "remove-warn": "<:green_check:1149766467450044426> **You have successfully removed #{0} from {1}!**"
+        "remove-warn": "<:green_check:1149766467450044426> **You have successfully removed #{0} from {1}!**",
+        "verification": "<:green_check:1149766467450044426> **You have successfully setup Verification in <#{0}>!**"
     }
 }

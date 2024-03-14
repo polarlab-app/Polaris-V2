@@ -1,62 +1,32 @@
 const { Schema, model } = require('mongoose');
 
+const configItem = {
+    name: String,
+    value: String,
+};
+
 let guildData = new Schema(
     {
         id: String,
         name: String,
         icon: String,
         description: String,
-        data: [
-            {
-                name: String,
-                value: String,
-            },
-        ],
+        data: [configItem],
         config: {
-            general: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
+            general: [configItem],
             logs: {
-                channelLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                serverLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                roleLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                memberLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
+                channelLogs: [configItem],
+                serverLogs: [configItem],
+                roleLogs: [configItem],
+                memberLogs: [configItem],
+                messageLogs: [configItem],
             },
-            leveling: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
-            music: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
+            verification: {
+                roles: [Number],
+                channelId: String,
+            },
+            leveling: [configItem],
+            music: [configItem],
         },
     },
     {
