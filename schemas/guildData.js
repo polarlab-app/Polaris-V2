@@ -22,7 +22,7 @@ let guildData = new Schema(
                 messageLogs: [configItem],
             },
             verification: {
-                roles: [Number],
+                roles: [String],
                 channelId: String,
             },
             leveling: [configItem],

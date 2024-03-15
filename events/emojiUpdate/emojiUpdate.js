@@ -4,17 +4,17 @@ const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, oldEmoji, newEmoji) => {
     const guild = await guildData.findOne({ id: oldEmoji.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if ((await guild.config.logs.emojiLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
         return;
     }
 
     let channelSend;
-    if (guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value) {
+    if (guild.config.logs.emojiLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
         channelSend = oldEmoji.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value
+            (c) => c.id == guild.config.logs.emojiLogs.find((cfg) => cfg.name == 'channelId').value
         );
     } else {
-        channelSend = oldEmoji.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+        channelSend = oldEmoji.guild.channels.cache.find((c) => c.topic == 'pemojilogs');
     }
 
     const auditLogs = await oldEmoji.guild.fetchAuditLogs({ type: AuditLogEvent.EmojiUpdate, limit: 2 });

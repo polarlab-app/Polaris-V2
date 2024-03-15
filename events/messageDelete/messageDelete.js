@@ -4,17 +4,17 @@ const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, message) => {
     const guild = await guildData.findOne({ id: message.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if ((await guild.config.logs.messageLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
         return;
     }
 
     let channelSend;
-    if (guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value) {
+    if (guild.config.logs.messageLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
         channelSend = message.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value
+            (c) => c.id == guild.config.logs.messageLogs.find((cfg) => cfg.name == 'channelId').value
         );
     } else {
-        channelSend = message.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+        channelSend = message.guild.channels.cache.find((c) => c.topic == 'pmessagelogs');
     }
 
     const auditLogs = await message.guild.fetchAuditLogs({ type: AuditLogEvent.MessageDelete, limit: 1 });

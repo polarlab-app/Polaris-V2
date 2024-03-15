@@ -13,9 +13,9 @@ module.exports = async (polaris, role) => {
     }
 
     let channelSend;
-    if (guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value) {
+    if (guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
         channelSend = role.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value
+            (c) => c.id == guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value
         );
     } else {
         channelSend = role.guild.channels.cache.find((c) => c.topic == 'prolelogs');

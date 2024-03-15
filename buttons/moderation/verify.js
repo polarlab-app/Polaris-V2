@@ -15,7 +15,7 @@ module.exports = {
         try {
             const guild = await guildData.findOne({ id: interaction.guild.id });
             const verificationRoles = guild.config.verification.roles;
-
+            console.log(verificationRoles);
             for (const roleId of verificationRoles) {
                 let role = await interaction.guild.roles.cache.find((r) => r.id == roleId);
                 await interaction.member.roles.add(role).catch(console.error);
