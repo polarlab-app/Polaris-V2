@@ -10,8 +10,6 @@ const { modules } = require('../../config.json');
 const dev = process.env.DEVELOPER_ID;
 
 module.exports = async (polaris, interaction) => {
-    await interaction.deferReply();
-
     await consoleLogHandler({
         interaction: interaction,
         errorType: 'commandRan',
@@ -19,6 +17,8 @@ module.exports = async (polaris, interaction) => {
     });
 
     if (interaction.isChatInputCommand()) {
+        await interaction.deferReply();
+
         const localCommands = getLocalCommands();
         try {
             const commandObject = localCommands.find((cmd) => cmd.name === interaction.commandName);
@@ -92,6 +92,8 @@ module.exports = async (polaris, interaction) => {
             });
         }
     } else if (interaction.isButton()) {
+        await interaction.deferReply({ ephemeral: true });
+
         const localButtons = await getLocalButtons();
         try {
             const buttonObject = localButtons.find((btn) => btn.name === interaction.customId);
