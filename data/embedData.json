@@ -38,7 +38,8 @@
         "slots": "Slots Ran",
         "warn": "{5} has been warned",
         "warns": "{0}'s Warns",
-        "verification": "Verify Yourself"
+        "verification": "Verify Yourself",
+        "verify": "Verification Complete"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -75,7 +76,8 @@
         "guildMemberRemove": "*A member has just left the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Roles:**\n {1}",
         "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!",
         "warns": "{1}",
-        "verification": "Welcome to **{0}**, this server requires verification to check if you're human. Please click the button below!"
+        "verification": "Welcome to **{0}**, this server requires verification to check if you're human. Please click the button below!",
+        "verify": "Thanks for completing the verification! You can now access the server"
     },
     "fields": {
         "review": {

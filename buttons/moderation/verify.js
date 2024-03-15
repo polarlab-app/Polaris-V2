@@ -21,7 +21,7 @@ module.exports = {
                 await interaction.member.roles.add(role).catch(console.error);
             }
             const embed = await embedBuilder(module.exports.name, module.exports.module, [await polaris.ws.ping]);
-            //await interaction.editReply({ embeds: [embed] });
+            await interaction.editReply({ embeds: [embed] });
         } catch (error) {
             await errorHandler({
                 interaction: interaction,
