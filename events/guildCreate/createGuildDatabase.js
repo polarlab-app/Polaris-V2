@@ -79,6 +79,16 @@ module.exports = async (polaris, guild) => {
                         value: '0',
                     },
                 ],
+                emojiLogs: [
+                    {
+                        name: 'status',
+                        value: 'enabled',
+                    },
+                    {
+                        name: 'channelId',
+                        value: '0',
+                    },
+                ],
             },
             leveling: [
                 {
