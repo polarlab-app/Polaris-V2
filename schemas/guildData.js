@@ -7,36 +7,48 @@ let guildData = new Schema(
         icon: String,
         description: String,
         data: {
-            String: String,
+            type: Map,
+            of: String,
         },
         config: {
-            general: [configItem],
+            general: {
+                type: Map,
+                of: String,
+            },
             logs: {
                 channelLogs: {
-                    String: String,
+                    type: Map,
+                    of: String,
                 },
                 serverLogs: {
-                    String: String,
+                    type: Map,
+                    of: String,
                 },
                 roleLogs: {
-                    String: String,
+                    type: Map,
+                    of: String,
                 },
                 memberLogs: {
-                    String: String,
+                    type: Map,
+                    of: String,
                 },
                 messageLogs: {
-                    String: String,
+                    type: Map,
+                    of: String,
                 },
             },
             verification: {
-                roles: [String],
+                status: String,
                 channelId: String,
+                roles: [String],
             },
             leveling: {
-                String: String,
+                type: Map,
+                of: String,
             },
             music: {
-                String: String,
+                type: Map,
+                of: String,
             },
         },
     },

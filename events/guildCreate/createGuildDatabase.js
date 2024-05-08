@@ -11,98 +11,56 @@ module.exports = async (polaris, guild) => {
         name: `${guild.name}`,
         icon: `${guild.iconURL()}`,
         description: `${guild.description}`,
-        data: [
-            {
-                name: 'memberCount',
-                value: `${guild.memberCount}`,
-            },
-            {
-                name: 'ownerId',
-                value: `${guild.ownerId}`,
-            },
-        ],
+        data: {
+            memberCount: `${guild.memberCount}`,
+            ownerId: `${guild.ownerId}`,
+        },
         config: {
-            general: [
-                {
-                    name: 'AIFunctionality',
-                    value: 'true',
-                },
-            ],
-            logs: {
-                channelLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
-                serverLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
-                roleLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
-                memberLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
-                messageLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
-                emojiLogs: [
-                    {
-                        name: 'status',
-                        value: 'enabled',
-                    },
-                    {
-                        name: 'channelId',
-                        value: '0',
-                    },
-                ],
+            general: {
+                status: 'enabled',
+                channelId: '0',
             },
-            leveling: [
-                {
-                    name: 'status',
-                    value: 'enabled',
+            logs: {
+                channelLogs: {
+                    status: 'enabled',
+                    channelId: '0',
                 },
-            ],
-            music: [
-                {
-                    name: 'status',
-                    value: 'enabled',
+                serverLogs: {
+                    status: 'enabled',
+                    channelId: '0',
                 },
-            ],
+                roleLogs: {
+                    status: 'enabled',
+                    channelId: '0',
+                },
+                memberLogs: {
+                    status: 'enabled',
+                    channelId: '0',
+                },
+                messageLogs: {
+                    status: 'enabled',
+                    channelId: '0',
+                },
+                emojiLogs: {
+                    status: 'enabled',
+                    channelId: '0',
+                },
+            },
+            verification: {
+                status: 'disabled',
+                roles: [],
+                channelId: '0',
+            },
+            leveling: {
+                status: 'enabled',
+                channelId: '0',
+                exp: 'static',
+                expValue: '6',
+            },
+            music: {
+                status: 'enabled',
+                channelId: '0',
+            },
         },
     });
-    console.log('registered a new guild');
 };
