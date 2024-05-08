@@ -1,32 +1,43 @@
 const { Schema, model } = require('mongoose');
 
-const configItem = {
-    name: String,
-    value: String,
-};
-
 let guildData = new Schema(
     {
         id: String,
         name: String,
         icon: String,
         description: String,
-        data: [configItem],
+        data: {
+            String: String,
+        },
         config: {
             general: [configItem],
             logs: {
-                channelLogs: [configItem],
-                serverLogs: [configItem],
-                roleLogs: [configItem],
-                memberLogs: [configItem],
-                messageLogs: [configItem],
+                channelLogs: {
+                    String: String,
+                },
+                serverLogs: {
+                    String: String,
+                },
+                roleLogs: {
+                    String: String,
+                },
+                memberLogs: {
+                    String: String,
+                },
+                messageLogs: {
+                    String: String,
+                },
             },
             verification: {
                 roles: [String],
                 channelId: String,
             },
-            leveling: [configItem],
-            music: [configItem],
+            leveling: {
+                String: String,
+            },
+            music: {
+                String: String,
+            },
         },
     },
     {
