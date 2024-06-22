@@ -4,17 +4,21 @@ const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, role) => {
     const guild = await guildData.findOne({ id: role.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if (!guild) {
         return;
     }
 
-    let channelSend;
-    if (guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
-        channelSend = role.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value
+    if (guild.config.logs.channelLogs.status == 'true') {
+        let channelSend = await channel.guild.channels.cache.find(
+            (c) => c.id == guild.config.logs.channelLogs.channelId
         );
-    } else {
-        channelSend = role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+
+        if (!guild.config.logs.channelLogs.channelId || !channelSend) {
+            channelSend = await channel.guild.channels.cache.find((c) => c.topic == 'pchannellogs');
+            if (!channelSend) {
+                return;
+            }
+        }
     }
 
     const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleCreate, limit: 2 });

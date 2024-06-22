@@ -3,24 +3,30 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, role) => {
-    const guild = await guildData.findOne({ id: role.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if (role.managed) {
         return;
     }
 
-    let channelSend;
-    if (guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
-        channelSend = role.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value
-        );
-    } else {
-        channelSend = role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+    const guild = await guildData.findOne({ id: role.guild.id });
+    if (!guild) {
+        return;
     }
 
-    const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleCreate, limit: 2 });
-    const roleCreateLog = auditLogs.entries.first();
-    const creator = await roleCreateLog.executor;
+    if (guild.config.logs.roleLogs.status == 'true') {
+        let channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelId);
 
-    const embed = await embedBuilder('roleCreate', 'logs', [creator.id, role.name, role.id]);
-    await channelSend.send({ embeds: [embed] });
+        if (!guild.config.logs.roleLogs.channelId || !channelSend) {
+            channelSend = await role.guild.channels.cache.find((c) => c.topic == 'pchannellogs');
+            if (!channelSend) {
+                return;
+            }
+        }
+
+        const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleCreate, limit: 2 });
+        const roleCreateLog = auditLogs.entries.first();
+        const creator = await roleCreateLog.executor;
+
+        const embed = await embedBuilder('roleCreate', 'logs', [creator.id, role.name, role.id]);
+        await channelSend.send({ embeds: [embed] });
+    }
 };

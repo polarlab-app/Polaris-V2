@@ -8,23 +8,24 @@ module.exports = async (polaris, role) => {
     }
 
     const guild = await guildData.findOne({ id: role.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if (!guild) {
         return;
     }
 
-    let channelSend;
-    if (guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value != 0) {
-        channelSend = role.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.roleLogs.find((cfg) => cfg.name == 'channelId').value
-        );
-    } else {
-        channelSend = role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+    if (guild.config.logs.roleLogs.status == 'true') {
+        let channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelId);
+
+        if (!guild.config.logs.roleLogs.channelId || !channelSend) {
+            channelSend = await role.guild.channels.cache.find((c) => c.topic == 'pchannellogs');
+            if (!channelSend) {
+                return;
+            }
+        }
+        const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleDelete, limit: 2 });
+        const roleDeleteLog = auditLogs.entries.first();
+        const creator = await roleDeleteLog.executor;
+
+        const embed = await embedBuilder('roleDelete', 'logs', [creator.id, role.name, role.id]);
+        await channelSend.send({ embeds: [embed] });
     }
-
-    const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleDelete, limit: 2 });
-    const roleDeleteLog = auditLogs.entries.first();
-    const creator = await roleDeleteLog.executor;
-
-    const embed = await embedBuilder('roleDelete', 'logs', [creator.id, role.name, role.id]);
-    await channelSend.send({ embeds: [embed] });
 };

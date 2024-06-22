@@ -56,6 +56,7 @@ module.exports = async (polaris, guild) => {
                 channelId: '0',
                 exp: 'static',
                 expValue: '6',
+                expRange: '6/18',
             },
             music: {
                 status: 'enabled',
