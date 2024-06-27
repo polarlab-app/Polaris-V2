@@ -1,0 +1,14 @@
+{
+    "ids": {
+        "verify": "verify"
+    },
+    "emojis": {
+        "verify": "✅"
+    },
+    "types": {
+        "verify": "Success"
+    },
+    "names": {
+        "verify": "Verify"
+    }
+}

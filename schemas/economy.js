@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 let economy = new Schema(
     {
@@ -9,14 +9,14 @@ let economy = new Schema(
                 properties: [
                     {
                         name: String,
-                        value: Number
-                    }
-                ]
-            }
-        ]
+                        value: Number,
+                    },
+                ],
+            },
+        ],
     },
     {
-        collection: 'economy'
+        collection: 'economy',
     }
 );
 

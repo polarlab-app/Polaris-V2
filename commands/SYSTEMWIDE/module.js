@@ -2,7 +2,8 @@ const { ApplicationCommandOptionType, CommandInteractionOptionResolver } = requi
 const errorHandler = require('../../handlers/errorHandler');
 const successEmbedBuilder = require('../../creators/embeds/successBuilder');
 
-const getGuildCommands = require('../../utilities/getGuildCommands');
+const getApplicationCommands = require('../../utilities/getApplicationCommands');
+const getLocalCommands = require('../../utilities/getLocalCommands');
 const getModuleCommands = require('../../utilities/getModuleCommands');
 const areCommandsDifferent = require('../../utilities/areCommandsDifferent');
 
@@ -90,7 +91,7 @@ module.exports = {
             const action = await interaction.options.get('action').value;
             const commandModule = await interaction.options.get('module').value;
 
-            const guildCommands = await getGuildCommands(polaris, interaction.guild.id);
+            const guildCommands = await getApplicationCommands(polaris, interaction.guild.id);
             const moduleCommands = await getModuleCommands(commandModule);
 
             for (const moduleCommand of moduleCommands) {
@@ -135,6 +136,14 @@ module.exports = {
                             commandName: module.exports.name,
                         });
                     }
+                }
+            }
+
+            const localCommands = await getLocalCommands();
+            for (const actualCommand of guildCommands.cache.values()) {
+                let containsCommand = localCommands.some((command) => command.name == actualCommand.name);
+                if (!containsCommand) {
+                    await guildCommands.delete(actualCommand.id);
                 }
             }
 

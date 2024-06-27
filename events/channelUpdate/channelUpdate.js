@@ -1,1 +1,1 @@
-module.exports = async (oldChannel, newChannel, polaris) => {};
+module.exports = async (polaris, oldChannel, newChannel) => {};

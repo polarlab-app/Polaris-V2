@@ -4,23 +4,25 @@ const { AuditLogEvent } = require('discord.js');
 
 module.exports = async (polaris, emoji) => {
     const guild = await guildData.findOne({ id: emoji.guild.id });
-    if ((await guild.config.logs.roleLogs.find((cfg) => cfg.name == 'status').value) !== 'enabled') {
+    if (!guild) {
         return;
     }
 
-    let channelSend;
-    if (guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value) {
-        channelSend = emoji.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.channelLogs.find((cfg) => cfg.name == 'channelId').value
-        );
-    } else {
-        channelSend = emoji.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+    if (guild.config.logs.emojiLogs.status == 'true') {
+        let channelSend = await emoji.guild.channels.cache.find((c) => c.id == guild.config.logs.emojiLogs.channelId);
+
+        if (!guild.config.logs.emojiLogs.channelId || !channelSend) {
+            channelSend = await emoji.guild.channels.cache.find((c) => c.topic == 'pemojilogs');
+            if (!channelSend) {
+                return;
+            }
+        }
+
+        const auditLogs = await emoji.guild.fetchAuditLogs({ type: AuditLogEvent.EmojiCreate, limit: 2 });
+        const emojiCreateLog = auditLogs.entries.first();
+        const creator = await emojiCreateLog.executor;
+
+        const embed = await embedBuilder('emojiCreate', 'logs', [creator.id, emoji.name, emoji.id]);
+        await channelSend.send({ embeds: [embed] });
     }
-
-    const auditLogs = await emoji.guild.fetchAuditLogs({ type: AuditLogEvent.EmojiCreate, limit: 2 });
-    const emojiCreateLog = auditLogs.entries.first();
-    const creator = await emojiCreateLog.executor;
-
-    const embed = await embedBuilder('emojiCreate', 'logs', [creator.id, emoji.name, emoji.id]);
-    await channelSend.send({ embeds: [embed] });
 };

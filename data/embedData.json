@@ -1,4 +1,5 @@
 {
+    "colors": {},
     "titles": {
         "ping": "Current Bot Ping",
         "uptime": "Bot Uptime",
@@ -29,10 +30,16 @@
         "emojiDelete": "Emoji Deleted",
         "emojiUpdate": "Emoji Updated",
         "messageDelete": "Message Deleted",
+        "guildMemberAdd": "Member Joined",
+        "guildMemberRemove": "Member Left",
         "emoji-info": "Emoji Info",
         "role-info": "Role Info",
         "member-info": "Member Info",
-        "slots": "Slots Ran"
+        "slots": "Slots Ran",
+        "warn": "{5} has been warned",
+        "warns": "{0}'s Warns",
+        "verification": "Verify Yourself",
+        "verify": "Verification Complete"
     },
     "descriptions": {
         "ping": "The current bot ping is {1} **{0}ms**",
@@ -65,7 +72,12 @@
         "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
         "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*",
         "messageDelete": "*A message was just deleted by <@{0}> or the original author*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*",
-        "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!"
+        "guildMemberAdd": "*A new member has just joined the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Date Created:** <t:{1}:D>",
+        "guildMemberRemove": "*A member has just left the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Roles:**\n {1}",
+        "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!",
+        "warns": "{1}",
+        "verification": "Welcome to **{0}**, this server requires verification to check if you're human. Please click the button below!",
+        "verify": "Thanks for completing the verification! You can now access the server"
     },
     "fields": {
         "review": {
@@ -258,6 +270,29 @@
                 "value": "{4}",
                 "inline": false
             }
+        },
+        "warn": {
+            "field1": {
+                "title": "Warn ID:",
+                "value": "**{4}**"
+            },
+            "field2": {
+                "title": "Member:",
+                "value": "<@{0}>"
+            },
+            "field3": {
+                "title": "Moderator",
+                "value": "<@{1}>"
+            },
+            "field4": {
+                "title": "Date:",
+                "value": "<t:{3}:f>"
+            },
+            "field5": {
+                "title": "Reason:",
+                "value": "{2}",
+                "inline": false
+            }
         }
     },
     "timestamps": {
@@ -268,7 +303,9 @@
         "emojiCreate": "true",
         "emojiDelete": "true",
         "emojiUpdate": "true",
-        "messageDelete": "true"
+        "messageDelete": "true",
+        "guildMemberAdd": "true",
+        "guildMemberRemove": "true"
     },
     "footers": {
         "core": {
@@ -310,6 +347,10 @@
         "logs": {
             "text": "Logs Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
+        },
+        "setup": {
+            "text": "l",
+            "iconURL": "test"
         }
     },
     "errors": {
@@ -321,7 +362,8 @@
         "voiceChannelRequired": "<:red_cross:1149765295548940371> **Failed to execute command: You need to be in a voice channel**",
         "invalidAction": "<:red_cross:1149765295548940371> **Failed to execute command: This action is not available here**",
         "notEnoughMoney": "<:red_cross:1149765295548940371> **Failed to execute command: You do not have enough money in your account**",
-        "nonExistentUser": "<:red_cross:1149765295548940371> **Failed to execute command: Failed to find user file, please rerun the command**"
+        "nonExistentUser": "<:red_cross:1149765295548940371> **Failed to execute command: Failed to find user file, please rerun the command**",
+        "invalidWarn": "<:red_cross:1149765295548940371> **Failed to execute command: Invalid Warn Provided"
     },
     "success": {
         "reboot": "<:green_check:1149766467450044426> **You have successfully rebooted the bot, it will be back online in a few seconds!**",
@@ -342,6 +384,9 @@
         "suggest": "<:green_check:1149766467450044426> **You have successfully made a suggestion!**",
         "review": "<:green_check:1149766467450044426> **You have successfully submitted a review!**",
         "modmail": "<:green_check:1149766467450044426> **You have successfully sent mail to the moderation team!**",
-        "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**"
+        "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**",
+        "clear-warns": "<:green_check:1149766467450044426> **{0}'s warns have been successfully cleared!**",
+        "remove-warn": "<:green_check:1149766467450044426> **You have successfully removed #{0} from {1}!**",
+        "verification": "<:green_check:1149766467450044426> **You have successfully setup Verification in <#{0}>!**"
     }
 }

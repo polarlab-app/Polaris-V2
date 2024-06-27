@@ -6,58 +6,8 @@ let guildData = new Schema(
         name: String,
         icon: String,
         description: String,
-        data: [
-            {
-                name: String,
-                value: String,
-            },
-        ],
-        config: {
-            general: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
-            logs: {
-                channelLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                serverLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                roleLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-                memberLogs: [
-                    {
-                        name: String,
-                        value: String,
-                    },
-                ],
-            },
-            leveling: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
-            music: [
-                {
-                    name: String,
-                    value: String,
-                },
-            ],
-        },
+        data: Schema.Types.Mixed,
+        config: Schema.Types.Mixed,
     },
     {
         collection: 'guildData',

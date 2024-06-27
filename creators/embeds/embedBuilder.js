@@ -1,10 +1,16 @@
 const { EmbedBuilder } = require('discord.js');
-const { titles, descriptions, footers, fields, timestamps } = require('../../data/embedData.json');
+const { colors, titles, descriptions, footers, fields, timestamps } = require('../../data/embedData.json');
 const replaceArray = require('../../utilities/replaceArray');
 
 async function embedBuilder(embedType, module, props, image, thumbnail) {
     try {
-        const embed = new EmbedBuilder().setColor('#2B2D31');
+        const embed = new EmbedBuilder();
+
+        if (colors[embedType]) {
+            embed.setColor(colors[embedType]);
+        } else {
+            embed.setColor('#2B2D31');
+        }
 
         if (titles[embedType]) {
             embed.setTitle(await replaceArray(titles[embedType], props));

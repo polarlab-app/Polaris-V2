@@ -2,8 +2,8 @@ const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 
-module.exports = async (polaris, channel) => {
-    const guild = await guildData.findOne({ id: channel.guildId });
+module.exports = async (polaris, role) => {
+    const guild = await guildData.findOne({ id: role.guild.id });
     if (!guild) {
         return;
     }
@@ -19,12 +19,12 @@ module.exports = async (polaris, channel) => {
                 return;
             }
         }
-
-        const auditLogs = await channel.guild.fetchAuditLogs({ type: AuditLogEvent.ChannelDelete, limit: 2 });
-        const channelCreateLog = auditLogs.entries.first();
-        const creator = await channelCreateLog.executor;
-
-        const embed = await embedBuilder('channelDelete', 'logs', [creator.id, channel.name, channel.id]);
-        await channelSend.send({ embeds: [embed] });
     }
+
+    const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleCreate, limit: 2 });
+    const roleCreateLog = auditLogs.entries.first();
+    const creator = await roleCreateLog.executor;
+
+    const embed = await embedBuilder('roleUpdate', 'logs', []);
+    await channelSend.send({ embeds: [embed] });
 };
