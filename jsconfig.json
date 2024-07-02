@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["/*"],
+      "commands/*": ["commands/*"],
+      "events/*": ["events/*"],
+      "handlers/*": ["handlers/*"],
+      "utilities/*": ["utilities/*"],
+      "creators/*": ["creators/*"],
+      "schemas/*": ["schemas/*"]
+    }
+  },
+  "include": ["src/**/*", "commands/**/*", "events/**/*", "handlers/**/*", "utilities/**/*", "creators/**/*", "schemas/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

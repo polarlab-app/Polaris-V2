@@ -6,7 +6,6 @@ const databaseConnection = require('./polaris/databaseConnection');
 const eventHandler = require('./handlers/eventHandler');
 
 const { colors } = require('./data/consoleColors');
-const TOKEN = process.env.TOKEN;
 
 console.log(colors.regular + 'Starting...');
 
@@ -25,10 +24,10 @@ const polaris = new Client({
 polaris.moon = new MoonlinkManager(
     [
         {
-            host: '0.0.0.0',
-            port: 2333,
+            host: process.env.LAVALINK_HOST,
+            port: process.env.LAVALINK_PORT,
             secure: false,
-            password: 'youshallnotpass',
+            password: process.env.LAVALINK_PASSWORD,
         },
     ],
     {},
@@ -41,4 +40,4 @@ databaseConnection();
 eventHandler(polaris);
 
 console.log(colors.success + '[POLARIS STABLE] Polaris Success: Bot Ready!');
-polaris.login(TOKEN);
+polaris.login(process.env.TOKEN);
