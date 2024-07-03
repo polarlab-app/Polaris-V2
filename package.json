@@ -13,7 +13,7 @@
     "dependencies": {
         "aghpb": "^1.0.5",
         "child_process": "^1.0.2",
-        "discord.js": "^14.12.1",
+        "discord.js": "^14.15.3",
         "dotenv": "^16.3.1",
         "ffmpeg-static": "^5.2.0",
         "fs": "^0.0.1-security",

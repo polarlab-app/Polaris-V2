@@ -25,7 +25,7 @@ polaris.moon = new MoonlinkManager(
     [
         {
             host: process.env.LAVALINK_HOST,
-            port: process.env.LAVALINK_PORT,
+            port: 2333,
             secure: false,
             password: process.env.LAVALINK_PASSWORD,
         },
