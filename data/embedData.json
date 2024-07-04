@@ -387,6 +387,8 @@
         "tcreate": "<:green_check:1149766467450044426> **You have successfully created a ticket!**",
         "clear-warns": "<:green_check:1149766467450044426> **{0}'s warns have been successfully cleared!**",
         "remove-warn": "<:green_check:1149766467450044426> **You have successfully removed #{0} from {1}!**",
-        "verification": "<:green_check:1149766467450044426> **You have successfully setup Verification in <#{0}>!**"
+        "verification": "<:green_check:1149766467450044426> **You have successfully setup Verification in <#{0}>!**",
+        "autoplay": "<:green_check:1149766467450044426> **You have successfully enabled AutoPlay!**",
+        "disable-autoplay": "<:green_check:1149766467450044426> **You have successfully disabled AutoPlay!**"
     }
 }
