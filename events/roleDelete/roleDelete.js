@@ -12,20 +12,31 @@ module.exports = async (polaris, role) => {
         return;
     }
 
-    if (guild.config.logs.roleLogs.status == 'true') {
-        let channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelId);
+    if (guild.config.logs.roleLogs.status == true) {
+        let channelSend = await role.guild.channels.cache.find(
+            (c) => c.id == guild.config.logs.roleLogs.channelId
+        );
 
         if (!guild.config.logs.roleLogs.channelId || !channelSend) {
-            channelSend = await role.guild.channels.cache.find((c) => c.topic == 'pchannellogs');
+            channelSend = await role.guild.channels.cache.find(
+                (c) => c.topic == 'pchannellogs'
+            );
             if (!channelSend) {
                 return;
             }
         }
-        const auditLogs = await role.guild.fetchAuditLogs({ type: AuditLogEvent.RoleDelete, limit: 2 });
+        const auditLogs = await role.guild.fetchAuditLogs({
+            type: AuditLogEvent.RoleDelete,
+            limit: 2,
+        });
         const roleDeleteLog = auditLogs.entries.first();
         const creator = await roleDeleteLog.executor;
 
-        const embed = await embedBuilder('roleDelete', 'logs', [creator.id, role.name, role.id]);
+        const embed = await embedBuilder('roleDelete', 'logs', [
+            creator.id,
+            role.name,
+            role.id,
+        ]);
         await channelSend.send({ embeds: [embed] });
     }
 };
