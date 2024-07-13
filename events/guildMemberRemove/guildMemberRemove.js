@@ -4,20 +4,28 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 module.exports = async (polaris, member) => {
     try {
         const guild = await guildData.findOne({ id: member.guild.id });
+        if (!guild) {
+            return;
+        }
 
-        if ((await guild.config.logs.memberLogs.find((cfg) => cfg.name == 'status').value) == 'enabled') {
-            let channelSend;
-            if ((await guild.config.logs.memberLogs.find((cfg) => cfg.name == 'channelId').value) != 0) {
+        if (guild.config.logs.memberLogs.status == true) {
+            let channelSend = await member.guild.channels.cache.find(
+                (c) => c.id == guild.config.logs.memberLogs.channelId
+            );
+
+            if (!guild.config.logs.memberLogs.channelId || !channelSend) {
                 channelSend = await member.guild.channels.cache.find(
-                    async (c) =>
-                        c.id == (await guild.config.logs.memberLogs.find((cfg) => cfg.name == 'channelId').value)
+                    (c) => c.topic == 'pmemberlogs'
                 );
-            } else {
-                channelSend = await member.guild.channels.cache.find((c) => c.topic == 'pmemberlogs');
+                if (!channelSend) {
+                    return;
+                }
             }
 
             const rolesArray = member.roles.cache;
-            const roles = rolesArray.map((role) => `> <@&${role.id}>`).join('\n');
+            const roles = rolesArray
+                .map((role) => `> <@&${role.id}>`)
+                .join('\n');
 
             const embed = await embedBuilder(
                 'guildMemberRemove',
