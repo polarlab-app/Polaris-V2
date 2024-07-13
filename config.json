@@ -1,7 +1,7 @@
 {
     "token": "you-thought-didnt-you?",
     "prefix": "!",
-    "version": "2.2stable1",
+    "version": "2.4stable3",
     "modules": {
         "core": "enabled",
         "moderation": "enabled",
