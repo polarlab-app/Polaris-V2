@@ -14,6 +14,8 @@ module.exports = async (polaris, guild) => {
         data: {
             memberCount: `${guild.memberCount}`,
             ownerId: `${guild.ownerId}`,
+            createdAt: `${guild.createdAt}`,
+            staff: [],
         },
         config: {
             general: {
