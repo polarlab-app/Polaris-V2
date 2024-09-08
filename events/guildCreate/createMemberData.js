@@ -10,7 +10,7 @@ module.exports = async (polaris, guild) => {
                 const supposedMember = await memberData.findOne({ id: databaseId });
 
                 if (!supposedMember) {
-                    await memberData.create({ id: databaseId, exp: 0, rank: 0, warns: [] });
+                    await memberData.create({ id: databaseId, exp: 0, rank: 0, cases: [] });
                 }
             }
         });

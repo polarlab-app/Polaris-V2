@@ -12,12 +12,12 @@ module.exports = async (polaris, message) => {
     let member = await memberData.findOne({ id: `${message.guild.id}${message.author.id}` });
 
     if (!member) {
-        member = new memberData({
+        await memberData.create({
             id: `${message.guild.id}${message.author.id}`,
             exp: 0,
             rank: 0,
+            cases: [],
         });
-        await member.save();
         return;
     } else {
         member.exp += 6;
@@ -31,8 +31,12 @@ module.exports = async (polaris, message) => {
 
             message.guild.channels.cache.forEach(async (channel) => {
                 if (channel.topic == 'pleveling') {
-                    const embed = await embedBuilder('leveling', 'leveling', [member.rank, member.rank - 1, message.member.id]);
-                    await channel.send({embeds: [embed]})
+                    const embed = await embedBuilder('leveling', 'leveling', [
+                        member.rank,
+                        member.rank - 1,
+                        message.member.id,
+                    ]);
+                    await channel.send({ embeds: [embed] });
                 }
             });
             const rankRole = await levelingRoles[member.rank];

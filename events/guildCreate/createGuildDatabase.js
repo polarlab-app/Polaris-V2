@@ -5,7 +5,7 @@ module.exports = async (polaris, guild) => {
     if (guildCheck) {
         return;
     }
-
+    const members = await guild.members.fetch();
     await guildData.create({
         id: `${guild.id}`,
         name: `${guild.name}`,
@@ -15,7 +15,10 @@ module.exports = async (polaris, guild) => {
             memberCount: `${guild.memberCount}`,
             ownerId: `${guild.ownerId}`,
             createdAt: `${guild.createdAt}`,
-            staff: [],
+            dateAdded: new Date().toISOString(),
+            staff: members
+                .filter((member) => member.permissions.has(Permissions.FLAGS.ADMINISTRATOR))
+                .map((admin) => admin.id),
         },
         config: {
             general: {
@@ -24,44 +27,43 @@ module.exports = async (polaris, guild) => {
             },
             logs: {
                 channelLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
                 serverLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
                 roleLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
                 memberLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
                 messageLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
                 emojiLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: '0',
                 },
             },
             verification: {
-                status: 'disabled',
+                status: false,
                 roles: [],
-                channelId: '0',
+                channelID: '0',
             },
             leveling: {
-                status: 'enabled',
-                channelId: '0',
+                status: true,
+                channelID: '0',
                 exp: 'static',
-                expValue: '6',
-                expRange: '6/18',
+                amount: '6',
             },
             music: {
-                status: 'enabled',
+                status: true,
                 channelId: '0',
             },
         },

@@ -11,7 +11,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "aghpb": "^1.0.5",
+        "aghpb": "^1.1.0",
         "child_process": "^1.0.2",
         "discord.js": "^14.15.3",
         "dotenv": "^16.3.1",
