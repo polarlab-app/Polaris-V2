@@ -9,15 +9,13 @@ module.exports = async (polaris, channel) => {
         return;
     }
 
-    if (guild.config.logs.channelLogs.status == true) {
+    if (guild.config.logs.channelLogs.status) {
         let channelSend = await channel.guild.channels.cache.find(
             (c) => c.id == guild.config.logs.channelLogs.channelId
         );
 
         if (!guild.config.logs.channelLogs.channelId || !channelSend) {
-            channelSend = await channel.guild.channels.cache.find(
-                (c) => c.topic == 'pchannellogs'
-            );
+            channelSend = await channel.guild.channels.cache.find((c) => c.topic == 'pchannellogs');
             if (!channelSend) {
                 return;
             }
@@ -30,11 +28,7 @@ module.exports = async (polaris, channel) => {
         const channelCreateLog = auditLogs.entries.first();
         const creator = await channelCreateLog.executor;
 
-        const embed = await embedBuilder('channelDelete', 'logs', [
-            creator.id,
-            channel.name,
-            channel.id,
-        ]);
+        const embed = await embedBuilder('channelDelete', 'logs', [creator.id, channel.name, channel.id]);
         await channelSend.send({ embeds: [embed] });
     }
 };

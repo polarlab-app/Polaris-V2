@@ -8,15 +8,11 @@ module.exports = async (polaris, emoji) => {
         return;
     }
 
-    if (guild.config.logs.emojiLogs.status == true) {
-        let channelSend = await emoji.guild.channels.cache.find(
-            (c) => c.id == guild.config.logs.emojiLogs.channelId
-        );
+    if (guild.config.logs.emojiLogs.status) {
+        let channelSend = await emoji.guild.channels.cache.find((c) => c.id == guild.config.logs.emojiLogs.channelId);
 
         if (!guild.config.logs.emojiLogs.channelId || !channelSend) {
-            channelSend = await emoji.guild.channels.cache.find(
-                (c) => c.topic == 'pemojilogs'
-            );
+            channelSend = await emoji.guild.channels.cache.find((c) => c.topic == 'pemojilogs');
             if (!channelSend) {
                 return;
             }
@@ -29,11 +25,7 @@ module.exports = async (polaris, emoji) => {
         const emojiCreateLog = auditLogs.entries.first();
         const creator = await emojiCreateLog.executor;
 
-        const embed = await embedBuilder('emojiCreate', 'logs', [
-            creator.id,
-            emoji.name,
-            emoji.id,
-        ]);
+        const embed = await embedBuilder('emojiCreate', 'logs', [creator.id, emoji.name, emoji.id]);
         await channelSend.send({ embeds: [embed] });
     }
 };

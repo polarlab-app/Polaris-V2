@@ -8,15 +8,13 @@ module.exports = async (polaris, oldEmoji, newEmoji) => {
         return;
     }
 
-    if (guild.config.logs.emojiLogs.status == true) {
+    if (guild.config.logs.emojiLogs.status) {
         let channelSend = await oldEmoji.guild.channels.cache.find(
             (c) => c.id == guild.config.logs.emojiLogs.channelId
         );
 
         if (!guild.config.logs.emojiLogs.channelId || !channelSend) {
-            channelSend = await oldEmoji.guild.channels.cache.find(
-                (c) => c.topic == 'pemojilogs'
-            );
+            channelSend = await oldEmoji.guild.channels.cache.find((c) => c.topic == 'pemojilogs');
             if (!channelSend) {
                 return;
             }
