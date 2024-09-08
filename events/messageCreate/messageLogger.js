@@ -6,7 +6,9 @@ module.exports = async (polaris, message) => {
     }
     await messageLogs.create({
         id: message.id,
-        userId: message.author.id,
+        userID: message.author.id,
+        date: new Date().toISOString,
+        channelID: message.channel.id,
         content: message.content,
     });
 };

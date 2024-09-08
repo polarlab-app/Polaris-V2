@@ -3,7 +3,9 @@ const { Schema, model } = require('mongoose');
 let messageLogger = new Schema(
     {
         id: Number,
-        userId: String,
+        userID: String,
+        date: String,
+        channelID: String,
         content: String,
     },
     {
