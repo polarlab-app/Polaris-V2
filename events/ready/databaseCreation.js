@@ -10,7 +10,7 @@ module.exports = async (polaris) => {
                 await guildData.create({
                     id: `${guild.id}`,
                     name: `${guild.name}`,
-                    icon: `${guild.icon}`,
+                    icon: guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp` : null,
                     description: `${guild.description}`,
                     data: {
                         memberCount: `${guild.memberCount}`,
@@ -57,9 +57,14 @@ module.exports = async (polaris) => {
                         },
                         leveling: {
                             status: true,
-                            channelID: null,
-                            exp: 'range',
+                            type: 'range',
                             amount: '6/8',
+                            display: {
+                                status: true,
+                                type: 'current',
+                                channelID: null,
+                            },
+                            rewards: [],
                             channelBoosters: [],
                             roleBoosters: [],
                             memberBoosters: [],

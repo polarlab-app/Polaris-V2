@@ -59,9 +59,14 @@ module.exports = async (polaris, guild) => {
             },
             leveling: {
                 status: true,
-                channelID: null,
-                exp: 'range',
+                type: 'range',
                 amount: '6/8',
+                display: {
+                    status: true,
+                    type: 'current',
+                    channelID: null,
+                },
+                rewards: [],
                 channelBoosters: [],
                 roleBoosters: [],
                 memberBoosters: [],
