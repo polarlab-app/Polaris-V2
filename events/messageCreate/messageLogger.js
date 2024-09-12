@@ -8,6 +8,7 @@ module.exports = async (polaris, message) => {
         id: message.id,
         userID: message.author.id,
         date: new Date().toISOString,
+        guildID: message.guild.id,
         channelID: message.channel.id,
         content: message.content,
     });

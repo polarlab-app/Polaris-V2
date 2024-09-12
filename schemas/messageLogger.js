@@ -5,6 +5,7 @@ let messageLogger = new Schema(
         id: Number,
         userID: String,
         date: String,
+        guildID: String,
         channelID: String,
         content: String,
     },
