@@ -1,4 +1,5 @@
 const guildData = require('../../schemas/guildData');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = async (polaris, guild) => {
     let guildCheck = await guildData.findOne({ id: `${guild.id}` });
@@ -13,11 +14,11 @@ module.exports = async (polaris, guild) => {
         description: `${guild.description}`,
         data: {
             memberCount: `${guild.memberCount}`,
-            ownerId: `${guild.ownerId}`,
+            ownerID: `${guild.ownerId}`,
             createdAt: `${guild.createdAt}`,
             dateAdded: new Date().toISOString(),
             staff: members
-                .filter((member) => member.permissions.has(Permissions.FLAGS.ADMINISTRATOR))
+                .filter((member) => member.permissions.has(PermissionFlagsBits.Administrator))
                 .map((admin) => admin.id),
         },
         config: {
@@ -28,43 +29,46 @@ module.exports = async (polaris, guild) => {
             logs: {
                 channelLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
                 serverLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
                 roleLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
                 memberLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
                 messageLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
                 emojiLogs: {
                     status: true,
-                    channelID: '0',
+                    channelID: null,
                 },
             },
             verification: {
                 status: false,
                 roles: [],
-                channelID: '0',
+                channelID: null,
             },
             leveling: {
                 status: true,
-                channelID: '0',
-                exp: 'static',
-                amount: '6',
+                channelID: null,
+                exp: 'range',
+                amount: '6/8',
+                channelBoosters: [],
+                roleBoosters: [],
+                memberBoosters: [],
             },
             music: {
                 status: true,
-                channelId: '0',
+                channelId: null,
             },
         },
     });
