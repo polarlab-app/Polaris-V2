@@ -1,6 +1,6 @@
 ## Welcome to Polaris V2, the multipurpose Discord bot that just works
 > [!WARNING]
->  <a property="dct:title" rel="cc:attributionURL" href="https://github.com/polarlab-app/Polaris-V2">Polaris V2</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Aertic">Aertic</a> is UNLICENSED.
+>  <a property="dct:title" rel="cc:attributionURL" href="https://github.com/polarlab-app/Polaris-V2">Polaris V2</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Aertic">Aertic</a> is under no license. All rights are reserved to <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Aertic">Aertic</a>. You are only allowed to fork the repository and view the code.
 
 ### What do we offer?
 ------------
