@@ -1,262 +1,92 @@
-const economy = require('../../schemas/economy');
+const guildData = require('../../schemas/guildData');
+const { colors } = require('../../data/consoleColors');
 
 module.exports = async (polaris) => {
-    if(!await economy.findOne({ name: 'jobs'})) {
-        jobs = new economy({
-            name: 'jobs',
-            array: [
-                {
-                    "name": "Astronaut",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 1200000
+    try {
+        for (const fetchedGuild of polaris.guilds.cache) {
+            let guildDocument = await guildData.findOne({ id: `${fetchedGuild[0]}` });
+            if (!guildDocument) {
+                const guild = fetchedGuild[1];
+                await guildData.create({
+                    id: `${guild.id}`,
+                    name: `${guild.name}`,
+                    icon: guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp` : null,
+                    description: `${guild.description}`,
+                    data: {
+                        memberCount: `${guild.memberCount}`,
+                        ownerID: `${guild.ownerId}`,
+                        createdAt: `${guild.joinedTimestamp}`,
+                        dateAdded: new Date().toISOString(),
+                        staff: [],
+                    },
+                    config: {
+                        general: {
+                            status: 'enabled',
+                            channelId: '0',
                         },
-                        {
-                            "name": "requirement",
-                            "value": 95
-                        }
-                    ]
-                },
-                {
-                    "name": "Scientist",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 1000000
+                        logs: {
+                            channelLogs: {
+                                status: true,
+                                channelID: null,
+                            },
+                            serverLogs: {
+                                status: true,
+                                channelID: null,
+                            },
+                            roleLogs: {
+                                status: true,
+                                channelID: null,
+                            },
+                            memberLogs: {
+                                status: true,
+                                channelID: null,
+                            },
+                            messageLogs: {
+                                status: true,
+                                channelID: null,
+                            },
+                            emojiLogs: {
+                                status: true,
+                                channelID: null,
+                            },
                         },
-                        {
-                            "name": "requirement",
-                            "value": 90
-                        }
-                    ]
-                },
-                {
-                    "name": "Doctor",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 950000
+                        verification: {
+                            status: false,
+                            roles: [],
+                            channelID: null,
                         },
-                        {
-                            "name": "requirement",
-                            "value": 85
-                        }
-                    ]
-                },
-                {
-                    "name": "Lawyer",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 930000
+                        leveling: {
+                            status: true,
+                            type: 'range',
+                            amount: '6/8',
+                            display: {
+                                status: true,
+                                type: 'current',
+                                channelID: null,
+                            },
+                            rewards: {
+                                status: false,
+                                rewards: [],
+                            },
+                            boosters: {
+                                status: false,
+                                channelBoosters: [],
+                                roleBoosters: [],
+                                memberBoosters: [],
+                            },
                         },
-                        {
-                            "name": "requirement",
-                            "value": 80
-                        }
-                    ]
-                },
-                {
-                    "name": "Business Man",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 780000
+                        music: {
+                            status: true,
+                            channelId: null,
                         },
-                        {
-                            "name": "requirement",
-                            "value": 70
-                        }
-                    ]
-                },
-                {
-                    "name": "Politician",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 690000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 65
-                        }
-                    ]
-                },
-                {
-                    "name": "Developer",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 330000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 60
-                        }
-                    ]
-                },
-                {
-                    "name": "Manager",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 270000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 55
-                        }
-                    ]
-                },
-                {
-                    "name": "Musician",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 210000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 50
-                        }
-                    ]
-                },
-                {
-                    "name": "Teacher",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 190000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 45
-                        }
-                    ]
-                },
-                {
-                    "name": "Police Officer",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 170000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 40
-                        }
-                    ]
-                },
-                {
-                    "name": "Singer",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 100000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 35
-                        }
-                    ]
-                },
-                {
-                    "name": "Engineer",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 40000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 30
-                        }
-                    ]
-                },
-                {
-                    "name": "Youtuber",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 20000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 25
-                        }
-                    ]
-                },
-                {
-                    "name": "Discord Mod",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 5000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 20
-                        }
-                    ]
-                },
-                {
-                    "name": "Maid",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 3500
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 15
-                        }
-                    ]
-                },
-                {
-                    "name": "Robber",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 2000
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 10
-                        }
-                    ]
-                },
-                {
-                    "name": "Janitor",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 700
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 5
-                        }
-                    ]
-                },
-                {
-                    "name": "Beggar",
-                    "properties": [
-                        {
-                            "name": "pay",
-                            "value": 200
-                        },
-                        {
-                            "name": "requirement",
-                            "value": 0
-                        }
-                    ]
-                }
-            ]
-        })
-
-        await jobs.save()
-    } else {
-        return;
+                    },
+                });
+                continue;
+            }
+            continue;
+        }
+        console.log(colors.success + '[POLARIS STABLE] Polaris Success: Guild Data Verified!');
+    } catch (error) {
+        console.log(error);
     }
-}
+};

@@ -1,11 +1,12 @@
 const guildData = require('../../schemas/guildData');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = async (polaris, guild) => {
     let guildCheck = await guildData.findOne({ id: `${guild.id}` });
     if (guildCheck) {
         return;
     }
-
+    const members = await guild.members.fetch();
     await guildData.create({
         id: `${guild.id}`,
         name: `${guild.name}`,
@@ -13,7 +14,12 @@ module.exports = async (polaris, guild) => {
         description: `${guild.description}`,
         data: {
             memberCount: `${guild.memberCount}`,
-            ownerId: `${guild.ownerId}`,
+            ownerID: `${guild.ownerId}`,
+            createdAt: `${guild.createdAt}`,
+            dateAdded: new Date().toISOString(),
+            staff: members
+                .filter((member) => member.permissions.has(PermissionFlagsBits.Administrator))
+                .map((admin) => admin.id),
         },
         config: {
             general: {
@@ -22,45 +28,58 @@ module.exports = async (polaris, guild) => {
             },
             logs: {
                 channelLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
                 serverLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
                 roleLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
                 memberLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
                 messageLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
                 emojiLogs: {
-                    status: 'enabled',
-                    channelId: '0',
+                    status: true,
+                    channelID: null,
                 },
             },
             verification: {
-                status: 'disabled',
+                status: false,
                 roles: [],
-                channelId: '0',
+                channelID: null,
             },
             leveling: {
-                status: 'enabled',
-                channelId: '0',
-                exp: 'static',
-                expValue: '6',
-                expRange: '6/18',
+                status: true,
+                type: 'range',
+                amount: '6/8',
+                display: {
+                    status: true,
+                    type: 'current',
+                    channelID: null,
+                },
+                rewards: {
+                    status: false,
+                    rewards: [],
+                },
+                boosters: {
+                    status: false,
+                    channelBoosters: [],
+                    roleBoosters: [],
+                    memberBoosters: [],
+                },
             },
             music: {
-                status: 'enabled',
-                channelId: '0',
+                status: true,
+                channelId: null,
             },
         },
     });

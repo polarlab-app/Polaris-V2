@@ -32,21 +32,22 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
             const item = await interaction.options.get('item').value;
 
-            await userData.findOneAndUpdate(
-                { id: interaction.user.id },
-                {
-                    $inc: { bank_balance: +items[item] },
-                },
-                {
-                    new: true,
-                }
-            );
-
             const itemIndex = user.inventory.findIndex((invItem) => invItem.item === item);
-            if (itemIndex > -1) {
+            if (user.inventory.find((invItem) => invItem.item === item).amount > 0) {
+                await userData.findOneAndUpdate(
+                    { id: interaction.user.id },
+                    {
+                        $inc: { bankBalance: +items[item] },
+                    },
+                    {
+                        new: true,
+                    }
+                );
+                if (itemIndex > -1) {
+                } else {
+                    user.inventory.push({ item: item, amount: 0 });
+                }
                 user.inventory[itemIndex].amount -= 1;
-            } else {
-                user.inventory.push({ item: item, amount: 0 });
             }
 
             await user.save();

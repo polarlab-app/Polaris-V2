@@ -1,8 +1,8 @@
 const { Client, IntentsBitField } = require('discord.js');
 
-module.exports = async function clientInit() {
+module.exports = function clientInit() {
     try {
-        const client = await new Client({
+        const client = new Client({
             intents: [
                 IntentsBitField.Flags.Guilds,
                 IntentsBitField.Flags.MessageContent,

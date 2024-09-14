@@ -10,6 +10,16 @@ module.exports = async (polaris) => {
 
         const eventName = path.basename(eventFolder);
 
+        if (eventName.startsWith('moonlink')) {
+            polaris.moon.on(eventName.split('.')[1], async (arg, arg2, arg3, arg4) => {
+                for (const eventFile of eventFiles) {
+                    const eventFunction = require(eventFile);
+                    await eventFunction(polaris, arg, arg2, arg3, arg4);
+                }
+            });
+            continue;
+        }
+
         polaris.on(eventName, async (arg, arg2, arg3, arg4) => {
             for (const eventFile of eventFiles) {
                 const eventFunction = require(eventFile);

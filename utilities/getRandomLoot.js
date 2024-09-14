@@ -1,4 +1,4 @@
-module.exports = (loot) => {
+module.exports = async (loot) => {
     let items = Object.keys(loot);
 
     let totalWeight = items.reduce((total, _, index) => total + 1 / (index + 1), 0);

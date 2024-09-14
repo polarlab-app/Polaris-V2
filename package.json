@@ -11,13 +11,13 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "aghpb": "^1.0.5",
+        "aghpb": "^1.1.0",
         "child_process": "^1.0.2",
-        "discord.js": "^14.15.3",
-        "dotenv": "^16.3.1",
+        "discord.js": "^14.16.1",
+        "dotenv": "^16.4.5",
         "ffmpeg-static": "^5.2.0",
         "fs": "^0.0.1-security",
-        "mongoose": "^8.0.3",
+        "mongoose": "^8.6.2",
         "moonlink.js": "^3.0.32",
         "path": "^0.12.7"
     }

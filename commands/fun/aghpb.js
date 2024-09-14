@@ -1,4 +1,4 @@
-const { EmbedBuilder, AttachmentBuilder, ApplicationCommandOptionType, CommandInteraction } = require('discord.js');
+/*const { EmbedBuilder, AttachmentBuilder, ApplicationCommandOptionType, CommandInteraction } = require('discord.js');
 
 const { Client } = require('aghpb');
 
@@ -25,7 +25,7 @@ module.exports = {
      * Also I couldn't survive one second without the code editor guidance from type annotations. THIS IS WHY I HATE JAVASCRIPT WHY ARE TYPES NOT A THING!!!!!!! DO YOU WANT YOUR CODE TO BLOW UP!?!?
      * @param {CommandInteraction} interaction
      */
-    callback: async (polaris, interaction) => {
+/*callback: async (polaris, interaction) => {
         if (interaction.options.getSubcommand() === 'random') {
             const book = await client.random();
 
@@ -50,4 +50,4 @@ module.exports = {
 
         /// TODO: More subcommands maybe... if I'm not lazy...
     },
-};
+};*/
