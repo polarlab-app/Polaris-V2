@@ -66,10 +66,16 @@ module.exports = async (polaris, guild) => {
                     type: 'current',
                     channelID: null,
                 },
-                rewards: [],
-                channelBoosters: [],
-                roleBoosters: [],
-                memberBoosters: [],
+                rewards: {
+                    status: false,
+                    rewards: [],
+                },
+                boosters: {
+                    status: false,
+                    channelBoosters: [],
+                    roleBoosters: [],
+                    memberBoosters: [],
+                },
             },
             music: {
                 status: true,
