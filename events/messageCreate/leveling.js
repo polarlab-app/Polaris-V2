@@ -19,34 +19,33 @@ module.exports = async (polaris, message) => {
         if (!member) {
             await memberData.create({
                 id: `${message.guild.id}${message.author.id}`,
-                exp: 0,
-                rank: 0,
-                cases: [],
+                stats: {
+                    exp: 0,
+                    rank: 0,
+                    messages: 0,
+                },
             });
             return;
         } else {
-            member.exp = parseInt(member.exp);
             if (guild.config.leveling.type == 'static') {
-                member.exp += parseInt(guild.config.leveling.amount);
+                member.stats.exp += parseInt(guild.config.leveling.amount);
             } else {
                 const [min, max] = guild.config.leveling.amount.split('/');
 
-                member.exp += Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1)) + parseInt(min);
+                member.stats.exp += Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1)) + parseInt(min);
             }
             await member.save();
 
             const rankExp = await calculateRankExp(member.rank);
 
-            if (member.exp >= rankExp) {
-                member.rank = parseInt(member.rank);
-
-                member.rank += 1;
+            if (member.stats.exp >= rankExp) {
+                member.stats.rank += 1;
                 await member.save();
 
                 if (guild.config.leveling.display.status) {
                     const embed = await embedBuilder('leveling', 'leveling', [
-                        parseInt(member.rank),
-                        parseInt(member.rank) - 1,
+                        parseInt(member.stats.rank),
+                        parseInt(member.stats.rank) - 1,
                         message.member.id,
                     ]);
 
