@@ -32,7 +32,7 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
             const item = await interaction.options.get('item').value;
 
-            if (user.bank_balance < items[item]) {
+            if (user.bankBalance < items[item]) {
                 await errorHandler({
                     interaction: interaction,
                     errorType: 'notEnoughMoney',
@@ -44,7 +44,7 @@ module.exports = {
             await userData.findOneAndUpdate(
                 { id: interaction.user.id },
                 {
-                    $inc: { bank_balance: -items[item] },
+                    $inc: { bankBalance: -items[item] },
                 },
                 {
                     new: true,

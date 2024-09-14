@@ -37,13 +37,21 @@ module.exports = {
                     username = interaction.user.username;
                 }
             } finally {
-                const embed = await embedBuilder(module.exports.name, module.exports.module, [
-                    member.purse_balance,
-                    member.bank_balance,
-                    user,
-                    username,
-                ]);
-                await interaction.editReply({ embeds: [embed] });
+                if (member && user && username) {
+                    const embed = await embedBuilder(module.exports.name, module.exports.module, [
+                        member.purseBalance,
+                        member.bankBalance,
+                        user,
+                        username,
+                    ]);
+                    await interaction.editReply({ embeds: [embed] });
+                } else {
+                    await errorHandler({
+                        interaction: interaction,
+                        errorType: 'generic',
+                        commandName: module.exports.name,
+                    });
+                }
             }
         } catch (error) {
             await errorHandler({

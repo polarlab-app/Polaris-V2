@@ -27,14 +27,14 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
 
             let result;
-            if (user.bank_balance >= amount) {
+            if (user.bankBalance >= amount) {
                 const number = await generateRandomNumber(1, 2);
 
                 if (number === 1) {
-                    user.bank_balance -= amount;
+                    user.bankBalance -= amount;
                     await user.save();
                 } else {
-                    user.bank_balance += amount;
+                    user.bankBalance += amount;
                     await user.save();
                 }
 
@@ -51,6 +51,7 @@ module.exports = {
                     errorType: 'notEnoughMoney',
                     commandName: module.exports.name,
                 });
+                return;
             }
 
             const embed = await embedBuilder(`${module.exports.name}`, `${module.exports.module}`, [amount, result]);

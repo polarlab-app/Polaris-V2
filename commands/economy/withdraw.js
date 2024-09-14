@@ -28,8 +28,8 @@ module.exports = {
             if (!user) {
                 user = new userData({
                     id: interaction.user.id,
-                    purse_balance: 0,
-                    bank_balance: 0,
+                    purseBalance: 0,
+                    bankBalance: 0,
                 });
                 await user.save();
                 await errorHandler({
@@ -40,11 +40,11 @@ module.exports = {
                 return;
             }
 
-            if (user.bank_balance >= amount) {
+            if (user.bankBalance >= amount) {
                 const updatedUser = await userData.findOneAndUpdate(
                     { id: interaction.user.id },
                     {
-                        $inc: { purse_balance: amount, bank_balance: -amount },
+                        $inc: { purseBalance: amount, bankBalance: -amount },
                     },
                     {
                         new: true,
@@ -55,8 +55,8 @@ module.exports = {
 
                 const embed = await embedBuilder('deposit', `${module.exports.module}`, [
                     amount,
-                    updatedUser.bank_balance,
-                    updatedUser.purse_balance,
+                    updatedUser.bankBalance,
+                    updatedUser.purseBalance,
                 ]);
 
                 await interaction.editReply({ embeds: [embed] });

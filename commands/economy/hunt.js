@@ -20,8 +20,8 @@ module.exports = {
             if (!user) {
                 user = new userData({
                     id: interaction.user.id,
-                    purse_balance: 0,
-                    bank_balance: 0,
+                    purseBalance: 0,
+                    bankBalance: 0,
                     inventory: [],
                 });
                 await user.save();
@@ -36,7 +36,7 @@ module.exports = {
             const lootItem = await getRandomLoot(hunting);
 
             const lootObj = { item: lootItem, amount: 1 };
-            const itemIndex = await user.inventory.findIndex((invItem) => invItem.item === lootObj.item);
+            const itemIndex = user.inventory.findIndex((invItem) => invItem.item === lootObj.item);
             if (itemIndex > -1) {
                 user.inventory[itemIndex].amount = user.inventory[itemIndex].amount + lootObj.amount;
             } else {
