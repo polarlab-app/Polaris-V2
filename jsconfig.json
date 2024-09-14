@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@/*": ["./*"],
+            "@schemas/*": ["./schemas/*"],
+            "@buttons/*": ["./buttons/css/*"],
+            "@commands/*": ["./commands/*"],
+            "@events/*": ["./events/*"],
+            "@data/*": ["./data/*"],
+            "@handlers/*": ["./handlers/*"],
+            "@utilities/*": ["./utilities/*"],
+        }
+    }
+}
