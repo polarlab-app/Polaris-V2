@@ -3,8 +3,8 @@ const { Schema, model } = require('mongoose');
 let memberData = new Schema(
     {
         id: String,
-        exp: String,
-        rank: String,
+        exp: Number,
+        rank: Number,
         cases: [],
     },
     {
