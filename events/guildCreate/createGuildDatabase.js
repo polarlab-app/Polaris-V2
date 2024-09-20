@@ -17,21 +17,22 @@ module.exports = async (polaris, guild) => {
             ownerID: `${guild.ownerId}`,
             createdAt: `${guild.createdAt}`,
             dateAdded: new Date().toISOString(),
+            roles: guild.roles.cache
+                .filter((role) => !role.managed && role.name !== '@everyone')
+                .map((role) => ({
+                    id: role.id,
+                    name: role.name,
+                    color: role.hexColor,
+                    rawPosition: role.position,
+                })),
             channels: guild.channels.cache
+                .filter((channel) => channel.type != 4)
                 .sort((a, b) => a.rawPosition - b.rawPosition)
                 .map((channel) => ({
                     id: channel.id,
                     name: channel.name,
                     type: channel.type,
                     rawPosition: channel.rawPosition,
-                })),
-            roles: guild.roles.cache
-                .sort((a, b) => a.rawPosition - b.rawPosition)
-                .map((role) => ({
-                    id: role.id,
-                    name: role.name,
-                    color: role.color,
-                    rawPosition: role.rawPosition,
                 })),
             staff: members
                 .filter((member) => member.permissions.has(PermissionFlagsBits.Administrator) && !member.user.bot)
