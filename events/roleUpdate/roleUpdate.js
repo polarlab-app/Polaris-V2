@@ -48,7 +48,7 @@ module.exports = async (polaris, role) => {
                     return;
                 }
             } else {
-                channelSend = await role.guild.channels.cache.find((c) => c.id == role.config.logs.roleLogs.channelID);
+                channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelID);
 
                 if (!channelSend) {
                     channelSend = await role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
