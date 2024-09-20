@@ -1,5 +1,6 @@
 const guildData = require('../../schemas/guildData');
 const { colors } = require('../../data/consoleColors');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = async (polaris) => {
     try {
@@ -7,6 +8,7 @@ module.exports = async (polaris) => {
             let guildDocument = await guildData.findOne({ id: `${fetchedGuild[0]}` });
             if (!guildDocument) {
                 const guild = fetchedGuild[1];
+                const members = await fetchedGuild[1].members.fetch();
                 await guildData.create({
                     id: `${guild.id}`,
                     name: `${guild.name}`,
@@ -17,7 +19,31 @@ module.exports = async (polaris) => {
                         ownerID: `${guild.ownerId}`,
                         createdAt: `${guild.joinedTimestamp}`,
                         dateAdded: new Date().toISOString(),
-                        staff: [],
+                        roles: guild.roles.cache.map((role) => ({
+                            id: role.id,
+                            name: role.name,
+                            color: role.color,
+                            rawPosition: role.rawPosition,
+                        })),
+                        channels: guild.channels.cache
+                            .filter((channel) => channel.type != 4)
+                            .sort((a, b) => a.rawPosition - b.rawPosition)
+                            .map((channel) => ({
+                                id: channel.id,
+                                name: channel.name,
+                                type: channel.type,
+                                rawPosition: channel.rawPosition,
+                            })),
+                        staff: members
+                            .filter(
+                                (member) =>
+                                    member.permissions.has(PermissionFlagsBits.Administrator) && !member.user.bot
+                            )
+                            .map((member) => ({
+                                id: member.id,
+                                value: 'dashboardAdministrator',
+                                status: true,
+                            })),
                     },
                     config: {
                         general: {
