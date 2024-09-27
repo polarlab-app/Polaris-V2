@@ -19,6 +19,14 @@ module.exports = async (polaris) => {
                         ownerID: `${guild.ownerId}`,
                         createdAt: `${guild.joinedTimestamp}`,
                         dateAdded: new Date().toISOString(),
+                        members: members
+                            .filter((member) => !member.user.bot)
+                            .map((member) => ({
+                                id: member.id,
+                                username: member.user.username,
+                                name: member.displayName,
+                                nickname: member.nickname,
+                            })),
                         roles: guild.roles.cache
                             .filter((role) => !role.managed && role.name !== '@everyone')
                             .map((role) => ({
@@ -36,6 +44,10 @@ module.exports = async (polaris) => {
                                 type: channel.type,
                                 rawPosition: channel.rawPosition,
                             })),
+                        emojis: guild.emojis.cache.map((emoji) => ({
+                            id: emoji.id,
+                            name: emoji.name,
+                        })),
                         staff: members
                             .filter(
                                 (member) =>
@@ -56,26 +68,38 @@ module.exports = async (polaris) => {
                             channelLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                             serverLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                             roleLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                             memberLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                             messageLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                             emojiLogs: {
                                 status: true,
                                 channelID: null,
+                                filterMode: 'blacklist',
+                                filter: [],
                             },
                         },
                         verification: {

@@ -17,6 +17,14 @@ module.exports = async (polaris, guild) => {
             ownerID: `${guild.ownerId}`,
             createdAt: `${guild.createdAt}`,
             dateAdded: new Date().toISOString(),
+            members: members
+                .filter((member) => !member.user.bot)
+                .map((member) => ({
+                    id: member.id,
+                    username: member.user.username,
+                    name: member.displayName,
+                    nickname: member.nickname,
+                })),
             roles: guild.roles.cache
                 .filter((role) => !role.managed && role.name !== '@everyone')
                 .map((role) => ({
@@ -34,6 +42,10 @@ module.exports = async (polaris, guild) => {
                     type: channel.type,
                     rawPosition: channel.rawPosition,
                 })),
+            emojis: guild.emojis.cache.map((emoji) => ({
+                id: emoji.id,
+                name: emoji.name,
+            })),
             staff: members
                 .filter((member) => member.permissions.has(PermissionFlagsBits.Administrator) && !member.user.bot)
                 .map((member) => ({
