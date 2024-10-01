@@ -15,7 +15,7 @@ module.exports = async ({ interaction, errorType, commandName, polaris, message 
         space: 'ᅠᅠ',
         commandsRefreshing: colors.regular + 'Started refreshing application (/) commands',
         commandsRegistered: colors.regular + 'Successfully reloaded application (/) commands',
-        pinging: polaris ? colors.regular + `[SYSTEM] Current ping is ${polaris.ws.ping}ms` : 'Failed to fetch ping',
+        pinging: polaris ? colors.info + `[SYSTEM] Current ping is ${polaris.ws.ping}ms` : 'Failed to fetch ping',
         invalidPermissions: colors.error + `[ERROR] [702] Invalid Permissions`,
         invalidBotPermissions: colors.error + `[ERROR] [701] Invalid Bot Permissions`,
         restart: colors.error + '[SYSTEM] Restarting the application...',
