@@ -9,6 +9,9 @@ module.exports = async (polaris, channel) => {
         return;
     }
 
+    guild.data.channels = guild.data.channels.filter((c) => c.id !== channel.id);
+    await guild.save();
+
     if (guild.config.logs.channelLogs.status) {
         let channelSend;
 

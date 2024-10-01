@@ -9,6 +9,14 @@ module.exports = async (polaris, channel) => {
         return;
     }
 
+    guild.data.channels.push({
+        id: channel.id,
+        name: channel.name,
+        type: channel.type,
+        rawPosition: channel.rawPosition,
+    });
+    await guild.save();
+
     if (guild.config.logs.channelLogs.status) {
         let channelSend;
         const auditLogs = await channel.guild.fetchAuditLogs({
