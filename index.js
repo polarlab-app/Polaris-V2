@@ -1,13 +1,12 @@
 require('dotenv').config();
-const { MoonlinkManager } = require('moonlink.js');
 
+const { MoonlinkManager } = require('moonlink.js');
 const databaseConnection = require('./polaris/databaseConnection');
 const eventHandler = require('./handlers/eventHandler');
-
 const { colors } = require('./data/consoleColors');
+const clientInit = require('./polaris/clientInit');
 
 console.log(colors.regular + 'Starting...');
-const clientInit = require('./polaris/clientInit');
 
 const polaris = clientInit();
 
@@ -15,7 +14,7 @@ polaris.moon = new MoonlinkManager(
     [
         {
             host: process.env.LAVALINK_HOST,
-            port: 2333,
+            port: parseInt(process.env.LAVALINK_PORT),
             secure: false,
             password: process.env.LAVALINK_PASSWORD,
         },
