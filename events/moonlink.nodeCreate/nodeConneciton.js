@@ -1,5 +1,5 @@
 const { colors } = require('../../data/consoleColors');
 
-module.exports = async (node) => {
-    console.log(colors.success + `[POLARIS STABLE] Music node successfully connected!`);
+module.exports = async () => {
+    console.log(colors.success + `[POLARIS STABLE] Polaris success: Music node successfully connected!`);
 };
