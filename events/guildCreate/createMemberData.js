@@ -6,11 +6,13 @@ module.exports = async (polaris, guild) => {
 
         members.forEach(async (member) => {
             if (!member.user.bot) {
-                const databaseId = `${guild.id}${member.user.id}`;
-                const supposedMember = await memberData.findOne({ id: databaseId });
+                const supposedMember = await memberData.findOne({ id: `${guild.id}${member.user.id}` });
 
                 if (!supposedMember) {
-                    await memberData.create({ id: databaseId, exp: 0, rank: 0, cases: [] });
+                    await memberData.create({
+                        id: `${guild.id}${member.user.id}`,
+                        stats: { exp: 0, rank: 0, messages: 0 },
+                    });
                 }
             }
         });
