@@ -13,6 +13,9 @@ module.exports = async (polaris, role) => {
         return;
     }
 
+    guild.data.roles.push({ id: role.id, name: role.name, color: role.color, rawPosition: role.rawPosition });
+    await guild.save();
+
     if (guild.config.logs.roleLogs.status == true) {
         let channelSend;
         const auditLogs = await role.guild.fetchAuditLogs({

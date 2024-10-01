@@ -13,6 +13,9 @@ module.exports = async (polaris, role) => {
         return;
     }
 
+    guild.data.roles = guild.data.roles.filter((r) => r.id !== role.id);
+    await guild.save();
+
     if (guild.config.logs.roleLogs.status) {
         let channelSend;
 

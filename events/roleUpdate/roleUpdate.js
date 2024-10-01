@@ -11,6 +11,20 @@ module.exports = async (polaris, role) => {
             return;
         }
 
+        const roleIndex = guild.data.roles.findIndex((r) => r.id === role.id);
+        if (roleIndex !== -1) {
+            guild.data.roles[roleIndex].name = role.name;
+            guild.data.roles[roleIndex].color = role.color;
+            guild.data.roles[roleIndex].rawPosition = role.rawPosition;
+        } else {
+            guild.data.roles.push({
+                id: role.id,
+                name: role.name,
+                color: role.color,
+                rawPosition: role.rawPosition,
+            });
+        }
+
         if (guild.config.logs.roleLogs.status) {
             let channelSend;
 
@@ -26,7 +40,7 @@ module.exports = async (polaris, role) => {
                 name: 'roleLogs',
                 serverID: role.guild.id,
                 status: 'Closed',
-                action: 'Role Created',
+                action: 'Role Updated',
                 date: new Date().toISOString(),
                 duration: 'Permanent',
                 users: {
