@@ -9,6 +9,14 @@ module.exports = async (polaris, oldEmoji, newEmoji) => {
         return;
     }
 
+    const emojiIndex = guild.data.emojis.findIndex((e) => e.id === oldEmoji.id);
+    if (emojiIndex !== -1) {
+        guild.data.emojis[emojiIndex].name = newEmoji.name;
+    } else {
+        guild.data.emojis.push({ id: newEmoji.id, name: newEmoji.name });
+    }
+    await guild.save();
+
     if (guild.config.logs.emojiLogs.status) {
         let channelSend;
 

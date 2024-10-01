@@ -10,6 +10,9 @@ module.exports = async (polaris, emoji) => {
             return;
         }
 
+        guild.data.emojis = guild.data.emojis.filter((e) => e.id !== emoji.id);
+        await guild.save();
+
         if (guild.config.logs.emojiLogs.status) {
             let channelSend;
 
