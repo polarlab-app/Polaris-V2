@@ -63,26 +63,38 @@ module.exports = async (polaris, guild) => {
                 channelLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
                 serverLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
                 roleLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
                 memberLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
                 messageLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
                 emojiLogs: {
                     status: true,
                     channelID: null,
+                    filterMode: 'blacklist',
+                    filter: [],
                 },
             },
             verification: {
