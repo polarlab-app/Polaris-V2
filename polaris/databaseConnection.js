@@ -2,14 +2,12 @@ const mongoose = require('mongoose');
 const { colors } = require('../data/consoleColors');
 
 module.exports = async function databaseConnection() {
-    const URL = process.env.DB_URL;
-
     try {
-        if (!URL) {
+        if (!process.env.DB_URL) {
             return;
         }
 
-        await mongoose.connect(URL || '', {
+        await mongoose.connect(process.env.DB_URL || '', {
             authSource: 'admin',
         });
 
