@@ -31,12 +31,12 @@ module.exports = async (polaris, message) => {
                 member.stats.exp += parseInt(guild.config.leveling.amount);
             } else {
                 const [min, max] = guild.config.leveling.amount.split('/');
-
                 member.stats.exp += Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1)) + parseInt(min);
             }
+
             await member.save();
 
-            const rankExp = await calculateRankExp(member.rank);
+            const rankExp = await calculateRankExp(member.stats.rank + 1);
 
             if (member.stats.exp >= rankExp) {
                 member.stats.rank += 1;
@@ -68,7 +68,9 @@ module.exports = async (polaris, message) => {
                     }
                 }
                 if (guild.config.leveling.rewards.status) {
-                    const rankRole = guild.config.leveling.rewards.rewards.find((reward) => reward.id == member.rank);
+                    const rankRole = guild.config.leveling.rewards.rewards.find(
+                        (reward) => reward.id == member.stats.rank
+                    );
                     if (rankRole && rankRole.status) {
                         const role = await message.guild.roles.cache.get(rankRole.value);
                         await message.member.roles.add(role);
