@@ -15,6 +15,7 @@ module.exports = async (polaris, oldEmoji, newEmoji) => {
     } else {
         guild.data.emojis.push({ id: newEmoji.id, name: newEmoji.name });
     }
+    guild.markModified('data.emojis');
     await guild.save();
 
     if (guild.config.logs.emojiLogs.status) {

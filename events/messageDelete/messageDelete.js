@@ -28,12 +28,12 @@ module.exports = async (polaris, message) => {
                 duration: 'Permanent',
                 users: {
                     offenderID: message.id,
-                    offenderUsername: message.content,
+                    offenderUsername: message.author.username,
                     authorID: creator.id,
                     authorUsername: creator.username,
                 },
                 details: {
-                    note: 'N/A',
+                    note: message.content,
                     reason: 'N/A',
                     proof: 'N/A',
                 },

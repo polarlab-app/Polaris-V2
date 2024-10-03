@@ -10,6 +10,7 @@ module.exports = async (polaris, channel) => {
     }
 
     guild.data.channels = guild.data.channels.filter((c) => c.id !== channel.id);
+    guild.markModified('data.channels');
     await guild.save();
 
     if (guild.config.logs.channelLogs.status) {

@@ -14,6 +14,7 @@ module.exports = async (polaris, role) => {
     }
 
     guild.data.roles = guild.data.roles.filter((r) => r.id !== role.id);
+    guild.markModified('data.roles');
     await guild.save();
 
     if (guild.config.logs.roleLogs.status) {

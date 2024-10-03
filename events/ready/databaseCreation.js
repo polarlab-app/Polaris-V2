@@ -33,7 +33,7 @@ module.exports = async (polaris) => {
                                 id: role.id,
                                 name: role.name,
                                 color: role.hexColor,
-                                position: role.position,
+                                position: guild.roles.cache.size - role.rawPosition - 1,
                             })),
                         channels: guild.channels.cache
                             .filter((channel) => channel.type != 4)

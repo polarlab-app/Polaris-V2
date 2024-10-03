@@ -5,14 +5,15 @@ module.exports = async (polaris, oldChannel, newChannel) => {
     const channelIndex = guild.data.channels.findIndex((c) => c.id === oldChannel.id);
     if (channelIndex !== -1) {
         guild.data.channels[channelIndex].name = newChannel.name;
-        guild.data.channels[channelIndex].rawPosition = newChannel.rawPosition;
+        guild.data.channels[channelIndex].position = newChannel.rawPosition;
     } else {
         guild.data.channels.push({
             id: newChannel.id,
             name: newChannel.name,
             type: newChannel.type,
-            rawPosition: newChannel.rawPosition,
+            position: newChannel.rawPosition,
         });
     }
+    guild.markModified('data.channels');
     await guild.save();
 };

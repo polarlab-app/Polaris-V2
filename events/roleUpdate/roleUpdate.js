@@ -15,15 +15,18 @@ module.exports = async (polaris, role) => {
         if (roleIndex !== -1) {
             guild.data.roles[roleIndex].name = role.name;
             guild.data.roles[roleIndex].color = role.color;
-            guild.data.roles[roleIndex].rawPosition = role.rawPosition;
+            guild.data.roles[roleIndex].position = role.rawPosition;
         } else {
             guild.data.roles.push({
                 id: role.id,
                 name: role.name,
                 color: role.color,
-                rawPosition: role.rawPosition,
+                position: role.rawPosition,
             });
         }
+
+        guild.markModified('data.roles');
+        await guild.save();
 
         if (guild.config.logs.roleLogs.status) {
             let channelSend;

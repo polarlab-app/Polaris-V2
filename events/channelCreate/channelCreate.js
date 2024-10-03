@@ -13,8 +13,9 @@ module.exports = async (polaris, channel) => {
         id: channel.id,
         name: channel.name,
         type: channel.type,
-        rawPosition: channel.rawPosition,
+        position: channel.rawPosition,
     });
+    guild.markModified('data.channels');
     await guild.save();
 
     if (guild.config.logs.channelLogs.status) {
