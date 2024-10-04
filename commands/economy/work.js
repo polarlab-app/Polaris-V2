@@ -31,16 +31,16 @@ module.exports = {
         try {
             const user = await userData.findOne({ id: interaction.user.id });
 
-            if (!user.job) {
+            if (!user.economy.job) {
                 await errorHandler({});
                 return;
             }
 
             const jobs = await economy.findOne({ name: 'jobs' });
-            const job = await jobs.array.find((job) => job.name === user.job);
+            const job = jobs.array.find((job) => job.name === user.job);
 
-            const pay = await job.properties.find((property) => property.name === 'pay').value;
-            const req = await job.properties.find((property) => property.name === 'requirement').value;
+            const pay = job.properties.find((property) => property.name === 'pay').value;
+            const req = job.properties.find((property) => property.name === 'requirement').value;
 
             /* const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({embeds: [embed]}) */
