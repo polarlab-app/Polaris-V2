@@ -1,6 +1,7 @@
 const errorHandler = require('../../handlers/errorHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 const memberData = require('../../schemas/memberData');
 
@@ -20,10 +21,22 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             required: true,
         },
+        {
+            name: 'notes',
+            description: 'Any additional notes regarding the warning',
+            type: ApplicationCommandOptionType.String,
+            required: false,
+        },
+        {
+            name: 'proof',
+            description: 'Proof relating to the warning',
+            type: ApplicationCommandOptionType.String,
+            required: false,
+        },
     ],
     module: 'moderation',
 
-    permissionsRequired: [PermissionFlagsBits.ChangeNickname],
+    permissionsRequired: [PermissionFlagsBits.ModerateMembers],
     botPermissions: [],
 
     callback: async (polaris, interaction) => {
@@ -31,24 +44,38 @@ module.exports = {
             const user = await interaction.options.get('user');
             const reason = await interaction.options.get('reason').value;
 
-            let key;
+            const memberDB = await memberData.findOne({ id: `${interaction.guild.id}${user.value}` });
+            const caseID = generateCaseID();
 
-            const memberDb = await memberData.findOne({ id: `${interaction.guild.id}${user.value}` });
-            key = await Math.random().toString(16).substr(2, 12);
+            memberDB.cases.push(caseID);
+            await memberDB.save();
 
-            if (await memberData.findOne({ warns: [{ id: key }] })) {
-                key = await Math.random().toString(16).substr(14);
-            }
-
-            const newWarn = { id: key, reason: reason, moderatorId: interaction.user.id };
-            memberDb.warns.push(newWarn);
-            await memberDb.save();
+            await caseSchema.create({
+                id: caseID,
+                name: 'warnLogs',
+                serverID: interaction.guild.id,
+                status: 'Closed',
+                action: 'Member Warned',
+                date: new Date().toISOString(),
+                duration: 'Permanent',
+                users: {
+                    offenderID: user.value,
+                    offenderUsername: user.user.username,
+                    authorID: interaction.user.id,
+                    authorUsername: interaction.user.username,
+                },
+                details: {
+                    note: notes,
+                    reason: reason,
+                    proof: proof,
+                },
+            });
 
             const tcode = Math.floor(Date.now() / 1000);
             const embed = await embedBuilder(
                 module.exports.name,
                 module.exports.module,
-                [user.value, interaction.user.id, reason, tcode, key, user.user.username],
+                [user.value, interaction.user.id, reason, tcode, caseID, user.user.username],
                 undefined,
                 `https://cdn.discordapp.com/avatars/${user.value}/${user.user.avatar}.png`
             );
