@@ -56,7 +56,7 @@
         "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``",
         "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}",
         "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>",
-        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
+        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 💴 {1}\n**Purse Balance:** 🪙 {0}",
         "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>",
         "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>",
         "review": "*{1}*",
