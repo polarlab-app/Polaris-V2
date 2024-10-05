@@ -2,6 +2,7 @@ const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, role) => {
     if (role.managed) {
@@ -28,7 +29,7 @@ module.exports = async (polaris, role) => {
         const creator = await roleDeleteLog.executor;
 
         await caseSchema.create({
-            id: 't',
+            id: generateCaseID(),
             name: 'roleLogs',
             serverID: role.guild.id,
             status: 'Closed',

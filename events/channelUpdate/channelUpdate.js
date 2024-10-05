@@ -1,4 +1,5 @@
 const guildData = require('@schemas/guildData');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, oldChannel, newChannel) => {
     const guild = await guildData.findOne({ id: newChannel.guild.id });

@@ -46,7 +46,7 @@ module.exports = {
             const proof = (await interaction.options.get('proof')?.value) || 'N/A';
 
             const member = await interaction.guild.members.fetch(user.value);
-            /*await member.kick(reason);*/
+            await member.kick(reason);
             await caseSchema.create({
                 id: generateCaseID(),
                 name: 'memberLogs',

@@ -2,6 +2,7 @@ const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, message) => {
     try {
@@ -10,16 +11,23 @@ module.exports = async (polaris, message) => {
             return;
         }
 
+        console.log('t');
         if (guild.config.logs.messageLogs.status == true) {
+            console.log('t2');
             const auditLogs = await message.guild.fetchAuditLogs({
                 type: AuditLogEvent.MessageDelete,
                 limit: 1,
             });
-            const messageCreateLog = auditLogs.entries.first();
-            const creator = await messageCreateLog.executor;
+            console.log('a');
+            const messageCreateLog = await auditLogs.entries.first();
+            const currentTime = Date.now();
+            const auditLogTime = await messageCreateLog.createdTimestamp;
+            const creator =
+                Math.abs(auditLogTime - currentTime) <= 2000 ? await messageCreateLog.executor : message.author;
 
+            console.log(creator);
             await caseSchema.create({
-                id: 't',
+                id: generateCaseID(),
                 name: 'messageLogs',
                 serverID: message.guild.id,
                 status: 'Closed',
