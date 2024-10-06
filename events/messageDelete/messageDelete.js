@@ -11,21 +11,17 @@ module.exports = async (polaris, message) => {
             return;
         }
 
-        console.log('t');
         if (guild.config.logs.messageLogs.status == true) {
-            console.log('t2');
             const auditLogs = await message.guild.fetchAuditLogs({
                 type: AuditLogEvent.MessageDelete,
                 limit: 1,
             });
-            console.log('a');
             const messageCreateLog = await auditLogs.entries.first();
             const currentTime = Date.now();
             const auditLogTime = await messageCreateLog.createdTimestamp;
             const creator =
-                Math.abs(auditLogTime - currentTime) <= 2000 ? await messageCreateLog.executor : message.author;
+                Math.abs(currentTime - auditLogTime) <= 5000 ? await messageCreateLog.executor : message.author;
 
-            console.log(creator);
             await caseSchema.create({
                 id: generateCaseID(),
                 name: 'messageLogs',
@@ -61,8 +57,9 @@ module.exports = async (polaris, message) => {
 
                 const embed = await embedBuilder('messageDelete', 'logs', [
                     creator.id,
-                    message.content,
+                    message.content || 'N/A',
                     message.author.id,
+                    message.channel.id,
                 ]);
                 await channelSend.send({ embeds: [embed] });
             }
