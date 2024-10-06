@@ -122,6 +122,7 @@ module.exports = async (polaris) => {
                             },
                             boosters: {
                                 status: false,
+                                mode: 'multiply',
                                 channelBoosters: [],
                                 roleBoosters: [],
                                 memberBoosters: [],
@@ -131,11 +132,13 @@ module.exports = async (polaris) => {
                             status: true,
                             channelId: null,
                         },
+                        permissions: {
+                            botAdministratorRoles: [],
+                            botModeratorRoles: [],
+                        },
                     },
                 });
-                continue;
             }
-            continue;
         }
         console.log(colors.success + '[POLARIS STABLE] Polaris Success: Guild Data Verified!');
     } catch (error) {

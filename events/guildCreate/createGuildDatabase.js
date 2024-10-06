@@ -117,6 +117,7 @@ module.exports = async (polaris, guild) => {
                 },
                 boosters: {
                     status: false,
+                    mode: 'multiply',
                     channelBoosters: [],
                     roleBoosters: [],
                     memberBoosters: [],
@@ -125,6 +126,10 @@ module.exports = async (polaris, guild) => {
             music: {
                 status: true,
                 channelId: null,
+            },
+            permissions: {
+                botAdministratorRoles: [],
+                botModeratorRoles: [],
             },
         },
     });
