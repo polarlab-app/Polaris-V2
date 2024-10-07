@@ -39,7 +39,7 @@ module.exports = {
 
             const embed = await embedBuilder({
                 title: 'Experience Required',
-                description: `To reach level **${level}**, you need **${exp}** ✨ exp. That is approximately **${messages}** more messages!\n\n> **Level:** 🏷️ ${level}\n> **Experience Required:** ✨ ${exp}\n> **Messages Required:** ${messages}`,
+                description: `To reach level **${level}**, you need **${requiredExp}** ✨ exp. That is approximately **${messages}** more messages!\n\n> **Level:** 🏷️ ${level}\n> **Experience Required:** ✨ ${exp}\n> **Messages Required:** ${messages}`,
                 footerType: 'leveling',
             });
             await interaction.editReply({ embeds: [embed] });
