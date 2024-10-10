@@ -17,9 +17,9 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
             const embed = new EmbedBuilder().setTitle(` Inventory`).setDescription(`Here are your items:`);
 
-            for (let i = 0; i < user.inventory.length; i++) {
-                const item = user.inventory[i];
-                await embed.addFields({ name: `${item.item}`, value: `Quantity: ${item.amount}` });
+            for (let i = 0; i < user.economy.inventory.length; i++) {
+                const item = user.economy.inventory[i];
+                embed.addFields({ name: `${item.item}`, value: `Quantity: ${item.amount}` });
             }
             // const embed = await embedBuilder(module.exports.name, module.exports.module,[await polaris.ws.ping])
             await interaction.editReply({ embeds: [embed] });

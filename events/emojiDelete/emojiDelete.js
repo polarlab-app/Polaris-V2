@@ -2,6 +2,7 @@ const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, emoji) => {
     try {
@@ -9,6 +10,10 @@ module.exports = async (polaris, emoji) => {
         if (!guild) {
             return;
         }
+
+        guild.data.emojis = guild.data.emojis.filter((e) => e.id !== emoji.id);
+        guild.markModified('data.emojis');
+        await guild.save();
 
         if (guild.config.logs.emojiLogs.status) {
             let channelSend;
@@ -21,7 +26,7 @@ module.exports = async (polaris, emoji) => {
             const creator = await emojiCreateLog.executor;
 
             await caseSchema.create({
-                id: 't',
+                id: generateCaseID(),
                 name: 'emojiLogs',
                 serverID: emoji.guild.id,
                 status: 'Closed',

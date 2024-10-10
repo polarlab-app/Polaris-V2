@@ -33,7 +33,7 @@ module.exports = async (polaris) => {
                                 id: role.id,
                                 name: role.name,
                                 color: role.hexColor,
-                                rawPosition: role.position,
+                                position: guild.roles.cache.size - role.rawPosition - 1,
                             })),
                         channels: guild.channels.cache
                             .filter((channel) => channel.type != 4)
@@ -42,7 +42,7 @@ module.exports = async (polaris) => {
                                 id: channel.id,
                                 name: channel.name,
                                 type: channel.type,
-                                rawPosition: channel.rawPosition,
+                                position: channel.rawPosition,
                             })),
                         emojis: guild.emojis.cache.map((emoji) => ({
                             id: emoji.id,
@@ -122,6 +122,7 @@ module.exports = async (polaris) => {
                             },
                             boosters: {
                                 status: false,
+                                mode: 'multiply',
                                 channelBoosters: [],
                                 roleBoosters: [],
                                 memberBoosters: [],
@@ -131,11 +132,13 @@ module.exports = async (polaris) => {
                             status: true,
                             channelId: null,
                         },
+                        permissions: {
+                            botAdministratorRoles: [],
+                            botModeratorRoles: [],
+                        },
                     },
                 });
-                continue;
             }
-            continue;
         }
         console.log(colors.success + '[POLARIS STABLE] Polaris Success: Guild Data Verified!');
     } catch (error) {

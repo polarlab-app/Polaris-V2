@@ -2,12 +2,17 @@ const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, channel) => {
     const guild = await guildData.findOne({ id: channel.guildId });
     if (!guild) {
         return;
     }
+
+    guild.data.channels = guild.data.channels.filter((c) => c.id !== channel.id);
+    guild.markModified('data.channels');
+    await guild.save();
 
     if (guild.config.logs.channelLogs.status) {
         let channelSend;
@@ -19,7 +24,7 @@ module.exports = async (polaris, channel) => {
         const channelCreateLog = await auditLogs.entries.first();
         const creator = await channelCreateLog.executor;
         await caseSchema.create({
-            id: 't',
+            id: generateCaseID(),
             name: 'channelLogs',
             serverID: channel.guild.id,
             status: 'Closed',
