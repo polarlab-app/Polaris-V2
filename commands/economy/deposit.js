@@ -3,6 +3,7 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 
 const { ApplicationCommandOptionType } = require('discord.js');
 const userData = require('../../schemas/userData');
+const economy = require('../../schemas/economy');
 
 module.exports = {
     name: 'deposit',
@@ -25,28 +26,12 @@ module.exports = {
             const amount = interaction.options.get('amount').value;
             const user = await userData.findOne({ id: interaction.user.id });
 
-            if (!user) {
-                user = new userData({
-                    id: interaction.user.id,
-                    purseBalance: 0,
-                    bankBalance: 0,
-                });
-                await user.save();
-                await errorHandler({
-                    interaction: interaction,
-                    errorType: 'notEnoughMoney',
-                    commandName: module.exports.name,
-                });
-                return;
-            }
-
-            if (user.purseBalance >= amount) {
+            if (user.economy.purseBalance >= amount) {
                 const updatedUser = await userData.findOneAndUpdate(
                     { id: interaction.user.id },
                     {
-                        $inc: { purseBalance: -amount, bankBalance: amount },
+                        $inc: { 'economy.purseBalance': -amount, 'economy.bankBalance': amount },
                     },
-
                     {
                         new: true,
                     }
@@ -56,8 +41,8 @@ module.exports = {
 
                 const embed = await embedBuilder('deposit', `${module.exports.module}`, [
                     amount,
-                    updatedUser.bankBalance,
-                    updatedUser.purseBalance,
+                    updatedUser.economy.bankBalance,
+                    updatedUser.economy.purseBalance,
                 ]);
 
                 await interaction.editReply({ embeds: [embed] });

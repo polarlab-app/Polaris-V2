@@ -17,7 +17,7 @@ module.exports = {
     ],
     module: 'moderation',
 
-    permissionsRequired: [PermissionFlagsBits.ManageNicknames],
+    permissionsRequired: [PermissionFlagsBits.ModerateMembers],
     botPermissions: [],
 
     callback: async (polaris, interaction) => {

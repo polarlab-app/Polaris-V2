@@ -18,27 +18,12 @@ module.exports = {
             const lootItem = await getRandomLoot(digging);
             const user = await userData.findOne({ id: interaction.user.id });
 
-            if (!user) {
-                user = new userData({
-                    id: interaction.user.id,
-                    purseBalance: 0,
-                    bankBalance: 0,
-                    inventory: [],
-                });
-                await user.save();
-                await errorHandler({
-                    interaction: interaction,
-                    errorType: 'nonExistentUser',
-                    commandName: module.exports.name,
-                });
-                return;
-            }
             const lootObj = { item: lootItem, amount: 1 };
-            const itemIndex = await user.inventory.findIndex((invItem) => invItem.item === lootObj.item);
+            const itemIndex = user.economy.inventory.findIndex((invItem) => invItem.item === lootObj.item);
             if (itemIndex > -1) {
-                user.inventory[itemIndex].amount = user.inventory[itemIndex].amount + lootObj.amount;
+                user.economy.inventory[itemIndex].amount = user.economy.inventory[itemIndex].amount + lootObj.amount;
             } else {
-                await user.inventory.push(lootObj);
+                user.economy.inventory.push(lootObj);
             }
 
             await user.save();

@@ -32,12 +32,12 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
             const item = await interaction.options.get('item').value;
 
-            const itemIndex = user.inventory.findIndex((invItem) => invItem.item === item);
-            if (user.inventory.find((invItem) => invItem.item === item).amount > 0) {
+            const itemIndex = user.economy.inventory.findIndex((invItem) => invItem.item === item);
+            if (user.economy.inventory.find((invItem) => invItem.item === item).amount > 0) {
                 await userData.findOneAndUpdate(
                     { id: interaction.user.id },
                     {
-                        $inc: { bankBalance: +items[item] },
+                        $inc: { 'economy.bankBalance': +items[item] },
                     },
                     {
                         new: true,
@@ -45,16 +45,16 @@ module.exports = {
                 );
                 if (itemIndex > -1) {
                 } else {
-                    user.inventory.push({ item: item, amount: 0 });
+                    user.economy.inventory.push({ item: item, amount: 0 });
                 }
-                user.inventory[itemIndex].amount -= 1;
+                user.economy.inventory[itemIndex].amount -= 1;
             }
 
             await user.save();
 
             const embed = await embedBuilder(module.exports.name, module.exports.module, [
                 item,
-                user.inventory.find((invItem) => invItem.item === item).amount,
+                user.economy.inventory.find((invItem) => invItem.item === item).amount,
                 items[item],
             ]);
             await interaction.editReply({ embeds: [embed] });

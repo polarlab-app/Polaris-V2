@@ -3,6 +3,7 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
 const errorHandler = require('../../handlers/errorHandler');
+const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, role) => {
     try {
@@ -10,6 +11,23 @@ module.exports = async (polaris, role) => {
         if (!guild) {
             return;
         }
+
+        const roleIndex = guild.data.roles.findIndex((r) => r.id === role.id);
+        if (roleIndex !== -1) {
+            guild.data.roles[roleIndex].name = role.name;
+            guild.data.roles[roleIndex].color = role.color;
+            guild.data.roles[roleIndex].position = role.rawPosition;
+        } else {
+            guild.data.roles.push({
+                id: role.id,
+                name: role.name,
+                color: role.color,
+                position: role.rawPosition,
+            });
+        }
+
+        guild.markModified('data.roles');
+        await guild.save();
 
         if (guild.config.logs.roleLogs.status) {
             let channelSend;
@@ -22,11 +40,11 @@ module.exports = async (polaris, role) => {
             const creator = await roleCreateLog.executor;
 
             await caseSchema.create({
-                id: 't',
+                id: generateCaseID(),
                 name: 'roleLogs',
                 serverID: role.guild.id,
                 status: 'Closed',
-                action: 'Role Created',
+                action: 'Role Updated',
                 date: new Date().toISOString(),
                 duration: 'Permanent',
                 users: {

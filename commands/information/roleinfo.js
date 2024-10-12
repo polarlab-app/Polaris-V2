@@ -2,8 +2,6 @@ const errorHandler = require('../../handlers/errorHandler');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { ApplicationCommandOptionType } = require('discord.js');
 
-const convertIntToHex = require('../../utilities/convertIntToHex');
-
 module.exports = {
     name: 'role-info',
     description: 'Gets certain information about a role',
@@ -45,7 +43,7 @@ module.exports = {
                 module.exports.module,
                 [
                     role.value,
-                    await convertIntToHex(role.role.color),
+                    role.role.hexColor,
                     role.role.position,
                     role.role.hoist,
                     role.role.managed,

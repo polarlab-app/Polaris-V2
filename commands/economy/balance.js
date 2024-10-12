@@ -39,8 +39,8 @@ module.exports = {
             } finally {
                 if (member && user && username) {
                     const embed = await embedBuilder(module.exports.name, module.exports.module, [
-                        member.purseBalance,
-                        member.bankBalance,
+                        member.economy.purseBalance,
+                        member.economy.bankBalance,
                         user,
                         username,
                     ]);
