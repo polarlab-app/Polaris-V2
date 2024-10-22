@@ -348,6 +348,10 @@
             "text": "Logs Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
         },
+        "insights": {
+            "text": "Insights Module!",
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
+        },
         "setup": {
             "text": "l",
             "iconURL": "test"
