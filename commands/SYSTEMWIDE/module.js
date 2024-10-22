@@ -69,6 +69,10 @@ module.exports = {
                     name: 'Support',
                     value: 'support',
                 },
+                {
+                    name: 'Insights',
+                    value: 'insights',
+                }
             ],
         },
     ],
