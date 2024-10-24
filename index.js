@@ -13,17 +13,24 @@ const polaris = clientInit();
 polaris.moon = new Manager({
     nodes: [
         {
+            identifier: 'Catfein DE',
+            password: 'catfein',
+            host: 'lavalink.alfari.id',
+            port: 443,
+            secure: true,
+        },
+        /*{
             identifier: 'master',
             host: process.env.LAVALINK_HOST,
             port: parseInt(process.env.LAVALINK_PORT),
             secure: false,
             password: process.env.LAVALINK_PASSWORD,
-        },
+        },*/
     ],
     options: {},
     sendPayload: (guild, sPayload) => {
         polaris.guilds.cache.get(guild).shard.send(JSON.parse(sPayload));
-    }
+    },
 });
 
 databaseConnection();
