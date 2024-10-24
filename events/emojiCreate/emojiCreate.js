@@ -1,7 +1,7 @@
-const guildData = require('@schemas/guildData');
+const guildData = require('../../schemas/guildData');
 const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
-const caseSchema = require('@schemas/case');
+const caseSchema = require('../../schemas/case');
 const generateCaseID = require('../../utilities/generateCaseID');
 
 module.exports = async (polaris, emoji) => {
