@@ -35,6 +35,7 @@ module.exports = {
 
             await player.stop(true);
             await player.disconnect();
+            await player.destroy();
             const embed = await successEmbedBuilder('stop');
             await interaction.editReply({ embeds: [embed] });
         } catch (error) {
