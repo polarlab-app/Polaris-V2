@@ -27,14 +27,14 @@ module.exports = {
             const user = await userData.findOne({ id: interaction.user.id });
 
             let result;
-            if (user.bankBalance >= amount) {
+            if (user.economy.bankBalance >= amount) {
                 const number = await generateRandomNumber(1, 2);
 
                 if (number === 1) {
-                    user.bankBalance -= amount;
+                    user.economy.bankBalance -= amount;
                     await user.save();
                 } else {
-                    user.bankBalance += amount;
+                    user.economy.bankBalance += amount;
                     await user.save();
                 }
 

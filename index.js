@@ -1,30 +1,37 @@
 require('dotenv').config();
-const { MoonlinkManager } = require('moonlink.js');
 
+const { Manager } = require('moonlink.js');
 const databaseConnection = require('./polaris/databaseConnection');
 const eventHandler = require('./handlers/eventHandler');
-
 const { colors } = require('./data/consoleColors');
+const clientInit = require('./polaris/clientInit');
 
 console.log(colors.regular + 'Starting...');
-const clientInit = require('./polaris/clientInit');
 
 const polaris = clientInit();
 
-polaris.moon = new MoonlinkManager(
-    [
+polaris.moon = new Manager({
+    nodes: [
         {
+            identifier: 'Catfein DE',
+            password: 'catfein',
+            host: 'lavalink.alfari.id',
+            port: 443,
+            secure: true,
+        },
+        /*{
+            identifier: 'master',
             host: process.env.LAVALINK_HOST,
-            port: 2333,
+            port: parseInt(process.env.LAVALINK_PORT),
             secure: false,
             password: process.env.LAVALINK_PASSWORD,
-        },
+        },*/
     ],
-    {},
-    (guild, sPayload) => {
+    options: {},
+    sendPayload: (guild, sPayload) => {
         polaris.guilds.cache.get(guild).shard.send(JSON.parse(sPayload));
-    }
-);
+    },
+});
 
 databaseConnection();
 eventHandler(polaris);

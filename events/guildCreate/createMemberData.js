@@ -3,17 +3,20 @@ const memberData = require('../../schemas/memberData');
 module.exports = async (polaris, guild) => {
     try {
         const members = await guild.members.fetch();
-
-        members.forEach(async (member) => {
-            if (!member.user.bot) {
-                const databaseId = `${guild.id}${member.user.id}`;
-                const supposedMember = await memberData.findOne({ id: databaseId });
-
-                if (!supposedMember) {
-                    await memberData.create({ id: databaseId, exp: 0, rank: 0, cases: [] });
-                }
+        for (const member of members) {
+            const memberDataCheck = await memberData.findOne({ id: `${guild[1].id}${member[1].id}` });
+            if (!memberDataCheck && !member.bot) {
+                await memberData.create({
+                    id: `${guild[1].id}${member[1].id}`,
+                    stats: {
+                        exp: 0,
+                        rank: 0,
+                        messages: 0,
+                    },
+                    cases: [],
+                });
             }
-        });
+        }
     } catch (error) {
         console.log(error);
     }

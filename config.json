@@ -1,7 +1,7 @@
 {
     "token": "you-thought-didnt-you?",
     "prefix": "!",
-    "version": "2.4stable4",
+    "version": "2.5stable4",
     "modules": {
         "core": "enabled",
         "moderation": "enabled",
@@ -14,7 +14,7 @@
         "enableddemo": "enabled"
     },
     "emojis": {
-        "check": "<:green_check:1149766467450044426>",
-        "cross": "<:red_cross:1149765295548940371>"
+        "check": "<:green_check:1291756051053543444>",
+        "cross": "<:red_x:1291756005377703997>"
     }
 }

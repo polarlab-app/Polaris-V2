@@ -56,7 +56,7 @@
         "leveling": "**Congrats, <@{2}> just leveled up! 🥳 !**\n``LEVEL: {1} >>>> {0}``",
         "rank": "<@{2}>\n\n**__{3}__**\n**Rank:** 🏷️ {1}\n**Exp:** ✨ {0}",
         "report": "<@{1}> has been reported for **{2}**\n\n**__Reporter:__**\n<@{0}>",
-        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 🏷️ {1}\n**Purse Balance:** ✨ {0}",
+        "balance": "<@{2}>\n\n**__{3}__**\n**Bank Balance:** 💴 {1}\n**Purse Balance:** 🪙 {0}",
         "poll": "*{1}*\n\n**__Poll Initiator:__**\n<@{0}>",
         "suggest": "*{1}*\n\n**__Author:__**\n<@{0}>",
         "review": "*{1}*",
@@ -71,7 +71,7 @@
         "emojiCreate": "*An emoji was just created by <@{0}>*\n\n> **Emoji Name:** *<:{1}:{2}>*\n> **Emoji ID:** *{2}*",
         "emojiDelete": "*An emoji was just deleted by <@{0}>*\n\n> **Emoji Name:** *{1}*\n> **Emoji ID:** *{2}*",
         "emojiUpdate": "*An emoji was just updated by <@{0}>*\n\n> **Emoji Name:** *{1}* -> *{2}*\n> **Emoji ID:** *{3}*",
-        "messageDelete": "*A message was just deleted by <@{0}> or the original author*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*",
+        "messageDelete": "*A message was just deleted by <@{0}>*\n\n> **Message Content:** *{1}*\n> **Message ID:** *{2}*\n> **Author:** <@{3}>\n> **Channel:** <#{4}>",
         "guildMemberAdd": "*A new member has just joined the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Date Created:** <t:{1}:D>",
         "guildMemberRemove": "*A member has just left the guild!*\n\n> **Username:** <@{0}>\n> **User ID:** *{0}*\n> **Roles:**\n {1}",
         "slots": "You have successfully spun the slots machine! You {1} **💴 {0}**!",
@@ -346,6 +346,10 @@
         },
         "logs": {
             "text": "Logs Module!",
+            "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
+        },
+        "insights": {
+            "text": "Insights Module!",
             "iconURL": "https://cdn.polarlab.app/src/polaris/img/core.png"
         },
         "setup": {

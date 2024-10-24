@@ -41,10 +41,10 @@ module.exports = {
                 player = await polaris.moon.players.get(interaction.guild.id);
 
                 if (!player) {
-                    player = await polaris.moon.players.create({
+                    player = await polaris.moon.createPlayer({
                         guildId: interaction.guild.id,
-                        voiceChannel: interaction.member.voice.channel.id,
-                        textChannel: interaction.channel.id,
+                        voiceChannelId: interaction.member.voice.channel.id,
+                        textChannelId: interaction.channel.id,
                         autoPlay: false,
                         volume: 30,
                     });
@@ -62,6 +62,7 @@ module.exports = {
                     requester: [],
                 });
 
+                console.log(res);
                 if (res.loadType == 'error') {
                     return await interaction.editReply({
                         content: `:x: Load failed - the system is not cooperating.`,

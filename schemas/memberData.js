@@ -8,6 +8,7 @@ let memberData = new Schema(
             rank: Number,
             messages: Number,
         },
+        cases: [],
     },
     {
         collection: 'memberData',

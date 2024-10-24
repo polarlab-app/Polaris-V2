@@ -18,13 +18,13 @@ module.exports = {
 
             const user = await userData.findOneAndUpdate(
                 { id: interaction.user.id },
-                { $inc: { purseBalance: loot } },
+                { $inc: { 'economy.purseBalance': loot } },
                 { new: true, upsert: true }
             );
 
             await user.save();
 
-            const embed = await embedBuilder('beg', `${module.exports.module}`, [loot, user.purseBalance]);
+            const embed = await embedBuilder('beg', `${module.exports.module}`, [loot, user.economy.purseBalance]);
             await interaction.editReply({ embeds: [embed] });
         } catch (error) {
             await errorHandler({

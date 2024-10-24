@@ -38,8 +38,8 @@ module.exports = {
                 }
             } finally {
                 const embed = await embedBuilder(module.exports.name, module.exports.module, [
-                    member.exp,
-                    member.rank,
+                    member.stats.exp,
+                    member.stats.rank,
                     user,
                     username,
                 ]);

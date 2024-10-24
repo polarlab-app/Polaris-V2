@@ -3,65 +3,82 @@ const embedBuilder = require('../../creators/embeds/embedBuilder');
 const { AuditLogEvent } = require('discord.js');
 const caseSchema = require('../../schemas/case');
 const errorHandler = require('../../handlers/errorHandler');
+const generateCaseID = require('../../utilities/generateCaseID');
 
-module.exports = async (polaris, role) => {
-    try {
-        const guild = await guildData.findOne({ id: role.guild.id });
-        if (!guild) {
-            return;
-        }
+module.exports = async (polaris, oldRole, newRole) => {
+	try {
+		const guild = await guildData.findOne({ id: oldRole.guild.id });
+		if (!guild) {
+			return;
+		}
 
-        if (guild.config.logs.roleLogs.status) {
-            let channelSend;
+		const roleIndex = guild.data.roles.findIndex((r) => r.id === oldRole.id);
+		if (roleIndex !== -1) {
+			guild.data.roles[roleIndex].name = newRole.name;
+			guild.data.roles[roleIndex].color = newRole.color;
+			guild.data.roles[roleIndex].position = newRole.rawPosition;
+		} else {
+			guild.data.roles.push({
+				id: newRole.id,
+				name: newRole.name,
+				color: newRole.color,
+				position: newRole.rawPosition,
+			});
+		}
 
-            const auditLogs = await role.guild.fetchAuditLogs({
-                type: AuditLogEvent.RoleCreate,
-                limit: 2,
-            });
-            const roleCreateLog = auditLogs.entries.first();
-            const creator = await roleCreateLog.executor;
+		guild.markModified('data.roles');
+		await guild.save();
 
-            await caseSchema.create({
-                id: 't',
-                name: 'roleLogs',
-                serverID: role.guild.id,
-                status: 'Closed',
-                action: 'Role Created',
-                date: new Date().toISOString(),
-                duration: 'Permanent',
-                users: {
-                    offenderID: role.id,
-                    offenderUsername: role.name,
-                    authorID: creator.id,
-                    authorUsername: creator.username,
-                },
-                details: {
-                    note: 'N/A',
-                    reason: 'N/A',
-                    proof: 'N/A',
-                },
-            });
+		if (guild.config.logs.roleLogs.status) {
+			let channelSend;
 
-            if (!guild.config.logs.roleLogs.channelID) {
-                channelSend = await role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
-                if (!channelSend) {
-                    return;
-                }
-            } else {
-                channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelID);
+			const auditLogs = await newRole.guild.fetchAuditLogs({
+				type: AuditLogEvent.RoleUpdate,
+				limit: 2,
+			});
+			const roleCreateLog = auditLogs.entries.first();
+			const creator = await roleCreateLog.executor;
 
-                if (!channelSend) {
-                    channelSend = await role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
-                    if (!channelSend) {
-                        return;
-                    }
-                }
-            }
-        }
+			await caseSchema.create({
+				id: generateCaseID(),
+				name: 'roleLogs',
+				serverID: newRole.guild.id,
+				status: 'Closed',
+				action: 'Role Updated',
+				date: new Date().toISOString(),
+				duration: 'Permanent',
+				users: {
+					offenderID: oldRole.id,
+					offenderUsername: oldRole.name,
+					authorID: creator.id,
+					authorUsername: creator.username,
+				},
+				details: {
+					note: 'N/A',
+					reason: 'N/A',
+					proof: 'N/A',
+				},
+			});
+			if (!guild.config.logs.roleLogs.channelID) {
+				channelSend = await role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+				if (!channelSend) {
+					return;
+				}
+			} else {
+				channelSend = await role.guild.channels.cache.find((c) => c.id == guild.config.logs.roleLogs.channelID);
 
-        const embed = await embedBuilder('roleUpdate', 'logs', []);
-        await channelSend.send({ embeds: [embed] });
-    } catch (error) {
-        await errorHandler({ errorType: 'generic', error: error });
-    }
+				if (!channelSend) {
+					channelSend = await role.guild.channels.cache.find((c) => c.topic == 'prolelogs');
+					if (!channelSend) {
+						return;
+					}
+				}
+			}
+
+			const embed = await embedBuilder('roleUpdate', 'logs', []);
+			await channelSend.send({ embeds: [embed] });
+		}
+	} catch (error) {
+		await errorHandler({ errorType: 'generic', error: error });
+	}
 };
